@@ -8,8 +8,10 @@
     ./fs.nix
     ./gitlab-runner.nix
     ./net.nix
+    ./slurm.nix
     ./ssh.nix
     ./users.nix
+    ./overlays.nix
   ];
 
   systemd.services."serial-getty@ttyS0" = {
@@ -19,13 +21,17 @@
   };
 
   time.timeZone = "Europe/Madrid";
-  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.defaultLocale = "en_DK.UTF-8";
 
   environment.systemPackages = with pkgs; [
-    vim wget git htop
+    vim wget git htop tmux pciutils tcpdump ripgrep nix-index nixos-option
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.gc.automatic = true;
+
+  programs.zsh.enable = true;
+  programs.zsh.histSize = 100000;
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
