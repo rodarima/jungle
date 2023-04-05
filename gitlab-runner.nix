@@ -49,14 +49,6 @@
   #  HTTPS_PROXY="http://localhost:23080/";
   #};
 
-  #virtualisation.docker.daemon.settings = {
-  #  proxies.default = {
-  #    httpProxy = "http://localhost:23080/";
-  #    httpsProxy = "http://localhost:23080/";
-  #    noProxy = "localhost,127.0.0.0/8";
-  #  };
-  #};
-
   users.users.gitlab-runner = {
     uid = config.ids.uids.gitlab-runner;
     #isNormalUser = true;
