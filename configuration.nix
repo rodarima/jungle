@@ -7,6 +7,7 @@
     ./boot.nix
     ./fs.nix
     ./gitlab-runner.nix
+    ./monitoring.nix
     ./net.nix
     ./overlays.nix
     ./slurm.nix
