@@ -13,6 +13,8 @@
     ./slurm.nix
     ./ssh.nix
     ./users.nix
+
+    <agenix/modules/age.nix>
   ];
 
   systemd.services."serial-getty@ttyS0" = {
@@ -27,6 +29,7 @@
   environment.systemPackages = with pkgs; [
     vim wget git htop tmux pciutils tcpdump ripgrep nix-index nixos-option
     ipmitool freeipmi ethtool lm_sensors
+    (pkgs.callPackage <agenix/pkgs/agenix.nix> {})
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
