@@ -8,10 +8,10 @@
     ./fs.nix
     ./gitlab-runner.nix
     ./net.nix
+    ./overlays.nix
     ./slurm.nix
     ./ssh.nix
     ./users.nix
-    ./overlays.nix
   ];
 
   systemd.services."serial-getty@ttyS0" = {
@@ -25,9 +25,11 @@
 
   environment.systemPackages = with pkgs; [
     vim wget git htop tmux pciutils tcpdump ripgrep nix-index nixos-option
+    ipmitool freeipmi ethtool lm_sensors
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.sandbox = "relaxed";
   nix.gc.automatic = true;
 
   programs.zsh.enable = true;
