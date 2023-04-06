@@ -42,6 +42,7 @@
             "127.0.0.1:${toString config.services.prometheus.exporters.node.port}"
             "127.0.0.1:${toString config.services.prometheus.exporters.ipmi.port}"
             "127.0.0.1:9323"
+            "127.0.0.1:9252"
           ];
         }];
       }

@@ -40,8 +40,8 @@
   systemd.services.gitlab-runner.serviceConfig.DynamicUser = lib.mkForce false;
   systemd.services.gitlab-runner.serviceConfig.User = "gitlab-runner";
   systemd.services.gitlab-runner.serviceConfig.Group = "gitlab-runner";
-  #systemd.services.gitlab-runner.serviceConfig.ExecStart = lib.mkForce
-  #  ''${pkgs.gitlab-runner}/bin/gitlab-runner --debug run --config ''${HOME}/.gitlab-runner/config.toml --working-directory ''${HOME}'';
+  systemd.services.gitlab-runner.serviceConfig.ExecStart = lib.mkForce
+    ''${pkgs.gitlab-runner}/bin/gitlab-runner --debug run --config ''${HOME}/.gitlab-runner/config.toml --listen-address "127.0.0.1:9252" --working-directory ''${HOME}'';
 
   # TODO https://docs.gitlab.com/runner/configuration/proxy.html
   #systemd.services.docker.environment = {
