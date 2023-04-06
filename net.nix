@@ -1,6 +1,10 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
+  # Infiniband (IPoIB)
+  environment.systemPackages = [ pkgs.rdma-core ];
+  boot.kernelModules = [ "ib_umad" "ib_ipoib" ];
+
   networking = {
     hostName = "xeon07";
 
@@ -11,6 +15,11 @@
     interfaces.eno1.useDHCP = false;
     interfaces.eno1.ipv4.addresses = [ {
       address = "10.0.40.7";
+      prefixLength = 24;
+    } ];
+
+    interfaces.ibp5s0.ipv4.addresses = [ {
+      address = "10.0.42.7";
       prefixLength = 24;
     } ];
 
