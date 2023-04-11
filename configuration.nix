@@ -41,6 +41,7 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.settings.sandbox = "relaxed";
   nix.gc.automatic = true;
+  nix.gc.dates = "weekly";
 
   programs.zsh.enable = true;
   programs.zsh.histSize = 100000;
