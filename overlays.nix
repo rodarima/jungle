@@ -2,7 +2,7 @@
 
 let
 
-  bscpkgsSrc = builtins.fetchTarball "https://pm.bsc.es/gitlab/rarias/bscpkgs/-/archive/slurm-xeon07/bscpkgs-master.tar.gz";
+  bscpkgsSrc = builtins.fetchTarball "https://pm.bsc.es/gitlab/rarias/bscpkgs/-/archive/master/bscpkgs-master.tar.gz";
   bscpkgs = import "${bscpkgsSrc}/overlay.nix";
 
   xeon07Overlay = (self: super: {
