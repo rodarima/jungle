@@ -32,7 +32,7 @@
   systemd.services.gitlab-runner.serviceConfig.User = "gitlab-runner";
   systemd.services.gitlab-runner.serviceConfig.Group = "gitlab-runner";
   systemd.services.gitlab-runner.serviceConfig.ExecStart = lib.mkForce
-    ''${pkgs.gitlab-runner}/bin/gitlab-runner --debug run --config ''${HOME}/.gitlab-runner/config.toml --listen-address "127.0.0.1:9252" --working-directory ''${HOME}'';
+    ''${pkgs.gitlab-runner}/bin/gitlab-runner run --config ''${HOME}/.gitlab-runner/config.toml --listen-address "127.0.0.1:9252" --working-directory ''${HOME}'';
 
   users.users.gitlab-runner = {
     uid = config.ids.uids.gitlab-runner;
