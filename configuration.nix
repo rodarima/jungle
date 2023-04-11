@@ -29,9 +29,14 @@
 
   environment.systemPackages = with pkgs; [
     vim wget git htop tmux pciutils tcpdump ripgrep nix-index nixos-option
-    ipmitool freeipmi ethtool lm_sensors
+    nix-diff ipmitool freeipmi ethtool lm_sensors
     (pkgs.callPackage <agenix/pkgs/agenix.nix> {})
   ];
+
+  environment.variables = {
+    EDITOR = "vim";
+    VISUAL = "vim";
+  };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.settings.sandbox = "relaxed";
