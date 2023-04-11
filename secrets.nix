@@ -5,4 +5,5 @@ let
 in
 {
   "secrets/ovni-token.age".publicKeys = systems;
+  "secrets/nosv-token.age".publicKeys = systems;
 }

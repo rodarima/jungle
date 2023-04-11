@@ -2,6 +2,7 @@
 
 {
   age.secrets."secrets/ovni-token".file = ./secrets/ovni-token.age;
+  age.secrets."secrets/nosv-token".file = ./secrets/nosv-token.age;
 
   services.gitlab-runner = {
     enable = true;
@@ -16,6 +17,16 @@
       };
       ovni-docker = {
         registrationConfigFile = config.age.secrets."secrets/ovni-token".path;
+        dockerImage = "debian:stable";
+        tagList = [ "docker" "xeon" ];
+        registrationFlags = [ "--docker-network-mode host" ];
+        environmentVariables = {
+          https_proxy = "http://localhost:23080";
+          http_proxy = "http://localhost:23080";
+        };
+      };
+      nosv-docker = {
+        registrationConfigFile = config.age.secrets."secrets/nosv-token".path;
         dockerImage = "debian:stable";
         tagList = [ "docker" "xeon" ];
         registrationFlags = [ "--docker-network-mode host" ];
