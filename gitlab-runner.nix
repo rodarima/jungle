@@ -1,30 +1,21 @@
 { pkgs, lib, config, ... }:
 
 {
+  age.secrets."secrets/ovni-token".file = ./secrets/ovni-token.age;
+
   services.gitlab-runner = {
     enable = true;
     services = {
-      # runner for executing stuff on host system (very insecure!)
-      # make sure to add required packages (including git!)
-      # to `environment.systemPackages`
-      shell = {
-        # File should contain at least these two variables:
-        # `CI_SERVER_URL`
-        # `REGISTRATION_TOKEN`
-        registrationConfigFile = "/run/secrets/gitlab-runner-registration";
+      ovni-shell = {
+        registrationConfigFile = config.age.secrets."secrets/ovni-token".path;
         executor = "shell";
         tagList = [ "nix" "xeon" ];
         environmentVariables = {
           SHELL = "${pkgs.bash}/bin/bash";
         };
       };
-
-      # runner for everything else
-      default = {
-        # File should contain at least these two variables:
-        # `CI_SERVER_URL`
-        # `REGISTRATION_TOKEN`
-        registrationConfigFile = "/run/secrets/gitlab-runner-registration";
+      ovni-docker = {
+        registrationConfigFile = config.age.secrets."secrets/ovni-token".path;
         dockerImage = "debian:stable";
         tagList = [ "docker" "xeon" ];
         registrationFlags = [ "--docker-network-mode host" ];
@@ -42,12 +33,6 @@
   systemd.services.gitlab-runner.serviceConfig.Group = "gitlab-runner";
   systemd.services.gitlab-runner.serviceConfig.ExecStart = lib.mkForce
     ''${pkgs.gitlab-runner}/bin/gitlab-runner --debug run --config ''${HOME}/.gitlab-runner/config.toml --listen-address "127.0.0.1:9252" --working-directory ''${HOME}'';
-
-  # TODO https://docs.gitlab.com/runner/configuration/proxy.html
-  #systemd.services.docker.environment = {
-  #  HTTP_PROXY="http://localhost:23080/";
-  #  HTTPS_PROXY="http://localhost:23080/";
-  #};
 
   users.users.gitlab-runner = {
     uid = config.ids.uids.gitlab-runner;
