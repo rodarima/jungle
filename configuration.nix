@@ -40,6 +40,7 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.settings.sandbox = "relaxed";
+  nix.settings.trusted-users = [ "@wheel" ];
   nix.gc.automatic = true;
   nix.gc.dates = "weekly";
 
