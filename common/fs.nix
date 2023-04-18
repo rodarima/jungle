@@ -1,6 +1,15 @@
 { ... }:
 
 {
+  fileSystems."/" =
+    { device = "/dev/disk/by-label/nixos";
+      fsType = "ext4";
+    };
+
+  swapDevices =
+    [ { device = "/dev/disk/by-label/swap"; }
+    ];
+
   # Mount the home via NFS
   fileSystems."/home" = {
     device = "10.0.40.30:/home";
