@@ -3,7 +3,6 @@
 {
   imports = [
     ../common/main.nix
-    ./hardware-configuration.nix
 
     ./gitlab-runner.nix
     ./monitoring.nix
