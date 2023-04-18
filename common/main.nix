@@ -6,6 +6,7 @@
     ./fs.nix
     ./hw.nix
     ./overlays.nix
+    ./ssh.nix
     ./users.nix
   ];
 
