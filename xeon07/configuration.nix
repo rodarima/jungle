@@ -8,7 +8,6 @@
     ./monitoring.nix
     ./net.nix
     ./nfs.nix
-    ./overlays.nix
     ./slurm.nix
     ./ssh.nix
 
