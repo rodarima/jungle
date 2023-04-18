@@ -19,6 +19,9 @@
     <agenix/modules/age.nix>
   ];
 
+  # Select the this using the ID to avoid mismatches
+  boot.loader.grub.device = "/dev/disk/by-id/ata-INTEL_SSDSC2BB240G7_PHDV6462004Y240AGN";
+
   systemd.services."serial-getty@ttyS0" = {
     enable = true;
     wantedBy = [ "getty.target" ];

@@ -5,9 +5,6 @@
   boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;
 
-  # Select the this using the ID to avoid mismatches
-  boot.loader.grub.device = "/dev/disk/by-id/ata-INTEL_SSDSC2BB240G7_PHDV6462004Y240AGN";
-
   # Enable GRUB2 serial console
   boot.loader.grub.extraConfig = ''
     serial --unit=0 --speed=115200 --word=8 --parity=no --stop=1
