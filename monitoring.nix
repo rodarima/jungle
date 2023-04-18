@@ -21,6 +21,13 @@
     metrics-addr = "127.0.0.1:9323";
   };
 
+  # Required to allow the smartctl exporter to read the nvme0 character device,
+  # see the commit message on:
+  # https://github.com/NixOS/nixpkgs/commit/12c26aca1fd55ab99f831bedc865a626eee39f80
+  services.udev.extraRules = ''
+    SUBSYSTEM=="nvme", KERNEL=="nvme[0-9]*", GROUP="disk"
+  '';
+
   services.prometheus = {
 
     exporters = {
@@ -32,6 +39,7 @@
         enabledCollectors = [ "systemd" ];
         port = 9002;
       };
+      smartctl.enable = true;
     };
 
     scrapeConfigs = [
@@ -43,6 +51,7 @@
             "127.0.0.1:${toString config.services.prometheus.exporters.ipmi.port}"
             "127.0.0.1:9323"
             "127.0.0.1:9252"
+            "127.0.0.1:${toString config.services.prometheus.exporters.smartctl.port}"
           ];
         }];
       }
