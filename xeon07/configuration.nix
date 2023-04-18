@@ -9,7 +9,6 @@
     ./net.nix
     ./nfs.nix
     ./slurm.nix
-    ./ssh.nix
 
     <agenix/modules/age.nix>
   ];
