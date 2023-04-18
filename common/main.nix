@@ -5,6 +5,7 @@
     ./boot.nix
     ./fs.nix
     ./hw.nix
+    ./net.nix
     ./overlays.nix
     ./ssh.nix
     ./users.nix
