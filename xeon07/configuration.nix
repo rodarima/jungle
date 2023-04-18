@@ -11,7 +11,6 @@
     ./overlays.nix
     ./slurm.nix
     ./ssh.nix
-    ./users.nix
 
     <agenix/modules/age.nix>
   ];
