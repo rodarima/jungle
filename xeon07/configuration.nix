@@ -6,7 +6,6 @@
 
     ./gitlab-runner.nix
     ./monitoring.nix
-    ./net.nix
     ./nfs.nix
     ./slurm.nix
 
