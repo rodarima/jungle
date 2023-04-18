@@ -4,5 +4,6 @@
   imports = [
     ./boot.nix
     ./fs.nix
+    ./hw.nix
   ];
 }
