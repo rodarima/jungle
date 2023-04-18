@@ -5,7 +5,6 @@
     ../common/main.nix
     ./hardware-configuration.nix
 
-    ./boot.nix
     ./fs.nix
     ./gitlab-runner.nix
     ./monitoring.nix
