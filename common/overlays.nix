@@ -16,7 +16,7 @@ in
     # Prepend default nixPath values.
     options.nix.nixPath.default ++
     # Append our nixpkgs-overlays.
-    [ "nixpkgs-overlays=/etc/nixos/overlays-compat/" ]
+    [ "nixpkgs-overlays=/config/overlays-compat/" ]
   ;
 
   nixpkgs.overlays = [
