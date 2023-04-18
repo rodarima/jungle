@@ -6,22 +6,10 @@
   boot.kernelModules = [ "ib_umad" "ib_ipoib" ];
 
   networking = {
-    hostName = "xeon07";
-
     enableIPv6 = false;
     useDHCP = false;
     #defaultGateway = "10.0.40.30";
     nameservers = ["8.8.8.8"];
-    interfaces.eno1.ipv4.addresses = [ {
-      address = "10.0.40.7";
-      prefixLength = 24;
-    } ];
-
-    interfaces.ibp5s0.ipv4.addresses = [ {
-      address = "10.0.42.7";
-      prefixLength = 24;
-    } ];
-
     proxy = {
       default = "http://localhost:23080/";
       noProxy = "127.0.0.1,localhost,internal.domain";
