@@ -1,0 +1,87 @@
+{
+  "nodes": {
+    "agenix": {
+      "inputs": {
+        "darwin": "darwin",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1682101079,
+        "narHash": "sha256-MdAhtjrLKnk2uiqun1FWABbKpLH090oeqCSiWemtuck=",
+        "owner": "ryantm",
+        "repo": "agenix",
+        "rev": "2994d002dcff5353ca1ac48ec584c7f6589fe447",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ryantm",
+        "repo": "agenix",
+        "type": "github"
+      }
+    },
+    "bscpkgs": {
+      "locked": {
+        "lastModified": 1682521628,
+        "narHash": "sha256-uRIDCuJNt3rdikWiRcM3VPsQSk0vpQB1JO3Wx24psJo=",
+        "ref": "refs/heads/master",
+        "rev": "c775ee4d6f76aded05b08ae13924c302f18f9b2c",
+        "revCount": 807,
+        "type": "git",
+        "url": "https://pm.bsc.es/gitlab/rarias/bscpkgs.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://pm.bsc.es/gitlab/rarias/bscpkgs.git"
+      }
+    },
+    "darwin": {
+      "inputs": {
+        "nixpkgs": [
+          "agenix",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1673295039,
+        "narHash": "sha256-AsdYgE8/GPwcelGgrntlijMg4t3hLFJFCRF3tL5WVjA=",
+        "owner": "lnl7",
+        "repo": "nix-darwin",
+        "rev": "87b9d090ad39b25b2400029c64825fc2a8868943",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lnl7",
+        "ref": "master",
+        "repo": "nix-darwin",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1669833724,
+        "narHash": "sha256-mlqo1r+TZUOuypWdrZHluxWL+E5WzXlUXNZ9Y0WLDFU=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "9a6aabc4740790ef3bbb246b86d029ccf6759658",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "22.11",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "agenix": "agenix",
+        "bscpkgs": "bscpkgs",
+        "nixpkgs": "nixpkgs"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
