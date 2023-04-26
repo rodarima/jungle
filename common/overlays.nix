@@ -5,10 +5,6 @@ let
   bscpkgsSrc = builtins.fetchTarball "https://pm.bsc.es/gitlab/rarias/bscpkgs/-/archive/master/bscpkgs-master.tar.gz";
   bscpkgs = import "${bscpkgsSrc}/overlay.nix";
 
-  xeon07Overlay = (self: super: {
-    slurm = super.bsc.slurm-16-05-8-1;
-  });
-
 in
 
 {
@@ -20,6 +16,6 @@ in
   ;
 
   nixpkgs.overlays = [
-    bscpkgs xeon07Overlay
+    bscpkgs
   ];
 }
