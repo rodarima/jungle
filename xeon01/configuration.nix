@@ -3,6 +3,7 @@
 {
   imports = [
     ../common/main.nix
+    ./slurm.nix
   ];
 
   # Select the this using the ID to avoid mismatches
