@@ -8,8 +8,6 @@
     ./monitoring.nix
     ./nfs.nix
     ./slurm.nix
-
-    <agenix/modules/age.nix>
   ];
 
   # Select the this using the ID to avoid mismatches
@@ -26,8 +24,4 @@
       prefixLength = 24;
     } ];
   };
-
-  environment.systemPackages = with pkgs; [
-    (pkgs.callPackage <agenix/pkgs/agenix.nix> {})
-  ];
 }
