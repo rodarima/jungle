@@ -1,12 +1,15 @@
 { config, pkgs, modulesPath, lib, ... }:
 
 {
-  imports = [ ../common/main.nix (modulesPath + "/installer/netboot/netboot-minimal.nix") ];
+  imports = [
+    #(modulesPath + "/installer/netboot/netboot-minimal.nix")
+    ../common/main.nix
+  ];
 
   # Select the this using the ID to avoid mismatches
   boot.loader.grub.device = "/dev/disk/by-id/wwn-0x55cd2e414d535629";
   #programs.ssh.forwardX11 = false;
-  programs.ssh.setXAuthLocation = lib.mkForce true;
+  #programs.ssh.setXAuthLocation = lib.mkForce true;
 
   networking = {
     hostName = "xeon02";
