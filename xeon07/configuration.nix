@@ -7,7 +7,7 @@
     ./gitlab-runner.nix
     ./monitoring.nix
     ./nfs.nix
-    ./slurm.nix
+    ./slurm-daemon.nix
   ];
 
   # Select the this using the ID to avoid mismatches

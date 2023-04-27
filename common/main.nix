@@ -6,6 +6,7 @@
     ./fs.nix
     ./hw.nix
     ./net.nix
+    ./slurm.nix
     ./ssh.nix
     ./users.nix
   ];
