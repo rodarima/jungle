@@ -1,10 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  imports = [
-    ../common/main.nix
-    ./slurm.nix
-  ];
+  imports = [ ../common/main.nix ];
 
   # Select the this using the ID to avoid mismatches
   boot.loader.grub.device = "/dev/disk/by-id/wwn-0x55cd2e414d53566c";
