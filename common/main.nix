@@ -49,6 +49,10 @@
   programs.zsh.enable = true;
   programs.zsh.histSize = 100000;
 
+  programs.bash.promptInit = ''
+    PS1="\h\\$ "
+  '';
+
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
   # accidentally delete configuration.nix.
