@@ -22,6 +22,16 @@
     serviceConfig.Restart = "always";
   };
 
+  # Increase limits
+  security.pam.loginLimits = [
+    {
+      domain = "*";
+      type = "-";
+      item = "memlock";
+      value = "1048576"; # 1 GiB of mem locked
+    }
+  ];
+
   time.timeZone = "Europe/Madrid";
   i18n.defaultLocale = "en_DK.UTF-8";
 
