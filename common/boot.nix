@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 
 {
   # Use the GRUB 2 boot loader.
@@ -17,6 +17,8 @@
     "console=tty1"
     "console=ttyS0,115200"
   ];
+
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   #boot.kernelPatches = lib.singleton {
   #  name = "osnoise-tracer";
