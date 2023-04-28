@@ -18,14 +18,14 @@
     "console=ttyS0,115200"
   ];
 
-  boot.kernelPatches = lib.singleton {
-    name = "osnoise-tracer";
-    patch = null;
-    extraStructuredConfig = with lib.kernel; {
-      OSNOISE_TRACER = yes;
-      HWLAT_TRACER = yes;
-    };
-  };
+  #boot.kernelPatches = lib.singleton {
+  #  name = "osnoise-tracer";
+  #  patch = null;
+  #  extraStructuredConfig = with lib.kernel; {
+  #    OSNOISE_TRACER = yes;
+  #    HWLAT_TRACER = yes;
+  #  };
+  #};
 
   boot.initrd.availableKernelModules = [ "ahci" "xhci_pci" "ehci_pci" "nvme" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
