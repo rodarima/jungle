@@ -6,6 +6,7 @@
 
   services.gitlab-runner = {
     enable = true;
+    settings.concurrent = 5;
     services = {
       ovni-shell = {
         registrationConfigFile = config.age.secrets."secrets/ovni-token".path;
