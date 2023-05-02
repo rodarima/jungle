@@ -30,7 +30,10 @@
         registrationConfigFile = config.age.secrets."secrets/nosv-token".path;
         dockerImage = "debian:stable";
         tagList = [ "docker" "xeon" ];
-        registrationFlags = [ "--docker-network-mode host" ];
+        registrationFlags = [
+          "--docker-network-mode host"
+          "--docker-cpus 56"
+        ];
         environmentVariables = {
           https_proxy = "http://localhost:23080";
           http_proxy = "http://localhost:23080";
