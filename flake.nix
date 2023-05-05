@@ -75,6 +75,28 @@
           ./xeon07/configuration.nix
         ];
       };
+      xeon08 = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ( {options, ...}: {
+            # Sel the nixos-config path to the one of the current flake
+            nixpkgs.overlays = [ bscpkgs.bscOverlay ];
+            nix.nixPath = [
+                "nixpkgs=${nixpkgs}"
+                "bscpkgs=${bscpkgs}"
+                "nixos-config=${self.outPath}/xeon08/configuration.nix"
+                "nixpkgs-overlays=${self.outPath}/overlays-compat"
+            ];
+            nix.registry.nixpkgs.flake = nixpkgs;
+            nix.registry.bscpkgs.flake = bscpkgs;
+            system.configurationRevision =
+              if self ? rev
+              then self.rev
+              else throw ("Refusing to build from a dirty Git tree!");
+          })
+          ./xeon08/configuration.nix
+        ];
+      };
     };
   };
 }
