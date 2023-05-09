@@ -3,9 +3,12 @@
 {
   services.grafana = {
     enable = true;
-    settings.server = {
-      http_port = 2342;
-      http_addr = "127.0.0.1";
+    settings = {
+      server = {
+        http_port = 2342;
+        http_addr = "127.0.0.1";
+      };
+      feature_toggles.publicDashboards = true;
     };
   };
 
