@@ -12,7 +12,8 @@ Create a main partition and label it `nixos` following [the manual][1].
 ```
 # disk=/dev/sdX
 # parted $disk -- mklabel msdos
-# parted $disk -- mkpart primary 1MB 100%
+# parted $disk -- mkpart primary 1MB -8GB
+# parted $disk -- mkpart primary linux-swap -8GB 100%
 # parted $disk -- set 1 boot on
 ```
 
@@ -21,6 +22,7 @@ installed. **Ensure that no other partition has the same label.**
 
 ```
 # mkfs.ext4 -L nixos "${disk}1"
+# mkswap -L swap "${disk}2"
 # mount ${disk}1 /mnt
 # lsblk -f $disk
 NAME   FSTYPE LABEL UUID                                 MOUNTPOINT
@@ -53,6 +55,66 @@ And add them to the PATH:
 # export PATH=$PATH:/nix/store/9yq8ps06ysr2pfiwiij39ny56yk3pdcs-nixos-install/bin/
 # nix --version
 nix (Nix) 2.13.3
+```
+
+## Adapt owl configuration
+
+Clone owl repo:
+
+```
+$ git clone git@bscpm03.bsc.es:rarias/owl.git
+$ cd owl
+```
+
+Edit the configuration to your needs.
+
+## Install from another Linux OS
+
+Install nixOS into the storage drive.
+
+```
+# nixos-install --flake --root /mnt .#xeon0X
+```
+
+At this point, the nixOS grub has been installed into the nixos device, which
+is not the default boot device. To keep both the old Linux and NixOS grubs, add
+an entry into the old Linux grub to jump into the new grub.
+
+```
+# echo "
+
+menuentry 'NixOS' {
+    insmod chain
+    search --no-floppy --label nixos --set root
+    configfile /boot/grub/grub.cfg
+} " >> /etc/grub.d/40_custom
+```
+
+Rebuild grub config.
+
+```
+# grub2-mkconfig -o /boot/grub/grub.cfg
+```
+
+To boot into NixOS manually, reboot and select NixOS in the grub menu to boot
+into NixOS.
+
+To temporarily boot into NixOS only on the next reboot run:
+
+```
+# grub2-reboot 'NixOS'
+```
+
+To permanently boot into NixOS as the default boot OS, edit `/etc/default/grub/`:
+
+```
+GRUB_DEFAULT='NixOS'
+```
+
+And update grub.
+
+```
+# grub2-mkconfig -o /boot/grub/grub.cfg
 ```
 
 ## Build the nixos kexec image
