@@ -6,6 +6,7 @@
     #(modulesPath + "/installer/netboot/netboot-minimal.nix")
 
     ./kernel/kernel.nix
+    ./cpufreq.nix
     ./fs.nix
     ./users.nix
     ./slurm.nix
