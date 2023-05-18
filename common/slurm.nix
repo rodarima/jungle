@@ -10,6 +10,7 @@
     ];
     extraConfig = ''
       MpiDefault=pmix
+      ReturnToService=2
     '';
   };
 }
