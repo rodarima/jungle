@@ -13,7 +13,7 @@
 
   environment.systemPackages = with pkgs; [
     vim wget git htop tmux pciutils tcpdump ripgrep nix-index nixos-option
-    nix-diff ipmitool freeipmi ethtool lm_sensors
+    nix-diff ipmitool freeipmi ethtool lm_sensors ix
   ];
 
   systemd.services."serial-getty@ttyS0" = {
