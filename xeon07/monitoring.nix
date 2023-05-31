@@ -5,6 +5,9 @@
     enable = true;
     settings = {
       server = {
+        domain = "jungle.bsc.es";
+        root_url = "%(protocol)s://%(domain)s/grafana";
+        serve_from_sub_path = true;
         http_port = 2342;
         http_addr = "127.0.0.1";
       };
