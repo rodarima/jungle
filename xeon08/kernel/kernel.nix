@@ -46,5 +46,8 @@ let
   latest = pkgs.linuxPackages_latest;
 
 in {
+  imports = [
+    ./lttng.nix
+  ];
   boot.kernelPackages = lib.mkForce kernel;
 }
