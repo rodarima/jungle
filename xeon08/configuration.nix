@@ -18,6 +18,10 @@
   # disable automatic garbage collector
   nix.gc.automatic = lib.mkForce false;
 
+  # members of the tracing group can use the lttng-provided kernel events
+  # without root permissions
+  users.groups.tracing.members = [ "arocanon" ];
+
   # set up both ethernet and infiniband ips
   networking = {
     hostName = "xeon08";
