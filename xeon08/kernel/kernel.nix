@@ -48,6 +48,7 @@ let
 in {
   imports = [
     ./lttng.nix
+    ./perf.nix
   ];
   boot.kernelPackages = lib.mkForce kernel;
 }
