@@ -23,7 +23,7 @@ let
 
   kernel = nixos-fcsv2;
 
-  nixos-fcs-kernel = {gitCommit, lockStat ? false}: pkgs.linuxPackagesFor (pkgs.buildLinux rec {
+  nixos-fcs-kernel = {gitCommit, lockStat ? false, preempt ? false}: pkgs.linuxPackagesFor (pkgs.buildLinux rec {
     version = "6.2.8";
     src = builtins.fetchGit {
       url = "git@bscpm03.bsc.es:ompss-kernel/linux.git";
@@ -31,9 +31,12 @@ let
       ref = "fcs";
     };
     structuredExtraConfig = with lib.kernel; {
-      # add cutom kernel options here
+      # add general custom kernel options here
     } // lib.optionalAttrs lockStat {
       LOCK_STAT = yes;
+    } // lib.optionalAttrs preempt {
+      PREEMPT = lib.mkForce yes;
+      PREEMPT_VOLUNTARY = lib.mkForce no;
     };
     kernelPatches = [];
     extraMeta.branch = lib.versions.majorMinor version;
@@ -41,8 +44,19 @@ let
 
   nixos-fcsv1 = nixos-fcs-kernel {gitCommit = "bc11660676d3d68ce2459b9fb5d5e654e3f413be";};
   nixos-fcsv2 = nixos-fcs-kernel {gitCommit = "db0f2eca0cd57a58bf456d7d2c7d5d8fdb25dfb1";};
-  nixos-fcsv1-lockstat = nixos-fcs-kernel {gitCommit = "bc11660676d3d68ce2459b9fb5d5e654e3f413be"; lockStat = true;};
-  nixos-fcsv2-lockstat = nixos-fcs-kernel {gitCommit = "db0f2eca0cd57a58bf456d7d2c7d5d8fdb25dfb1"; lockStat = true;};
+  nixos-fcsv1-lockstat = nixos-fcs-kernel {
+    gitCommit = "bc11660676d3d68ce2459b9fb5d5e654e3f413be";
+    lockStat = true;
+  };
+  nixos-fcsv2-lockstat = nixos-fcs-kernel {
+    gitCommit = "db0f2eca0cd57a58bf456d7d2c7d5d8fdb25dfb1";
+    lockStat = true;
+  };
+  nixos-fcsv2-lockstat-preempt = nixos-fcs-kernel {
+    gitCommit = "db0f2eca0cd57a58bf456d7d2c7d5d8fdb25dfb1";
+    lockStat = true;
+    preempt = true;
+  };
   latest = pkgs.linuxPackages_latest;
 
 in {
