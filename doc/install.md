@@ -32,19 +32,19 @@ sdX
 
 ## Prepare nix and nixos-install
 
-Mount the nix store from the xeon07 node in read-only /nix.
+Mount the nix store from the hut node in read-only /nix.
 
 ```
 # mkdir /nix
-# mount -o ro xeon07:/nix /nix
+# mount -o ro hut:/nix /nix
 ```
 
-Get the nix binary and nixos-install tool from xeon07:
+Get the nix binary and nixos-install tool from hut:
 
 ```
-# ssh xeon07 'readlink -f $(which nix)'
+# ssh hut 'readlink -f $(which nix)'
 /nix/store/0sxbaj71c4c4n43qhdxm31f56gjalksw-nix-2.13.3/bin/nix
-# ssh xeon07 'readlink -f $(which nixos-install)'
+# ssh hut 'readlink -f $(which nixos-install)'
 /nix/store/9yq8ps06ysr2pfiwiij39ny56yk3pdcs-nixos-install/bin/nixos-install
 ```
 
