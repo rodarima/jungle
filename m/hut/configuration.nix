@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, agenix, ... }:
 
 {
   imports = [
@@ -8,6 +8,7 @@
     ./monitoring.nix
     ./nfs.nix
     ./slurm-daemon.nix
+    agenix.nixosModules.default
   ];
 
   # Select the this using the ID to avoid mismatches
