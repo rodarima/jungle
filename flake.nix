@@ -52,7 +52,7 @@
           ./xeon02/configuration.nix
         ];
       };
-      xeon07 = nixpkgs.lib.nixosSystem {
+      hut = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           ( {options, ...}: {
@@ -61,7 +61,7 @@
             nix.nixPath = [
                 "nixpkgs=${nixpkgs}"
                 "bscpkgs=${bscpkgs}"
-                "nixos-config=${self.outPath}/xeon07/configuration.nix"
+                "nixos-config=${self.outPath}/hut/configuration.nix"
                 "nixpkgs-overlays=${self.outPath}/overlays-compat"
             ];
             nix.registry.nixpkgs.flake = nixpkgs;
@@ -72,7 +72,7 @@
               else throw ("Refusing to build from a dirty Git tree!");
           })
           agenix.nixosModules.default
-          ./xeon07/configuration.nix
+          ./hut/configuration.nix
         ];
       };
       xeon08 = nixpkgs.lib.nixosSystem {

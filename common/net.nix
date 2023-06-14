@@ -73,7 +73,7 @@
       10.0.40.106             xeon06-ipmi0
       
       # Node Entry for node: xeon07 (ID=21)
-      10.0.40.7               xeon07 xeon07-eth0
+      10.0.40.7               xeon07 xeon07-eth0 hut
       10.0.42.7               xeon07-ib0
       10.0.40.107             xeon07-ipmi0
       
