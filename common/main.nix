@@ -46,6 +46,7 @@
   nix.settings.trusted-users = [ "@wheel" ];
   nix.gc.automatic = true;
   nix.gc.dates = "weekly";
+  nix.gc.options = "--delete-older-than 30d";
 
   programs.zsh.enable = true;
   programs.zsh.histSize = 100000;
