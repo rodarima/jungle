@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, nixpkgs, bscpkgs, agenix, theFlake, ... }:
 
 {
   imports = [
@@ -10,6 +10,23 @@
     ./ssh.nix
     ./users.nix
   ];
+
+  nixpkgs.overlays = [ bscpkgs.bscOverlay ];
+
+  nix.nixPath = [
+    "nixpkgs=${nixpkgs}"
+    "bscpkgs=${bscpkgs}"
+    "jungle=${theFlake.outPath}"
+  ];
+
+  nix.registry.nixpkgs.flake = nixpkgs;
+  nix.registry.bscpkgs.flake = bscpkgs;
+  nix.registry.jungle.flake = theFlake;
+
+  system.configurationRevision =
+    if theFlake ? rev
+    then theFlake.rev
+    else throw ("Refusing to build from a dirty Git tree!");
 
   environment.systemPackages = with pkgs; [
     vim wget git htop tmux pciutils tcpdump ripgrep nix-index nixos-option

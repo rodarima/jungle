@@ -43,12 +43,12 @@
       10.0.40.143             oss02-ipmi0
       
       # Node Entry for node: xeon01 (ID=15)
-      10.0.40.1               xeon01 xeon01-eth0
+      10.0.40.1               xeon01 xeon01-eth0 owl1
       10.0.42.1               xeon01-ib0
       10.0.40.101             xeon01-ipmi0
       
       # Node Entry for node: xeon02 (ID=16)
-      10.0.40.2               xeon02 xeon02-eth0
+      10.0.40.2               xeon02 xeon02-eth0 owl2
       10.0.42.2               xeon02-ib0
       10.0.40.102             xeon02-ipmi0
       

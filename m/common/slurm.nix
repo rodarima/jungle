@@ -6,7 +6,8 @@
     controlMachine = "hut";
     clusterName = "owl";
     nodeName = [
-      "xeon[01-02,07]  Sockets=2 CoresPerSocket=14 ThreadsPerCore=2 Feature=xeon"
+      "owl[1,2]  Sockets=2 CoresPerSocket=14 ThreadsPerCore=2 Feature=owl"
+      "hut       Sockets=2 CoresPerSocket=14 ThreadsPerCore=2"
     ];
     extraConfig = ''
       MpiDefault=pmix
