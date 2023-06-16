@@ -12,7 +12,7 @@
   #programs.ssh.setXAuthLocation = lib.mkForce true;
 
   networking = {
-    hostName = "xeon02";
+    hostName = "owl2";
     interfaces.eno1.ipv4.addresses = [ {
       address = "10.0.40.2";
       prefixLength = 24;
