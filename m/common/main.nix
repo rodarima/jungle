@@ -9,11 +9,12 @@
     ./slurm.nix
     ./ssh.nix
     ./users.nix
-
-    ../../pkgs/mpi.nix
   ];
 
-  nixpkgs.overlays = [ bscpkgs.bscOverlay ];
+  nixpkgs.overlays = [
+    bscpkgs.bscOverlay
+    (import ../../pkgs/mpi.nix)
+  ];
 
   nix.nixPath = [
     "nixpkgs=${nixpkgs}"
