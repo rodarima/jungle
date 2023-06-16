@@ -35,6 +35,8 @@
     vim wget git htop tmux pciutils tcpdump ripgrep nix-index nixos-option
     nix-diff ipmitool freeipmi ethtool lm_sensors ix cmake gnumake file tree
     ncdu
+    # From bsckgs overlay
+    bsc.osumb
   ];
 
   systemd.services."serial-getty@ttyS0" = {
