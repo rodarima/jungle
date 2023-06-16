@@ -9,6 +9,8 @@
     ./slurm.nix
     ./ssh.nix
     ./users.nix
+
+    ../../pkgs/mpi.nix
   ];
 
   nixpkgs.overlays = [ bscpkgs.bscOverlay ];
