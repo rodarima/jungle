@@ -7,7 +7,7 @@
   boot.loader.grub.device = "/dev/disk/by-id/wwn-0x55cd2e414d53566c";
 
   networking = {
-    hostName = "xeon01";
+    hostName = "owl1";
     interfaces.eno1.ipv4.addresses = [ {
       address = "10.0.40.1";
       prefixLength = 24;
