@@ -1,19 +1,16 @@
-#!/bin/sh -e
+#!/bin/sh -ex
 
 if [ "$(id -u)" != 0 ]; then
  echo "Needs root permissions"
  exit 1
 fi
 
-host=$(hostname)
+if [ "$(hostname)" != "hut" ]; then
+  >&2 echo "must run from machine hut, not $(hostname)"
+  exit 1
+fi
 
-#conf="$(readlink -f .)/${host}/configuration.nix"
-#
-#if [ ! -e "$conf" ]; then
-# echo "Missing config $conf"
-# exit 1
-#fi
-#
-#NIXOS_CONFIG="${conf}" nixos-rebuild switch
-
+# Update all nodes
 nixos-rebuild switch --flake .
+nixos-rebuild switch --flake .#owl1 --target-host owl1
+nixos-rebuild switch --flake .#owl2 --target-host owl2
