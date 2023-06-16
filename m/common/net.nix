@@ -78,7 +78,7 @@
       10.0.40.107             xeon07-ipmi0
       
       # Node Entry for node: xeon08 (ID=22)
-      10.0.40.8               xeon08 xeon08-eth0
+      10.0.40.8               xeon08 xeon08-eth0 eudy
       10.0.42.8               xeon08-ib0
       10.0.40.108             xeon08-ipmi0
     '';

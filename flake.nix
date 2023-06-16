@@ -16,10 +16,10 @@ let
 in
   {
     nixosConfigurations = {
-      hut     = mkConf "hut";
-      owl1    = mkConf "owl1";
-      owl2    = mkConf "owl2";
-      xeon08  = mkConf "xeon08";
+      hut   = mkConf "hut";
+      owl1  = mkConf "owl1";
+      owl2  = mkConf "owl2";
+      eudy  = mkConf "eudy";
     };
 
     packages.x86_64-linux.hut = self.nixosConfigurations.hut.pkgs;

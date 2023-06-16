@@ -24,7 +24,7 @@
 
   # set up both ethernet and infiniband ips
   networking = {
-    hostName = "xeon08";
+    hostName = "eudy";
     interfaces.eno1.ipv4.addresses = [ {
       address = "10.0.40.8";
       prefixLength = 24;
