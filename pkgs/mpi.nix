@@ -1,7 +1,7 @@
 final: prev:
 {
   bsc = prev.bsc.extend (bscFinal: bscPrev: {
-    mpi2 = bscFinal.mpich;
+    mpi = bscFinal.mpich;
     mpich = with final; prev.mpich.overrideAttrs (old: {
       buildInput = old.buildInputs ++ [
         libfabric
