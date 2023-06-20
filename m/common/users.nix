@@ -23,6 +23,15 @@
         extraGroups = [ "wheel" ];
         hashedPassword = "$6$hliZiW4tULC/tH7p$pqZarwJkNZ7vS0G5llWQKx08UFG9DxDYgad7jplMD8WkZh5k58i4dfPoWtnEShfjTO6JHiIin05ny5lmSXzGM/";
       };
+
+      rpenacob = {
+        uid = 2761;
+        isNormalUser = true;
+        home = "/home/Computational/rpenacob";
+        description = "Raúl Penacoba";
+        group = "Computational";
+        hashedPassword = "$6$TZm3bDIFyPrMhj1E$uEDXoYYd1z2Wd5mMPfh3DZAjP7ztVjJ4ezIcn82C0ImqafPA.AnTmcVftHEzLB3tbe2O4SxDyPSDEQgJ4GOtj/";
+      };
     };
 
     groups = {
