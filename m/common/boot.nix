@@ -18,6 +18,10 @@
     "console=ttyS0,115200"
   ];
 
+  boot.kernel.sysctl = {
+    "kernel.perf_event_paranoid" = lib.mkDefault 0;
+  };
+
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   #boot.kernelPatches = lib.singleton {
