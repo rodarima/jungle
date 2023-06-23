@@ -19,7 +19,7 @@
   ];
 
   boot.kernel.sysctl = {
-    "kernel.perf_event_paranoid" = lib.mkDefault 0;
+    "kernel.perf_event_paranoid" = lib.mkDefault "-1";
   };
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
