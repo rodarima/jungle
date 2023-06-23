@@ -43,12 +43,12 @@
       10.0.40.143             oss02-ipmi0
       
       # Node Entry for node: xeon01 (ID=15)
-      10.0.40.1               xeon01 xeon01-eth0 owl1
+      10.0.40.1               owl1 xeon01 xeon01-eth0
       10.0.42.1               xeon01-ib0
       10.0.40.101             xeon01-ipmi0
       
       # Node Entry for node: xeon02 (ID=16)
-      10.0.40.2               xeon02 xeon02-eth0 owl2
+      10.0.40.2               owl2 xeon02 xeon02-eth0
       10.0.42.2               xeon02-ib0
       10.0.40.102             xeon02-ipmi0
       
@@ -73,12 +73,12 @@
       10.0.40.106             xeon06-ipmi0
       
       # Node Entry for node: xeon07 (ID=21)
-      10.0.40.7               xeon07 xeon07-eth0 hut
+      10.0.40.7               hut xeon07 xeon07-eth0
       10.0.42.7               xeon07-ib0
       10.0.40.107             xeon07-ipmi0
       
       # Node Entry for node: xeon08 (ID=22)
-      10.0.40.8               xeon08 xeon08-eth0 eudy
+      10.0.40.8               eudy xeon08 xeon08-eth0
       10.0.42.8               xeon08-ib0
       10.0.40.108             xeon08-ipmi0
     '';
