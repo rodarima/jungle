@@ -34,7 +34,7 @@
   environment.systemPackages = with pkgs; [
     vim wget git htop tmux pciutils tcpdump ripgrep nix-index nixos-option
     nix-diff ipmitool freeipmi ethtool lm_sensors ix cmake gnumake file tree
-    ncdu config.boot.kernelPackages.perf
+    ncdu config.boot.kernelPackages.perf ldns
     # From bsckgs overlay
     bsc.osumb
   ];
