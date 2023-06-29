@@ -65,4 +65,9 @@ in {
     ./perf.nix
   ];
   boot.kernelPackages = lib.mkForce kernel;
+
+  # disable all cpu mitigations
+  boot.kernelParams = [
+    "mitigations=off"
+  ];
 }
