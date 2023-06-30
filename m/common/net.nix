@@ -8,7 +8,7 @@
   networking = {
     enableIPv6 = false;
     useDHCP = false;
-    #defaultGateway = "10.0.40.30";
+    defaultGateway = "10.0.40.30";
     nameservers = ["8.8.8.8"];
     proxy = {
       default = "http://localhost:23080/";
