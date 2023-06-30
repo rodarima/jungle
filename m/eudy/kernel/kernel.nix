@@ -70,4 +70,8 @@ in {
   boot.kernelParams = [
     "mitigations=off"
   ];
+  
+  # enable memory overcommit, needed to build a taglibc system using nix after
+  # increasing the openblas memory footprint
+  boot.kernel.sysctl."vm.overcommit_memory" = 1;
 }
