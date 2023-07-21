@@ -20,7 +20,7 @@
 
   # members of the tracing group can use the lttng-provided kernel events
   # without root permissions
-  users.groups.tracing.members = [ "arocanon" ];
+  users.groups.tracing.members = [ "arocanon" "vlopez" ];
 
   # set up both ethernet and infiniband ips
   networking = {
