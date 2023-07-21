@@ -16,6 +16,7 @@
     "owl1".publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMqMEXO0ApVsBA6yjmb0xP2kWyoPDIWxBB0Q3+QbHVhv";
     "owl2".publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHurEYpQzNHqWYF6B9Pd7W8UPgF3BxEg0BvSbsA7BAdK";
     "eudy".publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL+WYPRRvZupqLAG0USKmd/juEPmisyyJaP8hAgYwXsG";
+    "koro".publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIImiTFDbxyUYPumvm8C4mEnHfuvtBY1H8undtd6oDd67";
 
     "gitlab-internal.bsc.es".publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF9arsAOSRB06hdy71oTvJHG2Mg8zfebADxpvc37lZo3";
     "bscpm03.bsc.es".publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM2NuSUPsEhqz1j5b4Gqd+MWFnRqyqY57+xMvBUqHYUS";

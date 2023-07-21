@@ -63,7 +63,7 @@
       10.0.40.104             xeon04-ipmi0
       
       # Node Entry for node: xeon05 (ID=19)
-      10.0.40.5               xeon05 xeon05-eth0
+      10.0.40.5               koro xeon05 xeon05-eth0
       10.0.42.5               xeon05-ib0
       10.0.40.105             xeon05-ipmi0
       
