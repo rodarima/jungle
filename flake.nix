@@ -20,6 +20,7 @@ in
       owl1  = mkConf "owl1";
       owl2  = mkConf "owl2";
       eudy  = mkConf "eudy";
+      koro  = mkConf "koro";
     };
 
     packages.x86_64-linux.hut = self.nixosConfigurations.hut.pkgs;
