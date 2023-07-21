@@ -1,0 +1,5 @@
+baseURL = 'https://jungle.bsc.es/'
+languageCode = 'en-us'
+title = 'The jungle'
+theme = 'PaperMod'
+sectionPagesMenu = "main"
