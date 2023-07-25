@@ -20,3 +20,6 @@ packages and made them system-wide available by opening a merge request.
 
 We have put a lot of effort to guarantee very good reproducibility properties in
 the configuration of the machines and the software they use.
+
+To enter the jungle machines follow the [instructions](access) to submit a
+request.
