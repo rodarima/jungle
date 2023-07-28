@@ -18,6 +18,7 @@
   services.prometheus = {
     enable = true;
     port = 9001;
+    retentionTime = "1y";
   };
 
   systemd.services.prometheus-ipmi-exporter.serviceConfig.DynamicUser = lib.mkForce false;
