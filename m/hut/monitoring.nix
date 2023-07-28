@@ -23,6 +23,10 @@
   systemd.services.prometheus-ipmi-exporter.serviceConfig.DynamicUser = lib.mkForce false;
   systemd.services.prometheus-ipmi-exporter.serviceConfig.PrivateDevices = lib.mkForce false;
 
+  # We need access to the devices to monitor the disk space
+  systemd.services.prometheus-node-exporter.serviceConfig.PrivateDevices = lib.mkForce false;
+  systemd.services.prometheus-node-exporter.serviceConfig.ProtectHome = lib.mkForce "read-only";
+
   virtualisation.docker.daemon.settings = {
     metrics-addr = "127.0.0.1:9323";
   };
