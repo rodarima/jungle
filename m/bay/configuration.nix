@@ -1,13 +1,9 @@
-{ config, pkgs, modulesPath, ... }:
+{ config, pkgs, ... }:
 
 {
   imports = [
-    (modulesPath + "/installer/netboot/netboot-minimal.nix")
     ../common/main.nix
   ];
-
-  services.openssh.settings.X11Forwarding = false;
-  nixpkgs.config.allowBroken = true;
 
   # Select the this using the ID to avoid mismatches
   boot.loader.grub.device = "/dev/disk/by-id/wwn-0x55cd2e414d53562d";
