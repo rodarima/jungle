@@ -1,0 +1,13 @@
+modules:
+        default:
+                collectors:
+                - bmc
+                - ipmi
+                - chassis
+
+        lan:
+                collectors:
+                - ipmi
+                - chassis
+                user: ""
+                pass: ""
