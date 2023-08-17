@@ -42,9 +42,13 @@
   services.prometheus = {
 
     exporters = {
-      ipmi.enable = true;
-      ipmi.group = "root";
-      ipmi.user = "root";
+      ipmi = {
+        enable = true;
+        group = "root";
+        user = "root";
+        configFile = ./ipmi.yml;
+        #extraFlags = [ "--log.level=debug" ];
+      };
       node = {
         enable = true;
         enabledCollectors = [ "systemd" ];
@@ -65,6 +69,58 @@
             "127.0.0.1:${toString config.services.prometheus.exporters.smartctl.port}"
           ];
         }];
+      }
+      {
+        # Scrape the IPMI info of the hosts remotely via LAN
+        job_name = "ipmi-lan";
+        scrape_interval = "1m";
+        scrape_timeout = "30s";
+        metrics_path = "/ipmi";
+        scheme = "http";
+        relabel_configs = [
+          {
+            # Takes the address and sets it in the "target=<xyz>" URL parameter
+            source_labels = [ "__address__" ];
+            separator = ";";
+            regex = "(.*)(:80)?";
+            target_label = "__param_target";
+            replacement = "\${1}";
+            action = "replace";
+          }
+          {
+            # Sets the "instance" label with the remote host we are querying
+            source_labels = [ "__param_target" ];
+            separator = ";";
+            regex = "(.*)";
+            target_label = "instance";
+            replacement = "\${1}";
+            action = "replace";
+          }
+          {
+            # Sets the fixed "module=lan" URL param
+            separator = ";";
+            regex = "(.*)";
+            target_label = "__param_module";
+            replacement = "lan";
+            action = "replace";
+          }
+          {
+            # Sets the target to query as the localhost IPMI exporter
+            separator = ";";
+            regex = ".*";
+            target_label = "__address__";
+            replacement = "127.0.0.1:9290";
+            action = "replace";
+          }
+        ];
+
+        # Load the list of targets from another file
+        file_sd_configs = [
+          {
+            files = [ "${./targets.yml}" ];
+            refresh_interval = "30s";
+          }
+        ];
       }
     ];
   };
