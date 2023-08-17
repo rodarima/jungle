@@ -13,6 +13,9 @@
     proxy = {
       default = "http://localhost:23080/";
       noProxy = "127.0.0.1,localhost,internal.domain";
+      # Don't set all_proxy as go complains and breaks the gitlab runner, see:
+      # https://github.com/golang/go/issues/16715
+      allProxy = null;
     };
 
     firewall = {
