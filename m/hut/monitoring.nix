@@ -67,6 +67,7 @@
             "127.0.0.1:9323"
             "127.0.0.1:9252"
             "127.0.0.1:${toString config.services.prometheus.exporters.smartctl.port}"
+            "10.0.40.40:9283" # Ceph
           ];
         }];
       }
