@@ -8,6 +8,7 @@
     ./monitoring.nix
     ./nfs.nix
     ./slurm-daemon.nix
+    ./ceph.nix
     agenix.nixosModules.default
   ];
 
