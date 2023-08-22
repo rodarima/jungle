@@ -31,7 +31,7 @@
       84.88.53.236    ssfhead.bsc.es ssfhead
       
       # Node Entry for node: mds01 (ID=72)
-      10.0.40.40              mds01 mds01-eth0
+      10.0.40.40              bay mds01 mds01-eth0
       10.0.42.40              mds01-ib0
       10.0.40.141             mds01-ipmi0
       
