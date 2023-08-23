@@ -7,4 +7,5 @@ in
 {
   "secrets/ovni-token.age".publicKeys = default;
   "secrets/nosv-token.age".publicKeys = default;
+  "secrets/ceph-user.age".publicKeys = default;
 }
