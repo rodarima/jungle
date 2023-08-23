@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   environment.systemPackages = [ pkgs.ceph-client ];
@@ -7,8 +7,14 @@
   # modprobe command.
   boot.kernelModules = [ "ceph" ];
 
+  age.secrets."secrets/ceph-user".file = ./secrets/ceph-user.age;
+
   fileSystems."/ceph" = {
     fsType = "ceph";
-    device = "animal@9c8d06e0-485f-4aaf-b16b-06d6daf1232b.cephfs=/";
+    device = "user@9c8d06e0-485f-4aaf-b16b-06d6daf1232b.cephfs=/";
+    options = [
+      "mon_addr=10.0.40.40"
+      "secretfile=${config.age.secrets."secrets/ceph-user".path}"
+    ];
   };
 }
