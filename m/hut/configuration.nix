@@ -12,6 +12,10 @@
     agenix.nixosModules.default
   ];
 
+  environment.systemPackages = [
+    agenix.packages.x86_64-linux.default
+  ];
+
   # Select the this using the ID to avoid mismatches
   boot.loader.grub.device = "/dev/disk/by-id/ata-INTEL_SSDSC2BB240G7_PHDV6462004Y240AGN";
 
