@@ -3,12 +3,11 @@
 {
   imports = [
     ../common/main.nix
-    (modulesPath + "/installer/netboot/netboot-minimal.nix")
   ];
 
   # For now we install NixOS in the first nvme disk (nvme0n1), as this node only
   # has one SSD already used for SUSE.
-  boot.loader.grub.device = "/dev/disk/by-id/nvme-SNVMe_INTEL_SSDPE2MD02CVFT5281004L2P0KGN";
+  boot.loader.grub.device = "/dev/disk/by-id/nvme-INTEL_SSDPE2MD020T4_CVFT5281004L2P0KGN";
 
   environment.systemPackages = with pkgs; [
     ceph
