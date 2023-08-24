@@ -3,6 +3,7 @@
 {
   imports = [
     ../common/main.nix
+    (modulesPath + "/installer/netboot/netboot-minimal.nix")
   ];
 
   # For now we install NixOS in the first nvme disk (nvme0n1), as this node only
