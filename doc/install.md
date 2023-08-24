@@ -3,6 +3,34 @@
 This article shows the steps to install NixOS in a node following the
 configuration of the repo.
 
+## Enable the serial console
+
+By default, the nodes have the serial console disabled in the GRUB and also boot
+without the serial enabled.
+
+To enable the serial console in the GRUB, set in /etc/default/grub the following
+lines:
+
+```
+GRUB_TERMINAL="console serial"
+GRUB_SERIAL_COMMAND="serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1"
+```
+
+To boot Linux with the serial enabled, so you can see the boot log and login via
+serial set:
+
+```
+GRUB_CMDLINE_LINUX="console=ttyS0,115200n8 console=tty0"
+```
+
+Then update the grub config:
+
+```
+# grub2-mkconfig -o /boot/grub2/grub.cfg
+```
+
+And reboot.
+
 ## Prepare the disk
 
 Create a main partition and label it `nixos` following [the manual][1].
