@@ -22,6 +22,7 @@ in
       eudy  = mkConf "eudy";
       koro  = mkConf "koro";
       bay   = mkConf "bay";
+      lake2 = mkConf "lake2";
     };
 
     packages.x86_64-linux.hut = self.nixosConfigurations.hut.pkgs;
