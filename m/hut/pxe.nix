@@ -22,5 +22,14 @@ let
   '';
 in
 {
+  ## We need a DHCP server to provide the IP
+  #services.dnsmasq = {
+  #  enable = true;
+  #  settings = {
+  #    domain-needed = true;
+  #    dhcp-range = [ "192.168.0.2,192.168.0.254" ];
+  #  };
+  #};
+
   environment.systemPackages = [ script ];
 }
