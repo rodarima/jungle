@@ -5,9 +5,7 @@
     ../common/main.nix
   ];
 
-  # For now we install NixOS in the first nvme disk (nvme0n1), as this node only
-  # has one SSD already used for SUSE.
-  boot.loader.grub.device = "/dev/disk/by-path/pci-0000:83:00.0-nvme-1";
+  boot.loader.grub.device = "/dev/disk/by-id/wwn-0x55cd2e414d53563a";
 
   environment.systemPackages = with pkgs; [
     ceph
