@@ -1,7 +1,10 @@
 final: prev:
 {
   bsc = prev.bsc.extend (bscFinal: bscPrev: {
+    # Set MPICH as default
     mpi = bscFinal.mpich;
+
+    # Configure the network for MPICH
     mpich = with final; prev.mpich.overrideAttrs (old: {
       buildInput = old.buildInputs ++ [
         libfabric
