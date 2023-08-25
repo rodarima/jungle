@@ -9,6 +9,7 @@
     ./nfs.nix
     ./slurm-daemon.nix
     ./ceph.nix
+    ./pxe.nix
     agenix.nixosModules.default
   ];
 
