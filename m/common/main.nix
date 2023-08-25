@@ -14,7 +14,7 @@
 
   nixpkgs.overlays = [
     bscpkgs.bscOverlay
-    (import ../../pkgs/mpi.nix)
+    (import ../../pkgs/overlay.nix)
   ];
 
   nix.nixPath = [
