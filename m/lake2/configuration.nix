@@ -15,6 +15,29 @@
     client.enable = lib.mkForce false;
   };
 
+  services.ceph = {
+    enable = true;
+    global = {
+      fsid = "9c8d06e0-485f-4aaf-b16b-06d6daf1232b";
+      monHost = "10.0.40.40";
+      monInitialMembers = "bay";
+      clusterNetwork = "10.0.40.40/24"; # Use Ethernet only
+    };
+    osd = {
+      enable = true;
+      # One daemon per NVME disk
+      daemons = [ "4" "5" "6" "7" ];
+      extraConfig = {
+        "osd crush chooseleaf type" = "0";
+        "osd journal size" = "10000";
+        "osd pool default min size" = "2";
+        "osd pool default pg num" = "200";
+        "osd pool default pgp num" = "200";
+        "osd pool default size" = "3";
+      };
+    };
+  };
+
   networking = {
     hostName = "lake2";
     interfaces.eno1.ipv4.addresses = [ {
