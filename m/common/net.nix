@@ -41,7 +41,7 @@
       10.0.40.142             oss01-ipmi0
       
       # Node Entry for node: oss02 (ID=74)
-      10.0.40.42              oss02 oss02-eth0
+      10.0.40.42              lake2 oss02 oss02-eth0
       10.0.42.42              oss02-ib0
       10.0.40.143             oss02-ipmi0
       
