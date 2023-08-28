@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  environment.systemPackages = [ pkgs.ceph-client ];
+  environment.systemPackages = [ pkgs.ceph pkgs.ceph-client ];
 
   # We need the ceph module loaded as the mount.ceph binary fails to run the
   # modprobe command.
