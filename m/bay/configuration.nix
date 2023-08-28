@@ -36,6 +36,14 @@
       monInitialMembers = "bay";
       clusterNetwork = "10.0.40.40/24"; # Use Ethernet only
     };
+    extraConfig = {
+      # Only log to stderr so it appears in the journal
+      "log_file" = "/dev/null";
+      "mon_cluster_log_file" = "/dev/null";
+      "log_to_stderr" = "true";
+      "err_to_stderr" = "true";
+      "log_to_file" = "false";
+    };
     mds = {
       enable = true;
       daemons = [ "mds0" "mds1" ];
