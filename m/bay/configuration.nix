@@ -3,7 +3,7 @@
 {
   imports = [
     ../common/main.nix
-    ./monitoring.nix
+    ../common/monitoring.nix
   ];
 
   # Select the this using the ID to avoid mismatches
