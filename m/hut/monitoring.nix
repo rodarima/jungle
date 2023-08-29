@@ -71,11 +71,12 @@
         }];
       }
       {
-        job_name = "bay";
+        job_name = "ceph";
         static_configs = [{
           targets = [
-            "10.0.40.40:9283" # Ceph
+            "10.0.40.40:9283" # Ceph statistics
             "10.0.40.40:9002" # Node exporter
+            "10.0.40.42:9002" # Node exporter
           ];
         }];
       }
