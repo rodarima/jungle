@@ -50,4 +50,24 @@
       prefixLength = 24;
     } ];
   };
+
+  # Missing service for volumes, see:
+  # https://www.reddit.com/r/ceph/comments/14otjyo/comment/jrd69vt/
+  systemd.services.ceph-volume = {
+    enable = true;
+    description = "Ceph Volume activation";
+    unitConfig = {
+      Type = "oneshot";
+      After = "local-fs.target";
+      Wants = "local-fs.target";
+    };
+    path = [ pkgs.ceph pkgs.util-linux pkgs.lvm2 pkgs.cryptsetup ];
+    serviceConfig = {
+      KillMode = "none";
+      Environment = "CEPH_VOLUME_TIMEOUT=10000";
+      ExecStart = "/bin/sh -c 'timeout $CEPH_VOLUME_TIMEOUT ${pkgs.ceph}/bin/ceph-volume lvm activate --all --no-systemd'";
+      TimeoutSec = "0";
+    };
+    wantedBy = [ "multi-user.target" ];
+  };
 }
