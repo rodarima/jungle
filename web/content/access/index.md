@@ -17,6 +17,6 @@ Then, to request access to the machines we will need some information about you:
 1. The salted hash of your login password, generated with `mkpasswd -m sha-512`
 1. An SSH public key of type Ed25519 (can be generated with `ssh-keygen -t ed25519`)
 
-You can send us both an email at <rodrigo.arias@bsc.es> and
-<aleix.rocanonell@bsc.es> with the details, or directly open a merge request in
-the [jungle repository](https://pm.bsc.es/gitlab/rarias/jungle/).
+Send an email to <jungle@bsc.es> with the details, or directly open a
+merge request in the [jungle
+repository](https://pm.bsc.es/gitlab/rarias/jungle/).
