@@ -33,9 +33,10 @@
     enable = true;
     global = {
       fsid = "9c8d06e0-485f-4aaf-b16b-06d6daf1232b";
-      monHost = "10.0.40.40";
-      monInitialMembers = "bay";
-      clusterNetwork = "10.0.40.40/24"; # Use Ethernet only
+      monHost = "10.0.42.40";
+      monInitialMembers = "10.0.42.40";
+      publicNetwork = "10.0.42.40/24";
+      clusterNetwork = "10.0.42.40/24";
     };
     extraConfig = {
       # Only log to stderr so it appears in the journal
@@ -49,7 +50,7 @@
       enable = true;
       daemons = [ "mds0" "mds1" ];
       extraConfig = {
-        "host" = "bay";
+        "host" = "10.0.42.40";
       };
     };
     mgr = {
