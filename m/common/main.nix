@@ -10,6 +10,7 @@
     ./slurm.nix
     ./ssh.nix
     ./users.nix
+    ./watchdog.nix
   ];
 
   nixpkgs.overlays = [
