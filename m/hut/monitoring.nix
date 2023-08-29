@@ -67,7 +67,15 @@
             "127.0.0.1:9323"
             "127.0.0.1:9252"
             "127.0.0.1:${toString config.services.prometheus.exporters.smartctl.port}"
+          ];
+        }];
+      }
+      {
+        job_name = "bay";
+        static_configs = [{
+          targets = [
             "10.0.40.40:9283" # Ceph
+            "10.0.40.40:9002" # Node exporter
           ];
         }];
       }
