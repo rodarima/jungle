@@ -11,12 +11,18 @@
     ./ssh.nix
     ./users.nix
     ./watchdog.nix
+    ./rev.nix
   ];
 
   nixpkgs.overlays = [
     bscpkgs.bscOverlay
     (import ../../pkgs/overlay.nix)
   ];
+
+  system.configurationRevision =
+    if theFlake ? rev
+    then theFlake.rev
+    else throw ("Refusing to build from a dirty Git tree!");
 
   nix.nixPath = [
     "nixpkgs=${nixpkgs}"
@@ -27,14 +33,6 @@
   nix.registry.nixpkgs.flake = nixpkgs;
   nix.registry.bscpkgs.flake = bscpkgs;
   nix.registry.jungle.flake = theFlake;
-
-  system.configurationRevision =
-    if theFlake ? rev
-    then theFlake.rev
-    else throw ("Refusing to build from a dirty Git tree!");
-
-  # Save the commit of the config in /etc/nixos/config.rev
-  environment.etc."nixos/config.rev".text = system.configurationRevision;
 
   environment.systemPackages = with pkgs; [
     vim wget git htop tmux pciutils tcpdump ripgrep nix-index nixos-option
