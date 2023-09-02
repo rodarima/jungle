@@ -4,6 +4,7 @@
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
     bscpkgs.url = "git+https://pm.bsc.es/gitlab/rarias/bscpkgs.git";
+    bscpkgs.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { self, nixpkgs, agenix, bscpkgs, ... }:
