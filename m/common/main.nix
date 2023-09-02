@@ -33,6 +33,9 @@
     then theFlake.rev
     else throw ("Refusing to build from a dirty Git tree!");
 
+  # Save the commit of the config in /etc/nixos/config.rev
+  environment.etc."nixos/config.rev".text = system.configurationRevision;
+
   environment.systemPackages = with pkgs; [
     vim wget git htop tmux pciutils tcpdump ripgrep nix-index nixos-option
     nix-diff ipmitool freeipmi ethtool lm_sensors ix cmake gnumake file tree
