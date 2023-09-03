@@ -12,6 +12,7 @@
     ./users.nix
     ./watchdog.nix
     ./rev.nix
+    ./zsh.nix
   ];
 
   nixpkgs.overlays = [
@@ -72,9 +73,6 @@
   nix.gc.automatic = true;
   nix.gc.dates = "weekly";
   nix.gc.options = "--delete-older-than 30d";
-
-  programs.zsh.enable = true;
-  programs.zsh.histSize = 100000;
 
   programs.bash.promptInit = ''
     PS1="\h\\$ "
