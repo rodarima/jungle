@@ -1,15 +1,15 @@
 { pkgs, lib, config, ... }:
 
 {
-  age.secrets."secrets/ovni-token".file = ./secrets/ovni-token.age;
-  age.secrets."secrets/nosv-token".file = ./secrets/nosv-token.age;
+  age.secrets.ovniToken.file = ../../secrets/ovni-token.age;
+  age.secrets.nosvToken.file = ../../secrets/nosv-token.age;
 
   services.gitlab-runner = {
     enable = true;
     settings.concurrent = 5;
     services = {
       ovni-shell = {
-        registrationConfigFile = config.age.secrets."secrets/ovni-token".path;
+        registrationConfigFile = config.age.secrets.ovniToken.path;
         executor = "shell";
         tagList = [ "nix" "xeon" ];
         environmentVariables = {
@@ -17,7 +17,7 @@
         };
       };
       ovni-docker = {
-        registrationConfigFile = config.age.secrets."secrets/ovni-token".path;
+        registrationConfigFile = config.age.secrets.ovniToken.path;
         dockerImage = "debian:stable";
         tagList = [ "docker" "xeon" ];
         registrationFlags = [ "--docker-network-mode host" ];
@@ -27,7 +27,7 @@
         };
       };
       nosv-docker = {
-        registrationConfigFile = config.age.secrets."secrets/nosv-token".path;
+        registrationConfigFile = config.age.secrets.nosvToken.path;
         dockerImage = "debian:stable";
         tagList = [ "docker" "xeon" ];
         registrationFlags = [
