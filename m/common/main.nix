@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./agenix.nix
     ./boot.nix
     ./fs.nix
     ./hw.nix
