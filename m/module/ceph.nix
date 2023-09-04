@@ -1,7 +1,9 @@
-{ config, pkgs, ... }:
+{ config, pkgs, agenix, ... }:
 
 # Mounts the /ceph filesystem at boot
 {
+  imports = [ agenix.nixosModules.default ];
+
   environment.systemPackages = with pkgs; [
     ceph
     ceph-client
