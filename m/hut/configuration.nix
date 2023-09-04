@@ -4,11 +4,11 @@
   imports = [
     ../common/main.nix
 
+    ../module/ceph.nix
     ./gitlab-runner.nix
     ./monitoring.nix
     ./nfs.nix
     ./slurm-daemon.nix
-    ./ceph.nix
     #./pxe.nix
     agenix.nixosModules.default
   ];

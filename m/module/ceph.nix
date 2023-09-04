@@ -1,5 +1,6 @@
 { config, pkgs, ... }:
 
+# Mounts the /ceph filesystem at boot
 {
   environment.systemPackages = with pkgs; [
     ceph
