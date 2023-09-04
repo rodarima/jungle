@@ -1,7 +1,10 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ../common/main.nix ];
+  imports = [
+    ../common/main.nix
+    ../module/ceph.nix
+  ];
 
   # Select the this using the ID to avoid mismatches
   boot.loader.grub.device = "/dev/disk/by-id/wwn-0x55cd2e414d53566c";
