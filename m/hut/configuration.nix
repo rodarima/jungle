@@ -1,4 +1,4 @@
-{ config, pkgs, agenix, ... }:
+{ config, pkgs, ... }:
 
 {
   imports = [
@@ -10,11 +10,6 @@
     ./nfs.nix
     ./slurm-daemon.nix
     #./pxe.nix
-    agenix.nixosModules.default
-  ];
-
-  environment.systemPackages = [
-    agenix.packages.x86_64-linux.default
   ];
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" "powerpc64le-linux" "riscv64-linux" ];
