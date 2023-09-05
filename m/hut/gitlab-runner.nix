@@ -12,6 +12,10 @@
         registrationConfigFile = config.age.secrets.ovniToken.path;
         executor = "shell";
         tagList = [ "nix" "xeon" ];
+        registrationFlags = [
+          # Using space doesn't work, and causes it to misread the next flag
+          "--locked='false'"
+        ];
         environmentVariables = {
           SHELL = "${pkgs.bash}/bin/bash";
         };
@@ -20,7 +24,10 @@
         registrationConfigFile = config.age.secrets.ovniToken.path;
         dockerImage = "debian:stable";
         tagList = [ "docker" "xeon" ];
-        registrationFlags = [ "--docker-network-mode host" ];
+        registrationFlags = [
+          "--locked='false'"
+          "--docker-network-mode host"
+        ];
         environmentVariables = {
           https_proxy = "http://localhost:23080";
           http_proxy = "http://localhost:23080";
