@@ -29,11 +29,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1693579892,
-        "narHash": "sha256-dcgnHtutDrKmWW8mcr1jb4JoM7kbH9Q8QSW6aA6i2dI=",
+        "lastModified": 1694077645,
+        "narHash": "sha256-72bvRBhq8Q8V6ibsR9lyBE92V2EC6C6Ek3J5cOM79So=",
         "ref": "refs/heads/master",
-        "rev": "ee24b910a1cb95bd222e253da43238e843816f2f",
-        "revCount": 848,
+        "rev": "6122fef92701701e1a0622550ac0fc5c2beb5906",
+        "revCount": 860,
         "type": "git",
         "url": "https://pm.bsc.es/gitlab/rarias/bscpkgs.git"
       },
