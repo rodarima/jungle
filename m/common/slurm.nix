@@ -80,6 +80,9 @@ in {
 
       # Turn the nodes off after 1 hour of inactivity
       SuspendTime=3600
+
+      # Reduce port range so we can allow only this range in the firewall
+      SrunPortRange=60000-61000
     '';
   };
 }
