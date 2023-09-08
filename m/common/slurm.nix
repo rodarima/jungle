@@ -1,6 +1,33 @@
-{ lib, ... }:
+{ pkgs, lib, ... }:
 
-{
+let
+  suspendProgram = pkgs.writeScript "suspend.sh" ''
+    #!/usr/bin/env bash
+    exec 1>>/var/log/power_save.log 2>>/var/log/power_save.log
+    set -x
+    export "PATH=/run/current-system/sw/bin:$PATH"
+    echo "$(date) Suspend invoked $0 $*" >> /var/log/power_save.log
+    hosts=$(scontrol show hostnames $1)
+    for host in $hosts; do
+      echo Shutting down host: $host
+      ipmitool -I lanplus -H ''${host}-ipmi -P "" -U "" chassis power off
+    done
+  '';
+
+  resumeProgram = pkgs.writeScript "resume.sh" ''
+    #!/usr/bin/env bash
+    exec 1>>/var/log/power_save.log 2>>/var/log/power_save.log
+    set -x
+    export "PATH=/run/current-system/sw/bin:$PATH"
+    echo "$(date) Suspend invoked $0 $*" >> /var/log/power_save.log
+    hosts=$(scontrol show hostnames $1)
+    for host in $hosts; do
+      echo Starting host: $host
+      ipmitool -I lanplus -H ''${host}-ipmi -P "" -U "" chassis power on
+    done
+  '';
+
+in {
   systemd.services.slurmd.serviceConfig = {
     # Kill all processes in the control group on stop/restart. This will kill
     # all the jobs running, so ensure that we only upgrade when the nodes are
@@ -9,6 +36,7 @@
     # https://bugs.schedmd.com/show_bug.cgi?id=2095#c24
     KillMode = lib.mkForce "control-group";
   };
+
   services.slurm = {
     client.enable = true;
     controlMachine = "hut";
@@ -16,6 +44,11 @@
     nodeName = [
       "owl[1,2]  Sockets=2 CoresPerSocket=14 ThreadsPerCore=2 Feature=owl"
       "hut       Sockets=2 CoresPerSocket=14 ThreadsPerCore=2"
+    ];
+
+    partitionName = [
+      "owl Nodes=owl[1-2] Default=YES MaxTime=INFINITE State=UP"
+      "all Nodes=owl[1-2],hut Default=NO MaxTime=INFINITE State=UP"
     ];
 
     # See slurm.conf(5) for more details about these options.
@@ -37,6 +70,16 @@
       # Enable task/affinity to allow the jobs to run in a specified subset of
       # the resources. Use the task/cgroup plugin to enable process containment.
       TaskPlugin=task/affinity,task/cgroup
+
+      # Power off unused nodes until they are requested
+      SuspendProgram=${suspendProgram}
+      SuspendTimeout=60
+      ResumeProgram=${resumeProgram}
+      ResumeTimeout=300
+      SuspendExcNodes=hut
+
+      # Turn the nodes off after 1 hour of inactivity
+      SuspendTime=3600
     '';
   };
 }
