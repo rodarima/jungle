@@ -23,7 +23,14 @@
       allowedTCPPorts = [ 22 ];
 
       # FIXME: For slurmd as it requests the compute nodes to connect to us
-      allowedTCPPortRanges = [ { from=1024; to=65535; } ];
+      #allowedTCPPortRanges = [ { from=1024; to=65535; } ];
+
+      extraCommands = ''
+        # Prevent ssfhead from contacting our slurmd daemon
+        iptables -A nixos-fw -p tcp -s ssfhead --dport 6817:6819 -j nixos-fw-log-refuse
+        # But accept traffic to slurm ports from any other node in the subnet
+        iptables -A nixos-fw -p tcp -s 10.0.40.0/24 --dport 6817:6819 -j nixos-fw-accept
+      '';
     };
 
     extraHosts = ''
