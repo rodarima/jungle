@@ -19,6 +19,7 @@
     enable = true;
     port = 9001;
     retentionTime = "1y";
+    listenAddress = "127.0.0.1";
   };
 
   systemd.services.prometheus-ipmi-exporter.serviceConfig.DynamicUser = lib.mkForce false;
@@ -48,13 +49,18 @@
         user = "root";
         configFile = ./ipmi.yml;
         #extraFlags = [ "--log.level=debug" ];
+        listenAddress = "127.0.0.1";
       };
       node = {
         enable = true;
         enabledCollectors = [ "systemd" ];
         port = 9002;
+        listenAddress = "127.0.0.1";
       };
-      smartctl.enable = true;
+      smartctl = {
+        enable = true;
+        listenAddress = "127.0.0.1";
+      };
     };
 
     scrapeConfigs = [
