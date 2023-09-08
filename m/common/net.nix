@@ -30,6 +30,8 @@
         iptables -A nixos-fw -p tcp -s ssfhead --dport 6817:6819 -j nixos-fw-log-refuse
         # But accept traffic to slurm ports from any other node in the subnet
         iptables -A nixos-fw -p tcp -s 10.0.40.0/24 --dport 6817:6819 -j nixos-fw-accept
+        # We also need to open the srun port range
+        iptables -A nixos-fw -p tcp -s 10.0.40.0/24 --dport 60000:61000 -j nixos-fw-accept
       '';
     };
 
