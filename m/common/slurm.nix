@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ config, pkgs, lib, ... }:
 
 let
   suspendProgram = pkgs.writeScript "suspend.sh" ''
@@ -84,5 +84,16 @@ in {
       # Reduce port range so we can allow only this range in the firewall
       SrunPortRange=60000-61000
     '';
+  };
+
+  age.secrets.mungeKey = {
+    file = ../../secrets/munge-key.age;
+    owner = "munge";
+    group = "munge";
+  };
+
+  services.munge = {
+    enable = true;
+    password = config.age.secrets.mungeKey.path;
   };
 }
