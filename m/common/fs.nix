@@ -6,6 +6,9 @@
       fsType = "ext4";
     };
 
+  # Trim unused blocks weekly
+  services.fstrim.enable = true;
+
   swapDevices =
     [ { device = "/dev/disk/by-label/swap"; }
     ];
