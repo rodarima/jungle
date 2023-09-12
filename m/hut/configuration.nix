@@ -9,6 +9,7 @@
     ./monitoring.nix
     ./nfs.nix
     ./slurm-daemon.nix
+    ./nix-serve.nix
     #./pxe.nix
   ];
 

@@ -8,6 +8,7 @@ in
 {
   "ovni-token.age".publicKeys = hut;
   "nosv-token.age".publicKeys = hut;
+  "nix-serve.age".publicKeys = hut;
 
   "ceph-user.age".publicKeys = safe;
   "munge-key.age".publicKeys = safe;
