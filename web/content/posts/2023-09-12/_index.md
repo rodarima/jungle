@@ -11,7 +11,9 @@ last months.
 
 We have installed the latest [Ceph filesystem][1] (18.2.0) which stores three
 redundant copies of the data so a failure in one disk doesn't cause data loss.
-It is mounted in /ceph and available for use in the owl1, owl2 and hut nodes.
+It is mounted in /ceph and available for use in the owl1, owl2 and hut
+nodes. For now it provides 2.8 TiB of space and it is expected to
+increase when the last storage node is installed.
 
 [1]: https://en.wikipedia.org/wiki/Ceph_(software)
 
