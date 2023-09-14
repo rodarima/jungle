@@ -26,6 +26,6 @@ in
       lake2 = mkConf "lake2";
     };
 
-    packages.x86_64-linux.hut = self.nixosConfigurations.hut.pkgs;
+    packages.x86_64-linux = self.nixosConfigurations.hut.pkgs;
   };
 }
