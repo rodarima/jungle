@@ -32,16 +32,4 @@ final: prev:
     lua = prev.lua5_4;
     fmt = prev.fmt_8;
   }) ceph ceph-client;
-
-  # Update slurm to 23.02.5 to fix the firewall problem with pmix
-  slurm = prev.slurm.overrideAttrs (old: rec {
-    version = "23.02.5.1";
-    src = prev.fetchFromGitHub {
-      owner = "SchedMD";
-      repo = "slurm";
-      # The release tags use - instead of .
-      rev = "slurm-${builtins.replaceStrings ["."] ["-"] version}";
-      sha256 = "sha256-9VvZ8xySYFyBa5tZzf5WCShbEDpqE1/5t76jXX6t+bc=";
-    };
-  });
 }
