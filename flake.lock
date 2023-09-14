@@ -29,11 +29,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1694077645,
+        "lastModified": 1694708510,
         "narHash": "sha256-72bvRBhq8Q8V6ibsR9lyBE92V2EC6C6Ek3J5cOM79So=",
         "ref": "refs/heads/master",
-        "rev": "6122fef92701701e1a0622550ac0fc5c2beb5906",
-        "revCount": 860,
+        "rev": "3a4062ac04be6263c64a481420d8e768c2521b80",
+        "revCount": 862,
         "type": "git",
         "url": "https://pm.bsc.es/gitlab/rarias/bscpkgs.git"
       },
