@@ -4,6 +4,7 @@
   imports = [
     ../common/main.nix
     ../module/ceph.nix
+    ../module/slurm-firewall.nix
   ];
 
   # Select the this using the ID to avoid mismatches
