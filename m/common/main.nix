@@ -28,7 +28,6 @@
 
   nix.nixPath = [
     "nixpkgs=${nixpkgs}"
-    "bscpkgs=${bscpkgs}"
     "jungle=${theFlake.outPath}"
   ];
 
@@ -36,7 +35,6 @@
     pkgs.writeText "global-registry.json" ''{"flakes":[],"version":2}'';
 
   nix.registry.nixpkgs.flake = nixpkgs;
-  nix.registry.bscpkgs.flake = bscpkgs;
   nix.registry.jungle.flake = theFlake;
 
   environment.systemPackages = with pkgs; [
