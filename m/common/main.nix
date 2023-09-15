@@ -32,6 +32,9 @@
     "jungle=${theFlake.outPath}"
   ];
 
+  nix.settings.flake-registry =
+    pkgs.writeText "global-registry.json" ''{"flakes":[],"version":2}'';
+
   nix.registry.nixpkgs.flake = nixpkgs;
   nix.registry.bscpkgs.flake = bscpkgs;
   nix.registry.jungle.flake = theFlake;
