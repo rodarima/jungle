@@ -2,7 +2,6 @@
 
 {
   environment.systemPackages = with pkgs; [
-    direnv
     zsh-completions
     nix-zsh-completions
   ];
