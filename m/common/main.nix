@@ -45,6 +45,8 @@
     bsc.osumb
   ];
 
+  programs.direnv.enable = true;
+
   systemd.services."serial-getty@ttyS0" = {
     enable = true;
     wantedBy = [ "getty.target" ];
