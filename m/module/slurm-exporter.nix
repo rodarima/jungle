@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 
 # See also: https://github.com/NixOS/nixpkgs/pull/112010
+# And: https://github.com/NixOS/nixpkgs/pull/115839
 
 with lib;
 
@@ -29,7 +30,12 @@ with lib;
       ExecStart = ''
         ${pkgs.prometheus-slurm-exporter}/bin/prometheus-slurm-exporter --listen-address "127.0.0.1:9341"
       '';
-      Environment = [ "PATH=${pkgs.slurm}/bin" ];
+      Environment = [
+        "PATH=${pkgs.slurm}/bin"
+        # We need to specify the slurm config to be able to talk to the slurmd
+        # daemon.
+        "SLURM_CONF=${config.services.slurm.etcSlurm}/slurm.conf"
+      ];
     };
   };
 }
