@@ -32,4 +32,6 @@ final: prev:
     lua = prev.lua5_4;
     fmt = prev.fmt_8;
   }) ceph ceph-client;
+
+  prometheus-slurm-exporter = prev.callPackage ./slurm-exporter.nix { };
 }
