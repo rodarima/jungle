@@ -14,6 +14,7 @@
         http_addr = "127.0.0.1";
       };
       feature_toggles.publicDashboards = true;
+      "auth.anonymous".enabled = true;
     };
   };
 
