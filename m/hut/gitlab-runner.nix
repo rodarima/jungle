@@ -2,6 +2,7 @@
 
 {
   age.secrets.ovniToken.file = ../../secrets/ovni-token.age;
+  age.secrets.gitlabToken.file = ../../secrets/gitlab-bsc-es-token.age;
   age.secrets.nosvToken.file = ../../secrets/nosv-token.age;
 
   services.gitlab-runner = {
@@ -10,6 +11,18 @@
     services = {
       ovni-shell = {
         registrationConfigFile = config.age.secrets.ovniToken.path;
+        executor = "shell";
+        tagList = [ "nix" "xeon" ];
+        registrationFlags = [
+          # Using space doesn't work, and causes it to misread the next flag
+          "--locked='false'"
+        ];
+        environmentVariables = {
+          SHELL = "${pkgs.bash}/bin/bash";
+        };
+      };
+      gitlab-bsc-es-shell = {
+        registrationConfigFile = config.age.secrets.gitlabToken.path;
         executor = "shell";
         tagList = [ "nix" "xeon" ];
         registrationFlags = [

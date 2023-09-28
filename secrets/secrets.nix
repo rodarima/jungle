@@ -6,6 +6,7 @@ let
   safe = keys.hostGroup.safe ++ adminsKeys;
 in
 {
+  "gitlab-bsc-es-token.age".publicKeys = hut;
   "ovni-token.age".publicKeys = hut;
   "nosv-token.age".publicKeys = hut;
   "nix-serve.age".publicKeys = hut;
