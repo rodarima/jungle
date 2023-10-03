@@ -3,6 +3,7 @@ modules:
     prober: http
     timeout: 5s
     http:
+      follow_redirects: true
       valid_status_codes: []  # Defaults to 2xx
       method: GET
   http_with_proxy:

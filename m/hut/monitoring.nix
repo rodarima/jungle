@@ -104,6 +104,7 @@
           targets = [
             "https://pm.bsc.es/"
             "https://jungle.bsc.es/"
+            "https://gitlab.bsc.es/"
           ];
         }];
         relabel_configs = [
