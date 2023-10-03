@@ -64,6 +64,11 @@
         enable = true;
         listenAddress = "127.0.0.1";
       };
+      blackbox = {
+        enable = true;
+        listenAddress = "127.0.0.1";
+        configFile = ./blackbox.yml;
+      };
     };
 
     scrapeConfigs = [
@@ -77,6 +82,7 @@
             "127.0.0.1:9252"
             "127.0.0.1:${toString config.services.prometheus.exporters.smartctl.port}"
             "127.0.0.1:9341" # Slurm exporter
+            "127.0.0.1:${toString config.services.prometheus.exporters.blackbox.port}"
           ];
         }];
       }
@@ -89,6 +95,34 @@
             "10.0.40.42:9002" # Node exporter
           ];
         }];
+      }
+      {
+        job_name = "blackbox";
+        metrics_path = "/probe";
+        params = { module = [ "http_2xx" ]; };
+        static_configs = [{
+          targets = [
+            "https://pm.bsc.es/"
+            "https://jungle.bsc.es/"
+          ];
+        }];
+        relabel_configs = [
+          {
+            # Takes the address and sets it in the "target=<xyz>" URL parameter
+            source_labels = [ "__address__" ];
+            target_label = "__param_target";
+          }
+          {
+            # Sets the "instance" label with the remote host we are querying
+            source_labels = [ "__param_target" ];
+            target_label = "instance";
+          }
+          {
+            # Shows the host target address instead of the blackbox address
+            target_label = "__address__";
+            replacement = "127.0.0.1:${toString config.services.prometheus.exporters.blackbox.port}";
+          }
+        ];
       }
       {
         # Scrape the IPMI info of the hosts remotely via LAN
