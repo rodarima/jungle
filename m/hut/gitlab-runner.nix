@@ -21,6 +21,19 @@
           SHELL = "${pkgs.bash}/bin/bash";
         };
       };
+      gitlab-bsc-es-docker = {
+        registrationConfigFile = config.age.secrets.gitlabToken.path;
+        dockerImage = "debian:stable";
+        tagList = [ "docker" "xeon" ];
+        registrationFlags = [
+          "--locked='false'"
+          "--docker-network-mode host"
+        ];
+        environmentVariables = {
+          https_proxy = "http://localhost:23080";
+          http_proxy = "http://localhost:23080";
+        };
+      };
     };
   };
 
