@@ -18,6 +18,9 @@
     };
   };
 
+  # Make grafana alerts also use the proxy
+  systemd.services.grafana.environment = config.networking.proxy.envVars;
+
   services.prometheus = {
     enable = true;
     port = 9001;
