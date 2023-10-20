@@ -3,6 +3,8 @@ modules:
     prober: http
     timeout: 5s
     http:
+      proxy_url: "http://127.0.0.1:23080"
+      skip_resolve_phase_with_proxy: true
       follow_redirects: true
       valid_status_codes: []  # Defaults to 2xx
       method: GET
