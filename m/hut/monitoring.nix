@@ -100,7 +100,7 @@
         }];
       }
       {
-        job_name = "blackbox";
+        job_name = "blackbox-http";
         metrics_path = "/probe";
         params = { module = [ "http_2xx" ]; };
         static_configs = [{
@@ -108,6 +108,36 @@
             "https://pm.bsc.es/"
             "https://jungle.bsc.es/"
             "https://gitlab.bsc.es/"
+          ];
+        }];
+        relabel_configs = [
+          {
+            # Takes the address and sets it in the "target=<xyz>" URL parameter
+            source_labels = [ "__address__" ];
+            target_label = "__param_target";
+          }
+          {
+            # Sets the "instance" label with the remote host we are querying
+            source_labels = [ "__param_target" ];
+            target_label = "instance";
+          }
+          {
+            # Shows the host target address instead of the blackbox address
+            target_label = "__address__";
+            replacement = "127.0.0.1:${toString config.services.prometheus.exporters.blackbox.port}";
+          }
+        ];
+      }
+      {
+        job_name = "blackbox-icmp";
+        metrics_path = "/probe";
+        params = { module = [ "icmp" ]; };
+        static_configs = [{
+          targets = [
+            "1.1.1.1"
+            "8.8.8.8"
+            "ssfhead"
+            "gw.bsc.es"
           ];
         }];
         relabel_configs = [
