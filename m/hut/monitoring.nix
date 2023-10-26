@@ -137,7 +137,7 @@
             "1.1.1.1"
             "8.8.8.8"
             "ssfhead"
-            "gw.bsc.es"
+            "anella-bsc.cesca.cat"
           ];
         }];
         relabel_configs = [
