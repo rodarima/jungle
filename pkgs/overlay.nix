@@ -24,12 +24,5 @@ final: prev:
     ];
   });
 
-  # Update ceph to 18.2.0 until it lands in nixpkgs, see:
-  # https://github.com/NixOS/nixpkgs/pull/247849
-  inherit (prev.callPackage ./ceph.nix {
-    lua = prev.lua5_4;
-    fmt = prev.fmt_8;
-  }) ceph ceph-client;
-
   prometheus-slurm-exporter = prev.callPackage ./slurm-exporter.nix { };
 }
