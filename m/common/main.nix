@@ -42,7 +42,7 @@
     nix-diff ipmitool freeipmi ethtool lm_sensors ix cmake gnumake file tree
     ncdu config.boot.kernelPackages.perf ldns
     # From bsckgs overlay
-    bsc.osumb
+    osumb
   ];
 
   programs.direnv.enable = true;
