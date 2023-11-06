@@ -29,17 +29,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1694708510,
-        "narHash": "sha256-72bvRBhq8Q8V6ibsR9lyBE92V2EC6C6Ek3J5cOM79So=",
+        "lastModified": 1698767575,
+        "narHash": "sha256-y8v1YhB9vzBDsFPFu8BILnH9K71SUoCqfCLsGxI5yC4=",
         "ref": "refs/heads/master",
-        "rev": "3a4062ac04be6263c64a481420d8e768c2521b80",
-        "revCount": 862,
+        "rev": "f605f8e5e4a1f392589f1ea2b9ffe2074f72a538",
+        "revCount": 899,
         "type": "git",
-        "url": "https://pm.bsc.es/gitlab/rarias/bscpkgs.git"
+        "url": "https://git.sr.ht/~rodarima/bscpkgs"
       },
       "original": {
         "type": "git",
-        "url": "https://pm.bsc.es/gitlab/rarias/bscpkgs.git"
+        "url": "https://git.sr.ht/~rodarima/bscpkgs"
       }
     },
     "darwin": {
