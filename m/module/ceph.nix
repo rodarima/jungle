@@ -3,7 +3,6 @@
 # Mounts the /ceph filesystem at boot
 {
   environment.systemPackages = with pkgs; [
-    ceph
     ceph-client
     fio # For benchmarks
   ];
