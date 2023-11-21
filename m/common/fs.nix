@@ -25,4 +25,7 @@
     device = "none";
     fsType = "tracefs";
   };
+
+  # Mount a tmpfs into /tmp
+  boot.tmp.useTmpfs = true;
 }
