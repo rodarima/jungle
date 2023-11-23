@@ -8,9 +8,8 @@
   services.gitlab-runner = {
     enable = true;
     settings.concurrent = 5;
-    services = {
-      gitlab-bsc-es-shell = {
-        registrationConfigFile = config.age.secrets.gitlabToken.path;
+    services = let
+      common-shell = {
         executor = "shell";
         tagList = [ "nix" "xeon" ];
         registrationFlags = [
@@ -21,8 +20,7 @@
           SHELL = "${pkgs.bash}/bin/bash";
         };
       };
-      gitlab-bsc-es-docker = {
-        registrationConfigFile = config.age.secrets.gitlabToken.path;
+      common-docker = {
         dockerImage = "debian:stable";
         tagList = [ "docker" "xeon" ];
         registrationFlags = [
@@ -33,6 +31,21 @@
           https_proxy = "http://localhost:23080";
           http_proxy = "http://localhost:23080";
         };
+      };
+    in {
+      # For gitlab.bsc.es
+      gitlab-bsc-es-shell = common-shell // {
+        registrationConfigFile = config.age.secrets.gitlabToken.path;
+      };
+      gitlab-bsc-es-docker = common-docker // {
+        registrationConfigFile = config.age.secrets.gitlabToken.path;
+      };
+      # For pm.bsc.es/gitlab
+      gitlab-pm-shell = common-shell // {
+        registrationConfigFile = config.age.secrets.ovniToken.path;
+      };
+      gitlab-pm-docker = common-docker // {
+        registrationConfigFile = config.age.secrets.ovniToken.path;
       };
     };
   };
