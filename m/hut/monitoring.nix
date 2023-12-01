@@ -106,6 +106,7 @@
         static_configs = [{
           targets = [
             "https://pm.bsc.es/"
+            "https://pm.bsc.es/gitlab/"
             "https://jungle.bsc.es/"
             "https://gitlab.bsc.es/"
           ];
