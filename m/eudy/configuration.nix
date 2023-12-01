@@ -10,6 +10,7 @@
     ./fs.nix
     ./users.nix
     ./slurm.nix
+    ../module/debuginfod.nix
   ];
 
   # Select this using the ID to avoid mismatches
