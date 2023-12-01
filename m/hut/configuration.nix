@@ -5,6 +5,7 @@
     ../common/main.nix
 
     ../module/ceph.nix
+    ../module/debuginfod.nix
     ./gitlab-runner.nix
     ./monitoring.nix
     ./nfs.nix

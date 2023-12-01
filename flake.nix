@@ -5,6 +5,8 @@
     agenix.inputs.nixpkgs.follows = "nixpkgs";
     bscpkgs.url = "git+https://git.sr.ht/~rodarima/bscpkgs";
     bscpkgs.inputs.nixpkgs.follows = "nixpkgs";
+    nixseparatedebuginfod.url = "github:symphorien/nixseparatedebuginfod";
+    nixseparatedebuginfod.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { self, nixpkgs, agenix, bscpkgs, ... }:
