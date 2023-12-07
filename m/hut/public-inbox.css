@@ -1,0 +1,79 @@
+/*
+ * CC0-1.0 <https://creativecommons.org/publicdomain/zero/1.0/legalcode>
+ * Dark color scheme using 216 web-safe colors, inspired
+ * somewhat by the default color scheme in mutt.
+ * It reduces eyestrain for me, and energy usage for all:
+ * https://en.wikipedia.org/wiki/Light-on-dark_color_scheme
+ */
+
+* {
+	font-size: 14px;
+	font-family: monospace;
+}
+
+pre {
+	white-space: pre-wrap;
+	padding: 10px;
+	background: #f5f5f5;
+}
+
+hr {
+	margin: 30px 0;
+}
+
+body {
+	max-width: 120ex; /* 120 columns wide */
+	margin: 50px auto;
+}
+
+/*
+ * Underlined links add visual noise which make them hard-to-read.
+ * Use colors to make them stand out, instead.
+ */
+a:link {
+	color: #007;
+	text-decoration: none;
+}
+a:visited {
+	color:#504;
+}
+a:hover {
+	text-decoration: underline;
+}
+
+/* quoted text in emails gets a different color */
+*.q { color:gray }
+
+/*
+ * these may be used with cgit <https://git.zx2c4.com/cgit/>, too.
+ * (cgit uses <div>, public-inbox uses <span>)
+ */
+*.add { color:darkgreen } /* diff post-image lines */
+*.del { color:darkred } /* diff pre-image lines */
+*.head { color:black } /* diff header (metainformation) */
+*.hunk { color:gray } /* diff hunk-header */
+
+/*
+ * highlight 3.x colors (tested 3.18) for displaying blobs.
+ * This doesn't use most of the colors available, as I find too
+ * many colors overwhelming, so the default is commented out.
+ */
+.hl.num { color:#f30 } /* number */
+.hl.esc { color:#f0f } /* escape character */
+.hl.str { color:#f30 } /* string */
+.hl.ppc { color:#f0f } /* preprocessor */
+.hl.pps { color:#f30 } /* preprocessor string */
+.hl.slc { color:#09f } /* single-line comment */
+.hl.com { color:#09f } /* multi-line comment */
+/* .hl.opt { color:#ccc } */ /* operator */
+/* .hl.ipl { color:#ccc } */ /* interpolation */
+
+/* keyword groups kw[a-z] */
+.hl.kwa { color:#ff0 }
+.hl.kwb { color:#0f0 }
+.hl.kwc { color:#ff0 }
+/* .hl.kwd { color:#ccc } */
+
+/* line-number (unused by public-inbox) */
+/* .hl.lin { color:#ccc } */
+
