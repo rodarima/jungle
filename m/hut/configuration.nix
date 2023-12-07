@@ -11,6 +11,7 @@
     ./nfs.nix
     ./slurm-daemon.nix
     ./nix-serve.nix
+    ./public-inbox.nix
     #./pxe.nix
   ];
 
