@@ -13,10 +13,6 @@
     ceph
   ];
 
-  services.slurm = {
-    client.enable = lib.mkForce false;
-  };
-
   networking = {
     hostName = "bay";
     interfaces.eno1.ipv4.addresses = [ {
