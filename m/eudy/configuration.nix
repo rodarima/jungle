@@ -9,7 +9,6 @@
     ./cpufreq.nix
     ./fs.nix
     ./users.nix
-    ./slurm.nix
     ../module/debuginfod.nix
   ];
 

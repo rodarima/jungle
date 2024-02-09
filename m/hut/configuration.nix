@@ -6,10 +6,11 @@
 
     ../module/ceph.nix
     ../module/debuginfod.nix
+    ../module/slurm-client.nix
     ./gitlab-runner.nix
     ./monitoring.nix
     ./nfs.nix
-    ./slurm-daemon.nix
+    ./slurm-server.nix
     ./nix-serve.nix
     ./public-inbox.nix
     #./pxe.nix

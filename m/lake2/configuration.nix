@@ -12,10 +12,6 @@
     ceph
   ];
 
-  services.slurm = {
-    client.enable = lib.mkForce false;
-  };
-
   services.ceph = {
     enable = true;
     global = {
