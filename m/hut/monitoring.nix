@@ -105,7 +105,7 @@
         params = { module = [ "http_2xx" ]; };
         static_configs = [{
           targets = [
-            "https://www.bsc.es/robots.txt"
+            "https://www.google.com/robots.txt"
             "https://pm.bsc.es/"
             "https://pm.bsc.es/gitlab/"
             "https://jungle.bsc.es/"
