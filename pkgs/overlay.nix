@@ -11,6 +11,10 @@ final: prev:
       paths = [ pmix.dev pmix.out ];
     };
   in prev.mpich.overrideAttrs (old: {
+    patches = [
+      # See https://github.com/pmodels/mpich/issues/6946
+      ./mpich-fix-hwtopo.patch
+    ];
     buildInput = old.buildInputs ++ [
       libfabric
       pmixAll
