@@ -30,5 +30,12 @@ final: prev:
     ];
   });
 
+  slurm = prev.slurm.overrideAttrs (old: {
+    patches = (old.patches or []) ++ [
+      # See https://bugs.schedmd.com/show_bug.cgi?id=19324
+      ./slurm-rank-expansion.patch
+    ];
+  });
+
   prometheus-slurm-exporter = prev.callPackage ./slurm-exporter.nix { };
 }

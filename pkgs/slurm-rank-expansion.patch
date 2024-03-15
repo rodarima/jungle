@@ -1,0 +1,11 @@
+--- a/src/plugins/mpi/pmix/pmixp_dmdx.c	2024-03-15 13:05:24.815313882 +0100
++++ b/src/plugins/mpi/pmix/pmixp_dmdx.c	2024-03-15 13:09:53.936900823 +0100
+@@ -314,7 +314,7 @@ static void _dmdx_req(buf_t *buf, int no
+ 	}
+ 
+ 	nsptr = pmixp_nspaces_local();
+-	if (nsptr->ntasks <= rank) {
++	if ((long) nsptr->ntasks <= (long) rank) {
+ 		char *nodename = pmixp_info_job_host(nodeid);
+ 		PMIXP_ERROR("Bad request from %s: nspace \"%s\" has only %d ranks, asked for %d",
+ 			    nodename, ns, nsptr->ntasks, rank);
