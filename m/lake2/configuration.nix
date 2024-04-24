@@ -45,6 +45,14 @@
       address = "10.0.42.42";
       prefixLength = 24;
     } ];
+    firewall = {
+      extraCommands = ''
+        # Accept all incoming TCP traffic from bay
+        iptables -A nixos-fw -p tcp -s bay -j nixos-fw-accept
+        # Accept monitoring requests from hut
+        iptables -A nixos-fw -p tcp -s hut --dport 9002 -j nixos-fw-accept
+      '';
+    };
   };
 
   # Missing service for volumes, see:

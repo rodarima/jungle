@@ -23,6 +23,16 @@
       address = "10.0.42.40";
       prefixLength = 24;
     } ];
+    firewall = {
+      extraCommands = ''
+        # Accept all incoming TCP traffic from lake2
+        iptables -A nixos-fw -p tcp -s lake2 -j nixos-fw-accept
+        # Accept monitoring requests from hut
+        iptables -A nixos-fw -p tcp -s hut -m multiport --dport 9283,9002 -j nixos-fw-accept
+        # Accept all Ceph traffic from the local network
+        iptables -A nixos-fw -p tcp -s 10.0.40.0/24 -m multiport --dport 3300,6789,6800:7568 -j nixos-fw-accept
+      '';
+    };
   };
 
   services.ceph = {
