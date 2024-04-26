@@ -13,6 +13,7 @@
     ./slurm-server.nix
     ./nix-serve.nix
     ./public-inbox.nix
+    ./gitea.nix
     #./pxe.nix
   ];
 
