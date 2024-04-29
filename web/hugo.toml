@@ -2,4 +2,27 @@ baseURL = 'https://jungle.bsc.es/'
 languageCode = 'en-us'
 title = 'The jungle'
 theme = 'PaperMod'
-sectionPagesMenu = "main"
+
+[[menu.main]]
+identifier = "grafana"
+name = "Grafana"
+url = "/grafana/"
+weight = 10
+
+[[menu.main]]
+identifier = "Git"
+name = "Git"
+url = "/git/"
+weight = 20
+
+[[menu.main]]
+identifier = "Lists"
+name = "Lists"
+url = "/lists/"
+weight = 30
+
+[[menu.main]]
+identifier = "Posts"
+name = "Posts"
+url = "/posts/"
+weight = 40
