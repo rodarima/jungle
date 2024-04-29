@@ -161,6 +161,10 @@
         ];
       }
       {
+        job_name = "gitea";
+        static_configs = [{ targets = [ "127.0.0.1:3000" ]; }];
+      }
+      {
         # Scrape the IPMI info of the hosts remotely via LAN
         job_name = "ipmi-lan";
         scrape_interval = "1m";
