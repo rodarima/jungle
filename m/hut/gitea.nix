@@ -13,7 +13,18 @@
         LANDING_PAGE = "explore";
       };
       metrics.ENABLED = true;
-      service.REGISTER_MANUAL_CONFIRM = true;
+      service = {
+        REGISTER_MANUAL_CONFIRM = true;
+        ENABLE_NOTIFY_MAIL = true;
+      };
+
+      mailer = {
+        ENABLED       = true;
+        FROM          = "jungle-robot@bsc.es";
+        PROTOCOL      = "sendmail";
+        SENDMAIL_PATH = "/run/wrappers/bin/sendmail";
+        SENDMAIL_ARGS = "--";
+      };
     };
   };
 
