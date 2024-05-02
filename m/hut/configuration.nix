@@ -14,6 +14,7 @@
     ./nix-serve.nix
     ./public-inbox.nix
     ./gitea.nix
+    ./msmtp.nix
     #./pxe.nix
   ];
 
