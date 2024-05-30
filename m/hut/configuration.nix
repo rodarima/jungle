@@ -15,6 +15,7 @@
     ./public-inbox.nix
     ./gitea.nix
     ./msmtp.nix
+    ./postgresql.nix
     #./pxe.nix
   ];
 
