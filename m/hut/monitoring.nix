@@ -3,6 +3,12 @@
 {
   imports = [ ../module/slurm-exporter.nix ];
 
+  age.secrets.grafanaJungleRobotPassword = {
+    file = ../../secrets/jungle-robot-password.age;
+    owner = "grafana";
+    mode = "400";
+  };
+
   services.grafana = {
     enable = true;
     settings = {
@@ -12,6 +18,16 @@
         serve_from_sub_path = true;
         http_port = 2342;
         http_addr = "127.0.0.1";
+      };
+      smtp = {
+        enabled = true;
+        from_address = "jungle-robot@bsc.es";
+        user = "jungle-robot";
+        # Read the password from a file, which is only readable by grafana user
+        # https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#file-provider
+        password = "$__file{${config.age.secrets.grafanaJungleRobotPassword.path}}";
+        host = "mail.bsc.es:465";
+        startTLS_policy = "NoStartTLS";
       };
       feature_toggles.publicDashboards = true;
       "auth.anonymous".enabled = true;
