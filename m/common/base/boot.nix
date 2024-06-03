@@ -2,7 +2,7 @@
 
 {
   # Use the GRUB 2 boot loader.
-  boot.loader.grub.enable = lib.mkForce true;
+  boot.loader.grub.enable = true;
 
   # Enable GRUB2 serial console
   boot.loader.grub.extraConfig = ''

@@ -2,8 +2,8 @@
 
 {
   imports = [
-    ../common/main.nix
-    ../common/monitoring.nix
+    ../common/xeon.nix
+    ../module/monitoring.nix
   ];
 
   # Select the this using the ID to avoid mismatches

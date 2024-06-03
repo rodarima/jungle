@@ -17,13 +17,14 @@ let
 in
   {
     nixosConfigurations = {
-      hut   = mkConf "hut";
-      owl1  = mkConf "owl1";
-      owl2  = mkConf "owl2";
-      eudy  = mkConf "eudy";
-      koro  = mkConf "koro";
-      bay   = mkConf "bay";
-      lake2 = mkConf "lake2";
+      hut     = mkConf "hut";
+      owl1    = mkConf "owl1";
+      owl2    = mkConf "owl2";
+      eudy    = mkConf "eudy";
+      koro    = mkConf "koro";
+      bay     = mkConf "bay";
+      lake2   = mkConf "lake2";
+      raccoon = mkConf "raccoon";
     };
 
     packages.x86_64-linux = self.nixosConfigurations.hut.pkgs // {

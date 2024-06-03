@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ../module/jungle-users.nix
+    ../../module/jungle-users.nix
   ];
 
   users = {

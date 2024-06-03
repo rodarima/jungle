@@ -6,10 +6,9 @@
   boot.kernelModules = [ "ib_umad" "ib_ipoib" ];
 
   networking = {
-    enableIPv6 = false;
-    useDHCP = false;
     defaultGateway = "10.0.40.30";
     nameservers = ["8.8.8.8"];
+
     proxy = {
       default = "http://localhost:23080/";
       noProxy = "127.0.0.1,localhost,internal.domain,10.0.40.40";
@@ -19,8 +18,6 @@
     };
 
     firewall = {
-      enable = true;
-      allowedTCPPorts = [ 22 ];
       extraCommands = ''
         # Prevent ssfhead from contacting our slurmd daemon
         iptables -A nixos-fw -p tcp -s ssfhead --dport 6817:6819 -j nixos-fw-refuse
@@ -32,8 +29,7 @@
     };
 
     extraHosts = ''
-      10.0.40.30      ssfhead
-      84.88.53.236    ssfhead.bsc.es ssfhead
+      10.0.40.30              ssfhead
       
       # Node Entry for node: mds01 (ID=72)
       10.0.40.40              bay mds01 mds01-eth0

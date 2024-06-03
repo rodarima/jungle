@@ -150,3 +150,13 @@ And update grub.
 ```
 # nix build .#nixosConfigurations.xeon02.config.system.build.kexecTree -v
 ```
+
+## Chain NixOS in same disk
+
+```
+menuentry 'NixOS' {
+        insmod chain
+        set root=(hd3,1)
+        configfile /boot/grub/grub.cfg
+}
+```

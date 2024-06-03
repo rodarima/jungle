@@ -2,8 +2,8 @@
 
 {
   imports = [
-    ../common/main.nix
-    ../common/monitoring.nix
+    ../common/xeon.nix
+    ../module/monitoring.nix
   ];
 
   boot.loader.grub.device = "/dev/disk/by-id/wwn-0x55cd2e414d53563a";
