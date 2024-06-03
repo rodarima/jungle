@@ -1,7 +1,7 @@
 { lib, ... }:
 
 let
-  keys = import ../../keys.nix;
+  keys = import ../../../keys.nix;
   hostsKeys = lib.mapAttrs (name: value: { publicKey = value; }) keys.hosts;
 in
 {

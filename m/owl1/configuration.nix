@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ../common/main.nix
+    ../common/xeon.nix
     ../module/ceph.nix
     ../module/slurm-client.nix
     ../module/slurm-firewall.nix

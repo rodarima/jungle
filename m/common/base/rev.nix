@@ -1,6 +1,7 @@
 { theFlake, ... }:
 
 let
+  # Prevent building a configuration without revision
   rev = if theFlake ? rev then theFlake.rev
     else throw ("Refusing to build from a dirty Git tree!");
 in {
@@ -15,4 +16,6 @@ in {
     DATENOW=$(date --iso-8601=seconds)
     echo "$DATENOW booted=$BOOTED current=$CURRENT next=$NEXT" >> /var/configrev.log
   '';
+
+  system.configurationRevision = rev;
 }

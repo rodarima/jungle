@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ../common/main.nix
+    ../common/xeon.nix
     #(modulesPath + "/installer/netboot/netboot-minimal.nix")
 
     ../eudy/cpufreq.nix
