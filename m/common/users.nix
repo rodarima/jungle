@@ -1,6 +1,10 @@
 { pkgs, ... }:
 
 {
+  imports = [
+    ../module/jungle-users.nix
+  ];
+
   users = {
     mutableUsers = false;
     users = {
@@ -42,13 +46,16 @@
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGdphWxLAEekicZ/WBrvP7phMyxKSSuLAZBovNX+hZXQ aleix@kerneland"
         ];
       };
+    };
 
+    jungleUsers = {
       rpenacob = {
         uid = 2761;
         isNormalUser = true;
         home = "/home/Computational/rpenacob";
         description = "Raúl Peñacoba";
         group = "Computational";
+        hosts = [ "hut" ];
         hashedPassword = "$6$TZm3bDIFyPrMhj1E$uEDXoYYd1z2Wd5mMPfh3DZAjP7ztVjJ4ezIcn82C0ImqafPA.AnTmcVftHEzLB3tbe2O4SxDyPSDEQgJ4GOtj/";
         openssh.authorizedKeys.keys = [
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFYfXg37mauGeurqsLpedgA2XQ9d4Nm0ZGo/hI1f7wwH rpenacob@bsc"
@@ -61,6 +68,7 @@
         home = "/home/Computational/anavarro";
         description = "Antoni Navarro";
         group = "Computational";
+        hosts = [ "hut" "raccoon" ];
         hashedPassword = "$6$QdNDsuLehoZTYZlb$CDhCouYDPrhoiB7/seu7RF.Gqg4zMQz0n5sA4U1KDgHaZOxy2as9pbIGeF8tOHJKRoZajk5GiaZv0rZMn7Oq31";
         openssh.authorizedKeys.keys = [
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILWjRSlKgzBPZQhIeEtk6Lvws2XNcYwHcwPv4osSgst5 anavarro@ssfhead"
