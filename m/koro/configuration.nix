@@ -7,7 +7,6 @@
 
     ../eudy/cpufreq.nix
     ../eudy/users.nix
-    ./users.nix
     ./kernel.nix
   ];
 
