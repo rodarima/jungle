@@ -151,12 +151,26 @@ And update grub.
 # nix build .#nixosConfigurations.xeon02.config.system.build.kexecTree -v
 ```
 
-## Chain NixOS in same disk
+## Chain NixOS in same disk with other systems
+
+To install NixOS on a partition along another system which controls the GRUB,
+first disable the grub device, so the GRUB is not installed in the disk by
+NixOS (only the /boot files will be generated):
+
+```
+boot.loader.grub.device = "nodev";
+```
+
+Then add the following entry to the old GRUB configuration:
 
 ```
 menuentry 'NixOS' {
         insmod chain
-        set root=(hd3,1)
+        search --no-floppy --label nixos --set root
         configfile /boot/grub/grub.cfg
 }
 ```
+
+The partition with NixOS must have the label "nixos" for it to be found. New
+system configuration entries will be stored in the GRUB configuration managed
+by NixOS, so there is no need to change the old GRUB settings.
