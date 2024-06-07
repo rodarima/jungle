@@ -232,6 +232,17 @@
           }
         ];
       }
+      {
+        job_name = "ipmi-raccoon";
+        metrics_path = "/ipmi";
+        static_configs = [
+          { targets = [ "127.0.0.1:9291" ]; }
+        ];
+        params = {
+          target = [ "84.88.51.142" ];
+          module = [ "raccoon" ];
+        };
+      }
     ];
   };
 }
