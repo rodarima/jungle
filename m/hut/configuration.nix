@@ -19,7 +19,7 @@
     #./pxe.nix
   ];
 
-  boot.binfmt.emulatedSystems = [ "aarch64-linux" "powerpc64le-linux" "riscv64-linux" ];
+  boot.binfmt.emulatedSystems = [ "armv7l-linux" "aarch64-linux" "powerpc64le-linux" "riscv64-linux" ];
 
   # Select the this using the ID to avoid mismatches
   boot.loader.grub.device = "/dev/disk/by-id/ata-INTEL_SSDSC2BB240G7_PHDV6462004Y240AGN";
