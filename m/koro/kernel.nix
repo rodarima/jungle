@@ -1,9 +1,29 @@
 { pkgs, lib, ... }:
 
 let
-  kernel = nixos-fcsv4;
+  #fcs-devel = pkgs.linuxPackages_custom {
+  #   version = "6.2.8";
+  #   src = /mnt/data/kernel/fcs/kernel/src;
+  #   configfile = /mnt/data/kernel/fcs/kernel/configs/defconfig;
+  #};
 
-  nixos-fcs-kernel = {gitCommit, lockStat ? false, preempt ? false, branch ? "fcs"}: pkgs.linuxPackagesFor (pkgs.buildLinux rec {
+  #fcsv1 = fcs-kernel "bc11660676d3d68ce2459b9fb5d5e654e3f413be" false;
+  #fcsv2 = fcs-kernel "db0f2eca0cd57a58bf456d7d2c7d5d8fdb25dfb1" false;
+  #fcsv1-lockdep = fcs-kernel "bc11660676d3d68ce2459b9fb5d5e654e3f413be" true;
+  #fcsv2-lockdep = fcs-kernel "db0f2eca0cd57a58bf456d7d2c7d5d8fdb25dfb1" true;
+  #fcs-kernel = gitCommit: lockdep: pkgs.linuxPackages_custom {
+  #   version = "6.2.8";
+  #   src = builtins.fetchGit {
+  #     url = "git@bscpm03.bsc.es:ompss-kernel/linux.git";
+  #     rev = gitCommit;
+  #     ref = "fcs";
+  #   };
+  #   configfile = if lockdep then ./configs/lockdep else ./configs/defconfig;
+  #};
+
+  kernel = nixos-fcs;
+
+  nixos-fcs-kernel = lib.makeOverridable ({gitCommit, lockStat ? false, preempt ? false, branch ? "fcs"}: pkgs.linuxPackagesFor (pkgs.buildLinux rec {
     version = "6.2.8";
     src = builtins.fetchGit {
       url = "git@bscpm03.bsc.es:ompss-kernel/linux.git";
@@ -20,27 +40,13 @@ let
     };
     kernelPatches = [];
     extraMeta.branch = lib.versions.majorMinor version;
-  });
+  }));
 
-  nixos-fcsv1 = nixos-fcs-kernel {gitCommit = "bc11660676d3d68ce2459b9fb5d5e654e3f413be";};
-  nixos-fcsv2 = nixos-fcs-kernel {gitCommit = "db0f2eca0cd57a58bf456d7d2c7d5d8fdb25dfb1";};
-  nixos-fcsv3 = nixos-fcs-kernel {gitCommit = "6c17394890704c3345ac1a521bb547164b36b154";};
-  nixos-fcsv4 = nixos-fcs-kernel {gitCommit = "c94c3d946f33ac3e5782a02ee002cc1164c0cb4f";};
-
-  nixos-fcsv1-lockstat = nixos-fcs-kernel {
-    gitCommit = "bc11660676d3d68ce2459b9fb5d5e654e3f413be";
+  nixos-fcs = nixos-fcs-kernel {gitCommit = "8a09822dfcc8f0626b209d6d2aec8b5da459dfee";};
+  nixos-fcs-lockstat = nixos-fcs.override {
     lockStat = true;
   };
-  nixos-fcsv2-lockstat = nixos-fcs-kernel {
-    gitCommit = "db0f2eca0cd57a58bf456d7d2c7d5d8fdb25dfb1";
-    lockStat = true;
-  };
-  nixos-fcsv3-lockstat = nixos-fcs-kernel {
-    gitCommit = "6c17394890704c3345ac1a521bb547164b36b154";
-    lockStat = true;
-  };
-  nixos-fcsv3-lockstat-preempt = nixos-fcs-kernel {
-    gitCommit = "6c17394890704c3345ac1a521bb547164b36b154";
+  nixos-fcs-lockstat-preempt = nixos-fcs.override {
     lockStat = true;
     preempt = true;
   };
@@ -60,5 +66,5 @@ in {
   
   # enable memory overcommit, needed to build a taglibc system using nix after
   # increasing the openblas memory footprint
-  boot.kernel.sysctl."vm.overcommit_memory" = lib.mkForce 1;
+  boot.kernel.sysctl."vm.overcommit_memory" = 1;
 }
