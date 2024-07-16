@@ -55,7 +55,7 @@
         home = "/home/Computational/rpenacob";
         description = "Raúl Peñacoba";
         group = "Computational";
-        hosts = [ "hut" ];
+        hosts = [ "owl1" "owl2" "hut" ];
         hashedPassword = "$6$TZm3bDIFyPrMhj1E$uEDXoYYd1z2Wd5mMPfh3DZAjP7ztVjJ4ezIcn82C0ImqafPA.AnTmcVftHEzLB3tbe2O4SxDyPSDEQgJ4GOtj/";
         openssh.authorizedKeys.keys = [
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFYfXg37mauGeurqsLpedgA2XQ9d4Nm0ZGo/hI1f7wwH rpenacob@bsc"
