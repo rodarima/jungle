@@ -1,9 +1,8 @@
 { pkgs, lib, config, ... }:
 
 {
-  age.secrets.ovniToken.file = ../../secrets/ovni-token.age;
-  age.secrets.gitlabToken.file = ../../secrets/gitlab-bsc-es-token.age;
-  age.secrets.nosvToken.file = ../../secrets/nosv-token.age;
+  age.secrets.gitlabRunnerShellToken.file = ../../secrets/gitlab-runner-shell-token.age;
+  age.secrets.gitlabRunnerDockerToken.file = ../../secrets/gitlab-runner-docker-token.age;
 
   services.gitlab-runner = {
     enable = true;
@@ -11,20 +10,14 @@
     services = let
       common-shell = {
         executor = "shell";
-        tagList = [ "nix" "xeon" ];
-        registrationFlags = [
-          # Using space doesn't work, and causes it to misread the next flag
-          "--locked='false'"
-        ];
         environmentVariables = {
           SHELL = "${pkgs.bash}/bin/bash";
         };
       };
       common-docker = {
+        executor = "docker";
         dockerImage = "debian:stable";
-        tagList = [ "docker" "xeon" ];
         registrationFlags = [
-          "--locked='false'"
           "--docker-network-mode host"
         ];
         environmentVariables = {
@@ -33,19 +26,12 @@
         };
       };
     in {
-      # For gitlab.bsc.es
-      gitlab-bsc-es-shell = common-shell // {
-        registrationConfigFile = config.age.secrets.gitlabToken.path;
-      };
-      gitlab-bsc-es-docker = common-docker // {
-        registrationConfigFile = config.age.secrets.gitlabToken.path;
-      };
       # For pm.bsc.es/gitlab
       gitlab-pm-shell = common-shell // {
-        registrationConfigFile = config.age.secrets.ovniToken.path;
+        authenticationTokenConfigFile = config.age.secrets.gitlabRunnerShellToken.path;
       };
       gitlab-pm-docker = common-docker // {
-        registrationConfigFile = config.age.secrets.ovniToken.path;
+        authenticationTokenConfigFile = config.age.secrets.gitlabRunnerDockerToken.path;
       };
     };
   };
