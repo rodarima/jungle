@@ -12,7 +12,7 @@ in
   programs.ssh.extraConfig = ''
     Host bscpm02.bsc.es bscpm03.bsc.es gitlab-internal.bsc.es alya.gitlab.bsc.es
       User git
-      ProxyCommand nc -X connect -x localhost:23080 %h %p
+      ProxyCommand nc -X connect -x hut:23080 %h %p
   '';
 
   programs.ssh.knownHosts = hostsKeys // {
