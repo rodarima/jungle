@@ -34,5 +34,15 @@
       address = "10.0.42.7";
       prefixLength = 24;
     } ];
+    firewall = {
+      extraCommands = ''
+        # Accept all proxy traffic from compute nodes but not the login
+        iptables -A nixos-fw -p tcp -s 10.0.40.30 --dport 23080 -j nixos-fw-log-refuse
+        iptables -A nixos-fw -p tcp -s 10.0.40.0/24 --dport 23080 -j nixos-fw-accept
+      '';
+    };
   };
+
+  # Allow proxy to bind to the ethernet interface
+  services.openssh.settings.GatewayPorts = "clientspecified";
 }
