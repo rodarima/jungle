@@ -19,6 +19,10 @@
 
   boot.kernel.sysctl = {
     "kernel.perf_event_paranoid" = lib.mkDefault "-1";
+
+    # Allow ptracing (i.e. attach with GDB) any process of the same user, see:
+    # https://www.kernel.org/doc/Documentation/security/Yama.txt
+    "kernel.yama.ptrace_scope" = "0";
   };
 
   boot.kernelPackages = pkgs.linuxPackages_latest;

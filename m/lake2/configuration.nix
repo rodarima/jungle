@@ -8,6 +8,10 @@
 
   boot.loader.grub.device = "/dev/disk/by-id/wwn-0x55cd2e414d53563a";
 
+  boot.kernel.sysctl = {
+    "kernel.yama.ptrace_scope" = lib.mkForce "1";
+  };
+
   environment.systemPackages = with pkgs; [
     ceph
   ];

@@ -9,6 +9,10 @@
   # Select the this using the ID to avoid mismatches
   boot.loader.grub.device = "/dev/disk/by-id/wwn-0x55cd2e414d53562d";
 
+  boot.kernel.sysctl = {
+    "kernel.yama.ptrace_scope" = lib.mkForce "1";
+  };
+
   environment.systemPackages = with pkgs; [
     ceph
   ];
