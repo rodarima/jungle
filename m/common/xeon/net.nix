@@ -10,7 +10,7 @@
     nameservers = ["8.8.8.8"];
 
     proxy = {
-      default = "http://localhost:23080/";
+      default = "http://hut:23080/";
       noProxy = "127.0.0.1,localhost,internal.domain,10.0.40.40";
       # Don't set all_proxy as go complains and breaks the gitlab runner, see:
       # https://github.com/golang/go/issues/16715
