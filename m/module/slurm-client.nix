@@ -83,6 +83,14 @@ in {
 
       # Reduce port range so we can allow only this range in the firewall
       SrunPortRange=60000-61000
+
+      # Use cores as consumable resources. In SLURM terms, a core may have
+      # multiple hardware threads (or CPUs).
+      SelectType=select/cons_tres
+
+      # Ignore memory constraints and only use unused cores to share a node with
+      # other jobs.
+      SelectTypeParameters=CR_Core
     '';
   };
 
