@@ -17,6 +17,7 @@
         REGISTER_MANUAL_CONFIRM = true;
         ENABLE_NOTIFY_MAIL = true;
       };
+      log.LEVEL = "Warn";
 
       mailer = {
         ENABLED       = true;
