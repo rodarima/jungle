@@ -7,6 +7,7 @@
     ../module/slurm-client.nix
     ../module/slurm-firewall.nix
     ../module/slurm-hut-nix-store.nix
+    ../module/debuginfod.nix
   ];
 
   # Select the this using the ID to avoid mismatches
