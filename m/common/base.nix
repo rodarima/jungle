@@ -3,6 +3,7 @@
   # Includes the basic configuration for an Intel server.
   imports = [
     ./base/agenix.nix
+    ./base/august-shutdown.nix
     ./base/boot.nix
     ./base/env.nix
     ./base/fs.nix
