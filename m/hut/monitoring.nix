@@ -31,6 +31,7 @@
       };
       feature_toggles.publicDashboards = true;
       "auth.anonymous".enabled = true;
+      log.level = "warn";
     };
   };
 
