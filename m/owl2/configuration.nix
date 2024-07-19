@@ -4,6 +4,7 @@
   imports = [
     ../common/xeon.nix
     ../module/ceph.nix
+    ../module/emulation.nix
     ../module/slurm-client.nix
     ../module/slurm-firewall.nix
     ../module/slurm-hut-nix-store.nix
