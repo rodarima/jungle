@@ -3,7 +3,7 @@
   imports = [
     ./base.nix
     ./xeon/fs.nix
-    ./xeon/getty.nix
+    ./xeon/console.nix
     ./xeon/net.nix
   ];
 }
