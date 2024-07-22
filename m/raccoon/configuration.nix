@@ -21,11 +21,7 @@
 
   # Configure Nvidia driver to use with CUDA
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.production;
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    setLdLibraryPath = true;
-  };
+  hardware.graphics.enable = true;
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.nvidia.acceptLicense = true;
   services.xserver.videoDrivers = [ "nvidia" ];
