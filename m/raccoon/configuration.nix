@@ -8,6 +8,12 @@
   # Don't install Grub on the disk yet
   boot.loader.grub.device = "nodev";
 
+  # Enable serial console
+  boot.kernelParams = [
+    "console=tty1"
+    "console=ttyS1,115200"
+  ];
+
   networking = {
     hostName = "raccoon";
     # Only BSC DNSs seem to be reachable from the office VLAN

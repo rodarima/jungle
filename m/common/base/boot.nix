@@ -11,12 +11,6 @@
     terminal_output --append serial
   '';
 
-  # Enable serial console
-  boot.kernelParams = [
-    "console=tty1"
-    "console=ttyS0,115200"
-  ];
-
   boot.kernel.sysctl = {
     "kernel.perf_event_paranoid" = lib.mkDefault "-1";
 
