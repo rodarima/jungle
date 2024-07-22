@@ -7,6 +7,7 @@
     wantedBy = [ "timers.target" ];
     timerConfig = {
       OnCalendar = "*-08-02 11:00:00";
+      RandomizedDelaySec = "10min";
       Unit = "systemd-poweroff.service";
     };
   };
