@@ -7,7 +7,6 @@
     ../module/emulation.nix
     ../module/slurm-client.nix
     ../module/slurm-firewall.nix
-    ../module/slurm-hut-nix-store.nix
     ../module/debuginfod.nix
   ];
 
