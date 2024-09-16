@@ -55,6 +55,9 @@ in
           autoindex on;
           absolute_redirect off;
         }
+        location /p/ {
+          alias /ceph/p/;
+        }
       '';
     };
   };
