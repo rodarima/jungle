@@ -18,6 +18,7 @@
     ./msmtp.nix
     ./postgresql.nix
     ./nginx.nix
+    ./p.nix
     #./pxe.nix
   ];
 
