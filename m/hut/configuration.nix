@@ -17,6 +17,7 @@
     ./gitea.nix
     ./msmtp.nix
     ./postgresql.nix
+    ./nginx.nix
     #./pxe.nix
   ];
 
