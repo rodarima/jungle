@@ -26,6 +26,11 @@ in
         }
       ];
       extraConfig = ''
+        set_real_ip_from 127.0.0.1;
+        set_real_ip_from 84.88.52.107;
+        real_ip_recursive on;
+        real_ip_header X-Forwarded-For;
+
         location /git {
           rewrite ^/git$ / break;
           rewrite ^/git/(.*) /$1 break;
