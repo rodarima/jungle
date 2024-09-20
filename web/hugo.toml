@@ -22,7 +22,13 @@ url = "/lists/"
 weight = 30
 
 [[menu.main]]
+identifier = "Paste"
+name = "Paste"
+url = "/paste/"
+weight = 40
+
+[[menu.main]]
 identifier = "Posts"
 name = "Posts"
 url = "/posts/"
-weight = 40
+weight = 50
