@@ -20,6 +20,7 @@
       rarias = {
         uid = 1880;
         isNormalUser = true;
+        linger = true;
         home = "/home/Computational/rarias";
         description = "Rodrigo Arias";
         group = "Computational";
