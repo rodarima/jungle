@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports = [
@@ -23,11 +23,15 @@
   ];
 
   # Select the this using the ID to avoid mismatches
-  boot.loader.grub.device = "/dev/disk/by-id/ata-INTEL_SSDSC2BB240G7_PHDV6462004Y240AGN";
+  boot.loader.grub.device = "/dev/disk/by-id/nvme-INTEL_SSDPED1D960GAY_PHMB81220017960EGN";
 
-  fileSystems."/nvme" = {
-    fsType = "ext4";
-    device = "/dev/disk/by-label/nvme";
+  fileSystems = {
+    "/" = lib.mkForce {
+      device = "/dev/disk/by-label/nixos-nvme";
+      fsType = "ext4";
+      neededForBoot = true;
+      options = [ "noatime" ];
+    };
   };
 
   networking = {
