@@ -53,6 +53,7 @@ in
         location /grafana {
           proxy_pass http://127.0.0.1:2342;
           proxy_redirect http:// $scheme://;
+          proxy_set_header Host $host;
           # Websockets
           proxy_http_version 1.1;
           proxy_set_header Upgrade $http_upgrade;
