@@ -23,14 +23,20 @@
   ];
 
   # Select the this using the ID to avoid mismatches
-  boot.loader.grub.device = "/dev/disk/by-id/nvme-INTEL_SSDPED1D960GAY_PHMB81220017960EGN";
+  boot.loader.grub.device = "/dev/disk/by-id/wwn-0x55cd2e414d53567f";
 
   fileSystems = {
     "/" = lib.mkForce {
-      device = "/dev/disk/by-label/nixos-nvme";
+      device = "/dev/disk/by-label/nvme";
       fsType = "ext4";
       neededForBoot = true;
       options = [ "noatime" ];
+    };
+
+    "/boot" = lib.mkForce {
+      device = "/dev/disk/by-label/nixos-boot";
+      fsType = "ext4";
+      neededForBoot = true;
     };
   };
 
