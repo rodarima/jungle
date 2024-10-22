@@ -37,10 +37,6 @@ in
           proxy_pass http://127.0.0.1:3000;
           proxy_redirect http:// $scheme://;
         }
-        # Ignore logging the gitea CI requesting tasks all the time
-        location /git/api/actions/runner.v1.RunnerService/FetchTask {
-          access_log off;
-        }
         location /cache {
           rewrite ^/cache(.*) /$1 break;
           proxy_pass http://127.0.0.1:5000;
