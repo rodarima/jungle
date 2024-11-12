@@ -102,6 +102,7 @@
             "127.0.0.1:9252"
             "127.0.0.1:${toString config.services.prometheus.exporters.smartctl.port}"
             "127.0.0.1:9341" # Slurm exporter
+            "127.0.0.1:9966" # GPFS custom exporter
             "127.0.0.1:${toString config.services.prometheus.exporters.blackbox.port}"
           ];
         }];
