@@ -76,7 +76,7 @@
       };
       node = {
         enable = true;
-        enabledCollectors = [ "systemd" ];
+        enabledCollectors = [ "systemd" "logind" ];
         port = 9002;
         listenAddress = "127.0.0.1";
       };
