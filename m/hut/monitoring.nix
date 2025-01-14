@@ -1,7 +1,10 @@
 { config, lib, ... }:
 
 {
-  imports = [ ../module/slurm-exporter.nix ];
+  imports = [
+    ../module/slurm-exporter.nix
+    ./gpfs-probe.nix
+  ];
 
   age.secrets.grafanaJungleRobotPassword = {
     file = ../../secrets/jungle-robot-password.age;
