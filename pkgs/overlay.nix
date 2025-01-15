@@ -11,7 +11,7 @@ final: prev:
       paths = [ pmix.dev pmix.out ];
     };
   in prev.mpich.overrideAttrs (old: {
-    patches = [
+    patches = (old.patches or []) ++ [
       # See https://github.com/pmodels/mpich/issues/6946
       ./mpich-fix-hwtopo.patch
     ];
