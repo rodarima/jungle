@@ -9,6 +9,7 @@ in
   "gitea-runner-token.age".publicKeys = hut;
   "gitlab-runner-docker-token.age".publicKeys = hut;
   "gitlab-runner-shell-token.age".publicKeys = hut;
+  "gitlab-bsc-docker-token.age".publicKeys = hut;
   "nix-serve.age".publicKeys = hut;
   "jungle-robot-password.age".publicKeys = hut;
   "ipmi.yml.age".publicKeys = hut;
