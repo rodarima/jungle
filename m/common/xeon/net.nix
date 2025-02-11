@@ -85,6 +85,10 @@
       10.0.40.8               eudy xeon08 xeon08-eth0
       10.0.42.8               eudy-ib xeon08-ib0
       10.0.40.108             eudy-ipmi xeon08-ipmi0
+
+      # fox
+      10.0.40.26              fox
+      10.0.40.126             fox-ipmi
     '';
   };
 }
