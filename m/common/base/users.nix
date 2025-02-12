@@ -113,6 +113,19 @@
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAb+EQBoS98zrCwnGKkHKwMLdYABMTqv7q9E0+T0QmkS dbautist@bsc-848818791"
         ];
       };
+
+      dalvare1 = {
+        uid = 2758;
+        isNormalUser = true;
+        home = "/home/Computational/dalvare1";
+        description = "David Álvarez";
+        group = "Computational";
+        hosts = [ "hut" ];
+        hashedPassword = "$6$mpyIsV3mdq.rK8$FvfZdRH5OcEkUt5PnIUijWyUYZvB1SgeqxpJ2p91TTe.3eQIDTcLEQ5rxeg.e5IEXAZHHQ/aMsR5kPEujEghx0";
+        openssh.authorizedKeys.keys = [
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGEfy6F4rF80r4Cpo2H5xaWqhuUZzUsVsILSKGJzt5jF dalvare1@ssfhead"
+        ];
+      };
     };
 
     groups = {
