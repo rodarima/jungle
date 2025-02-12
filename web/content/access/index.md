@@ -11,7 +11,7 @@ access to the login machine using a resource petition in the BSC intranet.
 
 Then, to request access to the machines we will need some information about you:
 
-1. Which machines you want access to (hut, owl1, owl2, eudy, koro...)
+1. Which machines you want access to ([hut](/hut), [fox](/fox), owl1, owl2, eudy, koro...)
 1. Your user name and user id (to match the NFS permissions)
 1. Your real name and surname (for identification purposes)
 1. The salted hash of your login password, generated with `mkpasswd -m sha-512`
