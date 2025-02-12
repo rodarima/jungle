@@ -11,6 +11,7 @@ in
   "gitlab-runner-shell-token.age".publicKeys = hut;
   "nix-serve.age".publicKeys = hut;
   "jungle-robot-password.age".publicKeys = hut;
+  "ipmi.yml.age".publicKeys = hut;
 
   "ceph-user.age".publicKeys = safe;
   "munge-key.age".publicKeys = safe;
