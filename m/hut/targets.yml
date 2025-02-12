@@ -1,15 +1,15 @@
 - targets:
-  - 10.0.40.101
-  - 10.0.40.102
-  - 10.0.40.103
-  - 10.0.40.104
-  - 10.0.40.105
-  - 10.0.40.106
-  - 10.0.40.107
-  - 10.0.40.108
+  - owl1-ipmi
+  - owl2-ipmi
+  - xeon03-ipmi
+  - xeon04-ipmi
+  - koro-ipmi
+  - xeon06-ipmi
+  - hut-ipmi
+  - eudy-ipmi
   # Storage
-  - 10.0.40.141
-  - 10.0.40.142
-  - 10.0.40.143
+  - bay-ipmi
+  - oss01-ipmi
+  - lake2-ipmi
   labels:
     job: ipmi-lan

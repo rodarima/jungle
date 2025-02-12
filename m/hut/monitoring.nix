@@ -208,7 +208,7 @@
             # Sets the "instance" label with the remote host we are querying
             source_labels = [ "__param_target" ];
             separator = ";";
-            regex = "(.*)";
+            regex = "(.*)-ipmi"; # Remove "-ipm̀i" at the end
             target_label = "instance";
             replacement = "\${1}";
             action = "replace";
@@ -257,7 +257,7 @@
           { targets = [ "127.0.0.1:9290" ]; }
         ];
         params = {
-          target = [ "10.0.40.126" ];
+          target = [ "fox-ipmi" ];
           module = [ "fox" ];
         };
       }
