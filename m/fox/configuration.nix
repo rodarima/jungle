@@ -35,4 +35,25 @@
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.nvidia.acceptLicense = true;
   services.xserver.videoDrivers = [ "nvidia" ];
+
+  # Mount NVME disks
+  fileSystems."/nvme0" = { device = "/dev/disk/by-label/nvme0"; fsType = "ext4"; };
+  fileSystems."/nvme1" = { device = "/dev/disk/by-label/nvme1"; fsType = "ext4"; };
+
+  # Make a /nvme{0,1}/$USER directory for each user.
+  systemd.services.create-nvme-dirs = let
+    # Take only normal users in fox
+    users = lib.filterAttrs (_: v: v.isNormalUser) config.users.users;
+    commands = lib.concatLists (lib.mapAttrsToList
+      (_: user: [
+        "install -d -o ${user.name} -g ${user.group} -m 0755 /nvme{0,1}/${user.name}"
+      ]) users);
+    script = pkgs.writeShellScript "create-nvme-dirs.sh" (lib.concatLines commands);
+  in {
+    enable = true;
+    wants = [ "local-fs.target" ];
+    after = [ "local-fs.target" ];
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig.ExecStart = script;
+  };
 }
