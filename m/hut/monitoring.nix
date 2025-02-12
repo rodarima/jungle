@@ -12,6 +12,8 @@
     mode = "400";
   };
 
+  age.secrets.ipmiYml.file = ../../secrets/ipmi.yml.age;
+
   services.grafana = {
     enable = true;
     settings = {
@@ -73,8 +75,8 @@
         enable = true;
         group = "root";
         user = "root";
-        configFile = ./ipmi.yml;
-        #extraFlags = [ "--log.level=debug" ];
+        configFile = config.age.secrets.ipmiYml.path;
+        # extraFlags = [ "--log.level=debug" ];
         listenAddress = "127.0.0.1";
       };
       node = {
@@ -246,6 +248,17 @@
         params = {
           target = [ "84.88.51.142" ];
           module = [ "raccoon" ];
+        };
+      }
+      {
+        job_name = "ipmi-fox";
+        metrics_path = "/ipmi";
+        static_configs = [
+          { targets = [ "127.0.0.1:9290" ]; }
+        ];
+        params = {
+          target = [ "10.0.40.126" ];
+          module = [ "fox" ];
         };
       }
     ];
