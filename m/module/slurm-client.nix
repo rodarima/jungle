@@ -78,7 +78,7 @@ in {
       SuspendTimeout=60
       ResumeProgram=${resumeProgram}
       ResumeTimeout=300
-      SuspendExcNodes=hut
+      SuspendExcNodes=hut,fox
 
       # Turn the nodes off after 1 hour of inactivity
       SuspendTime=3600
