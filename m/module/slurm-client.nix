@@ -93,8 +93,28 @@ in {
       # Ignore memory constraints and only use unused cores to share a node with
       # other jobs.
       SelectTypeParameters=CR_Core
+
+      # Required for pam_slurm_adopt, see https://slurm.schedmd.com/pam_slurm_adopt.html
+      # This sets up the "extern" step into which ssh-launched processes will be
+      # adopted. Alloc runs the prolog at job allocation (salloc) rather than
+      # when a task runs (srun) so we can ssh early.
+      PrologFlags=Alloc,Contain,X11
+
+      # LaunchParameters=ulimit_pam_adopt will set RLIMIT_RSS in processes
+      # adopted by the external step, similar to tasks running in regular steps
+      # LaunchParameters=ulimit_pam_adopt
+      SlurmdDebug=debug5
+      #DebugFlags=Protocol,Cgroup
+    '';
+
+    extraCgroupConfig = ''
+      CgroupPlugin=cgroup/v2
+      #ConstrainCores=yes
     '';
   };
+
+  # Place the slurm config in /etc as this will be required by PAM
+  environment.etc.slurm.source = config.services.slurm.etcSlurm;
 
   age.secrets.mungeKey = {
     file = ../../secrets/munge-key.age;
