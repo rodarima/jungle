@@ -12,6 +12,8 @@ let
     installPhase = ''
       cp -r public $out
     '';
+    # Don't mess doc/
+    dontFixup = true;
   };
 in
 {
