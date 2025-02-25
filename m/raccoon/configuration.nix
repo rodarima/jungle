@@ -39,6 +39,13 @@
 
   services.openssh.settings.X11Forwarding = true;
 
+  services.prometheus.exporters.node = {
+    enable = true;
+    enabledCollectors = [ "systemd" ];
+    port = 9002;
+    listenAddress = "127.0.0.1";
+  };
+
   users.motd = ''
     ⠀⠀⠀⠀⠀⠀⠀⣀⣀⣄⣠⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
     ⠀⠀⠀⠀⠀⠀⢰⠇⡀⠀⠙⠻⡿⣦⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⠀⠀⠀
