@@ -40,7 +40,7 @@ in
           proxy_redirect http:// $scheme://;
         }
         location /cache {
-          rewrite ^/cache(.*) /$1 break;
+          rewrite ^/cache/(.*) /$1 break;
           proxy_pass http://127.0.0.1:5000;
           proxy_redirect http:// $scheme://;
         }
