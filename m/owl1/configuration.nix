@@ -8,6 +8,7 @@
     ../module/slurm-client.nix
     ../module/slurm-firewall.nix
     ../module/debuginfod.nix
+    ../module/hut-substituter.nix
   ];
 
   # Select the this using the ID to avoid mismatches
