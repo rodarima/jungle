@@ -108,7 +108,7 @@
         home = "/home/Computational/dbautist";
         description = "Dylan Bautista Cases";
         group = "Computational";
-        hosts = [ "hut" ];
+        hosts = [ "hut" "raccoon" ];
         hashedPassword = "$6$a2lpzMRVkG9nSgIm$12G6.ka0sFX1YimqJkBAjbvhRKZ.Hl090B27pdbnQOW0wzyxVWySWhyDDCILjQELky.HKYl9gqOeVXW49nW7q/";
         openssh.authorizedKeys.keys = [
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAb+EQBoS98zrCwnGKkHKwMLdYABMTqv7q9E0+T0QmkS dbautist@bsc-848818791"
