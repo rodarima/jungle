@@ -37,6 +37,9 @@
   nixpkgs.config.nvidia.acceptLicense = true;
   services.xserver.videoDrivers = [ "nvidia" ];
 
+  # Disable garbage collection for now
+  nix.gc.automatic = lib.mkForce false;
+
   services.openssh.settings.X11Forwarding = true;
 
   services.prometheus.exporters.node = {
