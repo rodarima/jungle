@@ -3,6 +3,7 @@
 {
   imports = [
     ../common/base.nix
+    ../module/emulation.nix
   ];
 
   # Don't install Grub on the disk yet
