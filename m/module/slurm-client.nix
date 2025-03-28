@@ -43,7 +43,7 @@ in {
     clusterName = "jungle";
     nodeName = [
       "owl[1,2]  Sockets=2 CoresPerSocket=14 ThreadsPerCore=2 Feature=owl"
-      "fox       Sockets=2 CoresPerSocket=96 ThreadsPerCore=2 Feature=fox"
+      "fox       Sockets=2 CoresPerSocket=96 ThreadsPerCore=1 Feature=fox"
       "hut       Sockets=2 CoresPerSocket=14 ThreadsPerCore=2"
     ];
 
