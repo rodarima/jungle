@@ -126,6 +126,19 @@
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGEfy6F4rF80r4Cpo2H5xaWqhuUZzUsVsILSKGJzt5jF dalvare1@ssfhead"
         ];
       };
+
+      varcila = {
+        uid = 5650;
+        isNormalUser = true;
+        home = "/home/Computational/varcila";
+        description = "Vincent Arcila";
+        group = "Computational";
+        hosts = [ "hut" "fox" ];
+        hashedPassword = "$6$oB0Tcn99DcM4Ch$Vn1A0ulLTn/8B2oFPi9wWl/NOsJzaFAWjqekwcuC9sMC7cgxEVb.Nk5XSzQ2xzYcNe5MLtmzkVYnRS1CqP39Y0";
+        openssh.authorizedKeys.keys = [
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKGt0ESYxekBiHJQowmKpfdouw0hVm3N7tUMtAaeLejK vincent@varch"
+        ];
+      };
     };
 
     groups = {
