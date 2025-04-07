@@ -50,7 +50,6 @@ in {
     partitionName = [
       "owl Nodes=owl[1-2]     Default=YES DefaultTime=01:00:00 MaxTime=INFINITE State=UP"
       "fox Nodes=fox          Default=NO  DefaultTime=01:00:00 MaxTime=INFINITE State=UP"
-      "all Nodes=owl[1-2],hut Default=NO  DefaultTime=01:00:00 MaxTime=INFINITE State=UP"
     ];
 
     # See slurm.conf(5) for more details about these options.
