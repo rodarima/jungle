@@ -56,6 +56,11 @@
         iptables -A nixos-fw -p tcp -s 10.0.40.30 --dport 23080 -j nixos-fw-log-refuse
         iptables -A nixos-fw -p tcp -s 10.0.40.0/24 --dport 23080 -j nixos-fw-accept
       '';
+      # Flush all rules and chains on stop so it won't break on start
+      extraStopCommands = ''
+        iptables -F
+        iptables -X
+      '';
     };
   };
 
