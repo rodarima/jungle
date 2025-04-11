@@ -17,13 +17,14 @@ let
   };
 in
 {
+  networking.firewall.allowedTCPPorts = [ 80 ];
   services.nginx = {
     enable = true;
     virtualHosts."jungle.bsc.es" = {
       root = "${website}";
       listen = [
         {
-          addr = "127.0.0.1";
+          addr = "0.0.0.0";
           port = 80;
         }
       ];
