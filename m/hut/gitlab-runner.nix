@@ -97,12 +97,14 @@
     };
   };
 
-  # DOCKER* chains are useless, override at FORWARD
+  # DOCKER* chains are useless, override at FORWARD and nixos-fw
   networking.firewall.extraCommands = ''
     # Allow docker to use our proxy
     iptables -I FORWARD 1 -p tcp -i docker0 -d hut --dport 23080 -j nixos-fw-accept
     # Block anything else coming from docker
     iptables -I FORWARD 2 -p all -i docker0 -j nixos-fw-log-refuse
+    # Allow incoming traffic from docker to 23080
+    iptables -A nixos-fw -p tcp -i docker0 -d hut --dport 23080 -j ACCEPT
   '';
 
   #systemd.services.gitlab-runner.serviceConfig.Shell = "${pkgs.bash}/bin/bash";
