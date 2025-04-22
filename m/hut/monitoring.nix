@@ -46,7 +46,7 @@
   services.prometheus = {
     enable = true;
     port = 9001;
-    retentionTime = "1y";
+    retentionTime = "5y";
     listenAddress = "127.0.0.1";
   };
 
