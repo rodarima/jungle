@@ -251,6 +251,14 @@
         };
       }
       {
+        job_name = "raccoon";
+        static_configs = [
+          {
+            targets = [ "127.0.0.1:19002" ]; # Node exporter
+          }
+        ];
+      }
+      {
         job_name = "ipmi-fox";
         metrics_path = "/ipmi";
         static_configs = [
