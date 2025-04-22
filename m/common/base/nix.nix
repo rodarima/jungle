@@ -23,6 +23,7 @@
       trusted-users = [ "@wheel" ];
       flake-registry = pkgs.writeText "global-registry.json"
         ''{"flakes":[],"version":2}'';
+      keep-outputs = true;
     };
 
     gc = {
