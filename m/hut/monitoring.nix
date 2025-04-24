@@ -4,6 +4,7 @@
   imports = [
     ../module/slurm-exporter.nix
     ./gpfs-probe.nix
+    ./nix-daemon-exporter.nix
   ];
 
   age.secrets.grafanaJungleRobotPassword = {
@@ -108,6 +109,7 @@
             "127.0.0.1:${toString config.services.prometheus.exporters.smartctl.port}"
             "127.0.0.1:9341" # Slurm exporter
             "127.0.0.1:9966" # GPFS custom exporter
+            "127.0.0.1:9999" # Nix-daemon custom exporter
             "127.0.0.1:${toString config.services.prometheus.exporters.blackbox.port}"
           ];
         }];
