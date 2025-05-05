@@ -31,6 +31,9 @@
     trusted-public-keys = [ "jungle.bsc.es:pEc7MlAT0HEwLQYPtpkPLwRsGf80ZI26aj29zMw/HH0=" ];
   };
 
+  # Enable performance governor
+  powerManagement.cpuFreqGovernor = "performance";
+
   # Configure Nvidia driver to use with CUDA
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.production;
   hardware.graphics.enable = true;
