@@ -4,6 +4,7 @@
   imports = [
     ../common/base.nix
     ../module/emulation.nix
+    ../module/debuginfod.nix
   ];
 
   # Don't install Grub on the disk yet
