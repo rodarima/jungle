@@ -40,7 +40,7 @@
         home = "/home/Computational/arocanon";
         description = "Aleix Roca";
         group = "Computational";
-        extraGroups = [ "wheel" ];
+        extraGroups = [ "wheel" "tracing" ];
         hashedPassword = "$6$hliZiW4tULC/tH7p$pqZarwJkNZ7vS0G5llWQKx08UFG9DxDYgad7jplMD8WkZh5k58i4dfPoWtnEShfjTO6JHiIin05ny5lmSXzGM/";
         openssh.authorizedKeys.keys = [
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF3zeB5KSimMBAjvzsp1GCkepVaquVZGPYwRIzyzaCba aleix@bsc"
@@ -144,6 +144,7 @@
 
     groups = {
       Computational = { gid = 564; };
+      tracing = { };
     };
   };
 }
