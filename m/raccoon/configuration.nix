@@ -5,6 +5,7 @@
     ../common/base.nix
     ../module/emulation.nix
     ../module/debuginfod.nix
+    ../eudy/kernel/perf.nix
   ];
 
   # Don't install Grub on the disk yet
