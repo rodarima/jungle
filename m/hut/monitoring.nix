@@ -3,6 +3,7 @@
 {
   imports = [
     ../module/slurm-exporter.nix
+    ../module/meteocat-exporter.nix
     ./gpfs-probe.nix
     ./nix-daemon-exporter.nix
   ];
@@ -110,6 +111,7 @@
             "127.0.0.1:9341" # Slurm exporter
             "127.0.0.1:9966" # GPFS custom exporter
             "127.0.0.1:9999" # Nix-daemon custom exporter
+            "127.0.0.1:9929" # Meteocat custom exporter
             "127.0.0.1:${toString config.services.prometheus.exporters.blackbox.port}"
           ];
         }];

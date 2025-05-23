@@ -54,4 +54,5 @@ final: prev:
   });
 
   prometheus-slurm-exporter = prev.callPackage ./slurm-exporter.nix { };
+  meteocat-exporter = prev.callPackage ./meteocat-exporter/default.nix { };
 }

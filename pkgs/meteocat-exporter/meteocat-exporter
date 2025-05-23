@@ -1,0 +1,54 @@
+#!/usr/bin/env python3
+
+import time
+from prometheus_client import start_http_server, Gauge
+from bs4 import BeautifulSoup
+from urllib import request
+
+# Configuration -------------------------------------------
+meteo_station = "X8" # Barcelona - Zona Universitària
+listening_port = 9929
+update_period = 60 * 5 # Each 5 min
+# ---------------------------------------------------------
+
+metric_tmin = Gauge('meteocat_temp_min', 'Min temperature')
+metric_tmax = Gauge('meteocat_temp_max', 'Max temperature')
+metric_tavg = Gauge('meteocat_temp_avg', 'Average temperature')
+metric_srad = Gauge('meteocat_solar_radiation', 'Solar radiation')
+
+def update(st):
+    url = 'https://www.meteo.cat/observacions/xema/dades?codi=' + st
+    response = request.urlopen(url)
+    data = response.read()
+    soup = BeautifulSoup(data, 'lxml')
+    table = soup.find("table", {"class" : "tblperiode"})
+    rows = table.find_all('tr')
+    row = rows[-1] # Take the last row
+    row_data = []
+    header = row.find('th')
+    header_text = header.text.strip()
+    row_data.append(header_text)
+    for col in row.find_all('td'):
+        row_data.append(col.text)
+    try:
+        # Sometimes it will return '(s/d)' and fail to parse
+        metric_tavg.set(float(row_data[1]))
+        metric_tmax.set(float(row_data[2]))
+        metric_tmin.set(float(row_data[3]))
+        metric_srad.set(float(row_data[10]))
+        #print("ok: temp_avg={}".format(float(row_data[1])))
+    except:
+        print("cannot parse row: {}".format(row))
+        metric_tavg.set(float("nan"))
+        metric_tmax.set(float("nan"))
+        metric_tmin.set(float("nan"))
+        metric_srad.set(float("nan"))
+
+if __name__ == '__main__':
+    start_http_server(port=listening_port, addr="localhost")
+    while True:
+        try:
+            update(meteo_station)
+        except:
+            print("update failed")
+        time.sleep(update_period)
