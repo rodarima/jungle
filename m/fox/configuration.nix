@@ -2,7 +2,9 @@
 
 {
   imports = [
-    ../common/xeon.nix
+    ../common/base.nix
+    ../common/xeon/console.nix
+    ../common/xeon/net.nix
     ../module/emulation.nix
   ];
 
