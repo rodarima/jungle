@@ -9,7 +9,7 @@ rec {
     koro  = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIImiTFDbxyUYPumvm8C4mEnHfuvtBY1H8undtd6oDd67 koro";
     bay   = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICvGBzpRQKuQYHdlUQeAk6jmdbkrhmdLwTBqf3el7IgU bay";
     lake2 = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINo66//S1yatpQHE/BuYD/Gfq64TY7ZN5XOGXmNchiO0 lake2";
-    fox   = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDa9lId4rB/EKGkkCCVOy0cuId2SYLs+8W8kx0kmpO1y fox";
+    fox   = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDwItIk5uOJcQEVPoy/CVGRzfmE1ojrdDcI06FrU4NFT fox";
   };
 
   hostGroup = with hosts; rec {
