@@ -1,0 +1,74 @@
+#!/usr/bin/env python3
+
+import time
+from prometheus_client import start_http_server, Gauge
+import requests, json
+from datetime import datetime, timedelta
+
+# Configuration -------------------------------------------
+listening_port = 9928
+update_period = 60 * 5 # Each 5 min
+# ---------------------------------------------------------
+
+metric_temp = Gauge('upc_c6_s302_temp', 'UPC C6 S302 temperature sensor')
+
+def genparams():
+    d = {}
+    d['topic'] = 'TEMPERATURE'
+    d['shift_dates_to'] = ''
+    d['datapoints'] = 301
+    d['devicesAndColors'] = '1148418@@@#40ACB6'
+
+    now = datetime.now()
+
+    d['fromDate'] = now.strftime('%d/%m/%Y')
+    d['toDate'] = now.strftime('%d/%m/%Y')
+    d['serviceFrequency'] = 'NONE'
+
+    # WTF!
+    for i in range(7):
+        for j in range(48):
+            key = 'week.days[{}].hours[{}].value'.format(i, j)
+            d[key] = 'OPEN'
+
+    return d
+
+def measure():
+    # First we need to load session
+    s = requests.Session()
+    r = s.get("https://upc.edu/sirena")
+    if r.status_code != 200:
+        print("bad HTTP status code on new session: {}".format(r.status_code))
+        return
+
+    if s.cookies.get("JSESSIONID") is None:
+        print("cannot get JSESSIONID")
+        return
+
+    # Now we can pull the data
+    url = "https://upcsirena.app.dexma.com/l_12535/analysis/by_datapoints/data.json"
+    r = s.post(url, data=genparams())
+
+    if r.status_code != 200:
+        print("bad HTTP status code on data: {}".format(r.status_code))
+        return
+
+    #print(r.text)
+    j = json.loads(r.content)
+
+    # Just take the last one
+    last = j['data']['chartElementList'][-1]
+    temp = last['values']['1148418-Temperatura']
+
+    return temp
+
+if __name__ == '__main__':
+    start_http_server(port=listening_port, addr="localhost")
+    while True:
+        try:
+            metric_temp.set(measure())
+        except:
+            print("measure failed")
+            metric_temp.set(float("nan"))
+
+        time.sleep(update_period)
