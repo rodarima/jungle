@@ -3,7 +3,6 @@
 {
   imports = [
     ../common/xeon.nix
-    ../module/ceph.nix
     ../module/emulation.nix
   ];
 
