@@ -13,7 +13,8 @@ rec {
   };
 
   hostGroup = with hosts; rec {
-    compute    = [ owl1 owl2 fox ];
+    untrusted  = [ fox ];
+    compute    = [ owl1 owl2 ];
     playground = [ eudy koro ];
     storage    = [ bay lake2 ];
     monitor    = [ hut ];
