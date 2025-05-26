@@ -5,8 +5,6 @@
     ../common/xeon.nix
     ../module/ceph.nix
     ../module/emulation.nix
-    ../module/slurm-client.nix
-    ../module/slurm-firewall.nix
   ];
 
   # Select the this using the ID to avoid mismatches
