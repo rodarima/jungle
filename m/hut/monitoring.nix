@@ -169,6 +169,9 @@
             "8.8.8.8"
             "ssfhead"
             "anella-bsc.cesca.cat"
+            "upc-anella.cesca.cat"
+            "fox.ac.upc.edu"
+            "arenys5.ac.upc.edu"
           ];
         }];
         relabel_configs = [
