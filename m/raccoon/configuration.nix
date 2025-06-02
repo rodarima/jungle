@@ -26,6 +26,18 @@
       address = "84.88.51.152";
       prefixLength = 25;
     } ];
+    interfaces.enp5s0f1.ipv4.addresses = [ {
+      address = "10.0.44.1";
+      prefixLength = 24;
+    } ];
+    nat = {
+      enable = true;
+      internalInterfaces = [ "enp5s0f1" ];
+      externalInterface = "eno0";
+    };
+    hosts = {
+      "10.0.44.4" = [ "tent" ];
+    };
   };
 
   nix.settings = {

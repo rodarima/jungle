@@ -18,6 +18,7 @@ in
   {
     nixosConfigurations = {
       hut     = mkConf "hut";
+      tent    = mkConf "tent";
       owl1    = mkConf "owl1";
       owl2    = mkConf "owl2";
       eudy    = mkConf "eudy";

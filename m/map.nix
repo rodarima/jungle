@@ -17,7 +17,7 @@
     owl1   = { pos=35; size=1; label="SSF-XEON01"; board="S2600WTTR"; sn="BQWL64954172"; contact="rodrigo.arias@bsc.es"; };
     owl2   = { pos=34; size=1; label="SSF-XEON02"; board="S2600WTTR"; sn="BQWL64756560"; contact="rodrigo.arias@bsc.es"; };
     xeon03 = { pos=33; size=1; label="SSF-XEON03"; board="S2600WTTR"; sn="BQWL64750826"; contact="rodrigo.arias@bsc.es"; };
-    xeon04 = { pos=32; size=1; label="SSF-XEON04"; board="S2600WTTR"; sn="BQWL64751229"; contact="rodrigo.arias@bsc.es"; };
+    # Slot 34 empty
     koro   = { pos=31; size=1; label="SSF-XEON05"; board="S2600WTTR"; sn="BQWL64954293"; contact="rodrigo.arias@bsc.es"; };
     xeon06 = { pos=30; size=1; label="SSF-XEON06"; board="S2600WTTR"; sn="BQWL64750846"; contact="antoni.navarro@bsc.es"; };
     hut    = { pos=29; size=1; label="SSF-XEON07"; board="S2600WTTR"; sn="BQWL64751184"; contact="rodrigo.arias@bsc.es"; };
@@ -48,6 +48,7 @@
 
   bsc2218 = {
     raccoon = { board="W2600CR"; sn="QSIP22500829"; contact="rodrigo.arias@bsc.es"; };
+    tent    = { label="SSF-XEON04"; board="S2600WTTR"; sn="BQWL64751229"; contact="rodrigo.arias@bsc.es"; };
   };
 
   upc = {
