@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ../common/xeon.nix
+    ../common/ssf.nix
     ../module/monitoring.nix
   ];
 
