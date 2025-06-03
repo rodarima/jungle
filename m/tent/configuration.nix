@@ -5,6 +5,7 @@
     ../common/xeon.nix
     ../module/emulation.nix
     ../module/debuginfod.nix
+    ../module/ssh-hut-extern.nix
   ];
 
   # Select the this using the ID to avoid mismatches

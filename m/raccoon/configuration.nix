@@ -5,6 +5,7 @@
     ../common/base.nix
     ../module/emulation.nix
     ../module/debuginfod.nix
+    ../module/ssh-hut-extern.nix
     ../eudy/kernel/perf.nix
   ];
 
