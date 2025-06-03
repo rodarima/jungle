@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports = [
@@ -49,5 +49,22 @@
   fileSystems."/vault" = {
     device = "/dev/disk/by-label/vault";
     fsType = "ext4";
+  };
+
+  # Make a /vault/$USER directory for each user.
+  systemd.services.create-vault-dirs = let
+    # Take only normal users in tent
+    users = lib.filterAttrs (_: v: v.isNormalUser) config.users.users;
+    commands = lib.concatLists (lib.mapAttrsToList
+      (_: user: [
+        "install -d -o ${user.name} -g ${user.group} -m 0711 /vault/home/${user.name}"
+      ]) users);
+    script = pkgs.writeShellScript "create-vault-dirs.sh" (lib.concatLines commands);
+  in {
+    enable = true;
+    wants = [ "local-fs.target" ];
+    after = [ "local-fs.target" ];
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig.ExecStart = script;
   };
 }
