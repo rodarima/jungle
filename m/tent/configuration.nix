@@ -36,4 +36,18 @@
     port = 9002;
     listenAddress = "127.0.0.1";
   };
+
+  boot.swraid = {
+    enable = true;
+    mdadmConf = ''
+      DEVICE partitions
+      ARRAY /dev/md0 metadata=1.2 UUID=496db1e2:056a92aa:a544543f:40db379d
+      MAILADDR root
+    '';
+  };
+
+  fileSystems."/vault" = {
+    device = "/dev/disk/by-label/vault";
+    fsType = "ext4";
+  };
 }
