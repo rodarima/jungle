@@ -56,7 +56,7 @@
         home = "/home/Computational/rpenacob";
         description = "Raúl Peñacoba";
         group = "Computational";
-        hosts = [ "owl1" "owl2" "hut" ];
+        hosts = [ "owl1" "owl2" "hut" "tent" ];
         hashedPassword = "$6$TZm3bDIFyPrMhj1E$uEDXoYYd1z2Wd5mMPfh3DZAjP7ztVjJ4ezIcn82C0ImqafPA.AnTmcVftHEzLB3tbe2O4SxDyPSDEQgJ4GOtj/";
         openssh.authorizedKeys.keys = [
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFYfXg37mauGeurqsLpedgA2XQ9d4Nm0ZGo/hI1f7wwH rpenacob@bsc"
@@ -69,7 +69,7 @@
         home = "/home/Computational/anavarro";
         description = "Antoni Navarro";
         group = "Computational";
-        hosts = [ "hut" "raccoon" ];
+        hosts = [ "hut" "tent" "raccoon" ];
         hashedPassword = "$6$QdNDsuLehoZTYZlb$CDhCouYDPrhoiB7/seu7RF.Gqg4zMQz0n5sA4U1KDgHaZOxy2as9pbIGeF8tOHJKRoZajk5GiaZv0rZMn7Oq31";
         openssh.authorizedKeys.keys = [
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILWjRSlKgzBPZQhIeEtk6Lvws2XNcYwHcwPv4osSgst5 anavarro@ssfhead"
@@ -82,7 +82,7 @@
         home = "/home/Computational/abonerib";
         description = "Aleix Boné";
         group = "Computational";
-        hosts = [ "owl1" "owl2" "hut" "raccoon" ];
+        hosts = [ "owl1" "owl2" "hut" "tent" "raccoon" ];
         hashedPassword = "$6$V1EQWJr474whv7XJ$OfJ0wueM2l.dgiJiiah0Tip9ITcJ7S7qDvtSycsiQ43QBFyP4lU0e0HaXWps85nqB4TypttYR4hNLoz3bz662/";
         openssh.authorizedKeys.keys = [
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIIFiqXqt88VuUfyANkZyLJNiuroIITaGlOOTMhVDKjf abonerib@bsc"
@@ -108,7 +108,7 @@
         home = "/home/Computational/dbautist";
         description = "Dylan Bautista Cases";
         group = "Computational";
-        hosts = [ "hut" "raccoon" ];
+        hosts = [ "hut" "tent" "raccoon" ];
         hashedPassword = "$6$a2lpzMRVkG9nSgIm$12G6.ka0sFX1YimqJkBAjbvhRKZ.Hl090B27pdbnQOW0wzyxVWySWhyDDCILjQELky.HKYl9gqOeVXW49nW7q/";
         openssh.authorizedKeys.keys = [
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAb+EQBoS98zrCwnGKkHKwMLdYABMTqv7q9E0+T0QmkS dbautist@bsc-848818791"
@@ -121,7 +121,7 @@
         home = "/home/Computational/dalvare1";
         description = "David Álvarez";
         group = "Computational";
-        hosts = [ "hut" ];
+        hosts = [ "hut" "tent" ];
         hashedPassword = "$6$mpyIsV3mdq.rK8$FvfZdRH5OcEkUt5PnIUijWyUYZvB1SgeqxpJ2p91TTe.3eQIDTcLEQ5rxeg.e5IEXAZHHQ/aMsR5kPEujEghx0";
         openssh.authorizedKeys.keys = [
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGEfy6F4rF80r4Cpo2H5xaWqhuUZzUsVsILSKGJzt5jF dalvare1@ssfhead"
@@ -134,7 +134,7 @@
         home = "/home/Computational/varcila";
         description = "Vincent Arcila";
         group = "Computational";
-        hosts = [ "hut" "fox" ];
+        hosts = [ "hut" "tent" "fox" ];
         hashedPassword = "$6$oB0Tcn99DcM4Ch$Vn1A0ulLTn/8B2oFPi9wWl/NOsJzaFAWjqekwcuC9sMC7cgxEVb.Nk5XSzQ2xzYcNe5MLtmzkVYnRS1CqP39Y0";
         openssh.authorizedKeys.keys = [
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKGt0ESYxekBiHJQowmKpfdouw0hVm3N7tUMtAaeLejK vincent@varch"
