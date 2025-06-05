@@ -10,6 +10,7 @@ rec {
     bay   = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICvGBzpRQKuQYHdlUQeAk6jmdbkrhmdLwTBqf3el7IgU bay";
     lake2 = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINo66//S1yatpQHE/BuYD/Gfq64TY7ZN5XOGXmNchiO0 lake2";
     fox   = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDwItIk5uOJcQEVPoy/CVGRzfmE1ojrdDcI06FrU4NFT fox";
+    tent  = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFAtTpHtdYoelbknD/IcfBlThwLKJv/dSmylOgpg3FRM tent";
   };
 
   hostGroup = with hosts; rec {
@@ -25,7 +26,8 @@ rec {
   };
 
   admins = {
-    rarias = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE1oZTPtlEXdGt0Ak+upeCIiBdaDQtcmuWoTUCVuSVIR rarias@hut";
-    root   = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIII/1TNArcwA6D47mgW4TArwlxQRpwmIGiZDysah40Gb root@hut";
+    "rarias@hut"  = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE1oZTPtlEXdGt0Ak+upeCIiBdaDQtcmuWoTUCVuSVIR rarias@hut";
+    "rarias@tent" = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIwlWSBTZi74WTz5xn6gBvTmCoVltmtIAeM3RMmkh4QZ rarias@tent";
+    root          = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIII/1TNArcwA6D47mgW4TArwlxQRpwmIGiZDysah40Gb root@hut";
   };
 }
