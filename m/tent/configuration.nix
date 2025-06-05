@@ -9,6 +9,7 @@
     ./monitoring.nix
     ./nginx.nix
     ./nix-serve.nix
+    ./gitlab-runner.nix
   ];
 
   # Select the this using the ID to avoid mismatches

@@ -3,6 +3,7 @@ let
   adminsKeys = builtins.attrValues keys.admins;
   hut = [ keys.hosts.hut ] ++ adminsKeys;
   mon = [ keys.hosts.hut keys.hosts.tent ] ++ adminsKeys;
+  tent = [ keys.hosts.tent ] ++ adminsKeys;
   # Only expose ceph keys to safe nodes and admins
   safe = keys.hostGroup.safe ++ adminsKeys;
 in
@@ -14,6 +15,9 @@ in
   "nix-serve.age".publicKeys = mon;
   "jungle-robot-password.age".publicKeys = mon;
   "ipmi.yml.age".publicKeys = mon;
+
+  "tent-gitlab-runner-pm-docker-token.age".publicKeys = tent;
+  "tent-gitlab-runner-pm-shell-token.age".publicKeys = tent;
 
   "ceph-user.age".publicKeys = safe;
   "munge-key.age".publicKeys = safe;
