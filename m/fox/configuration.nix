@@ -22,6 +22,7 @@
   networking = {
     defaultGateway = "147.83.30.130";
     nameservers = [ "8.8.8.8" ];
+    timeServers = [ "ntp1.upc.edu" "ntp2.upc.edu" ];
     hostName = "fox";
     interfaces.enp1s0f0np0.ipv4.addresses = [
       {
