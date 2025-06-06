@@ -20,31 +20,20 @@
   hardware.cpu.intel.updateMicrocode = lib.mkForce false;
 
   networking = {
-    defaultGateway = "147.83.30.130";
-    nameservers = [ "8.8.8.8" ];
     timeServers = [ "ntp1.upc.edu" "ntp2.upc.edu" ];
     hostName = "fox";
-    interfaces.enp1s0f0np0.ipv4.addresses = [
-      {
-        # UPC network
-        # Public IP configuration:
-        # - Hostname: fox.ac.upc.edu
-        # - IP: 147.83.30.141
-        # - Gateway: 147.83.30.130
-        # - NetMask: 255.255.255.192
-        # Private IP configuration for BMC:
-        # - Hostname: fox-ipmi.ac.upc.edu
-        # - IP: 147.83.35.27
-        # - Gateway: 147.83.35.2
-        # - NetMask: 255.255.255.0
-        address = "147.83.30.141";
-        prefixLength = 26; # 255.255.255.192
-      }
-    ];
-    extraHosts = ''
-      147.83.30.141   fox.ac.upc.edu
-      147.83.35.27    fox-ipmi.ac.upc.edu
-    '';
+    # UPC network (may change over time, use DHCP)
+    # Public IP configuration:
+    # - Hostname: fox.ac.upc.edu
+    # - IP: 147.83.30.141
+    # - Gateway: 147.83.30.130
+    # - NetMask: 255.255.255.192
+    # Private IP configuration for BMC:
+    # - Hostname: fox-ipmi.ac.upc.edu
+    # - IP: 147.83.35.27
+    # - Gateway: 147.83.35.2
+    # - NetMask: 255.255.255.0
+    interfaces.enp1s0f0np0.useDHCP = true;
   };
 
   # Configure Nvidia driver to use with CUDA
