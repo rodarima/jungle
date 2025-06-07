@@ -67,4 +67,7 @@
     wantedBy = [ "multi-user.target" ];
     serviceConfig.ExecStart = script;
   };
+
+  # disable automatic garbage collector
+  nix.gc.automatic = lib.mkForce false;
 }
