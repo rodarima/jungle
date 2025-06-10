@@ -19,6 +19,9 @@
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   hardware.cpu.intel.updateMicrocode = lib.mkForce false;
 
+  # Use performance for benchmarks
+  powerManagement.cpuFreqGovernor = "performance";
+
   networking = {
     timeServers = [ "ntp1.upc.edu" "ntp2.upc.edu" ];
     hostName = "fox";
