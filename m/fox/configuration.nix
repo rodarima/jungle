@@ -36,6 +36,12 @@
     interfaces.enp1s0f0np0.useDHCP = true;
   };
 
+  # Use hut for cache
+  nix.settings = {
+    extra-substituters = [ "https://jungle.bsc.es/cache" ];
+    extra-trusted-public-keys = [ "jungle.bsc.es:pEc7MlAT0HEwLQYPtpkPLwRsGf80ZI26aj29zMw/HH0=" ];
+  };
+
   # Configure Nvidia driver to use with CUDA
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.production;
   hardware.graphics.enable = true;
