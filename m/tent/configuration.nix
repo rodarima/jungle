@@ -28,11 +28,6 @@
     defaultGateway = "10.0.44.1";
   };
 
-  nix.settings = {
-    extra-substituters = [ "https://jungle.bsc.es/cache" ];
-    extra-trusted-public-keys = [ "jungle.bsc.es:pEc7MlAT0HEwLQYPtpkPLwRsGf80ZI26aj29zMw/HH0=" ];
-  };
-
   services.prometheus.exporters.node = {
     enable = true;
     enabledCollectors = [ "systemd" ];
