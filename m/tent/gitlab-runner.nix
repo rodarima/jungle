@@ -2,6 +2,7 @@
 
 {
   age.secrets.tent-gitlab-runner-pm-shell.file = ../../secrets/tent-gitlab-runner-pm-shell-token.age;
+  age.secrets.tent-gitlab-runner-bsc-docker.file = ../../secrets/tent-gitlab-runner-bsc-docker-token.age;
 
   services.gitlab-runner = let sec = config.age.secrets; in {
     enable = true;
@@ -19,6 +20,48 @@
           env
         '';
       };
+      gitlab-bsc-docker = {
+        # gitlab.bsc.es still uses the old token mechanism
+        registrationConfigFile = sec.tent-gitlab-runner-bsc-docker.path;
+        tagList = [ "docker" "tent" "nix" ];
+        executor = "docker";
+        dockerImage = "alpine";
+        dockerVolumes = [
+          "/nix/store:/nix/store:ro"
+          "/nix/var/nix/db:/nix/var/nix/db:ro"
+          "/nix/var/nix/daemon-socket:/nix/var/nix/daemon-socket:ro"
+        ];
+        dockerDisableCache = true;
+        registrationFlags = [
+          # Increase build log length to 64 MiB
+          "--output-limit 65536"
+        ];
+        preBuildScript = pkgs.writeScript "setup-container" ''
+          mkdir -p -m 0755 /nix/var/log/nix/drvs
+          mkdir -p -m 0755 /nix/var/nix/gcroots
+          mkdir -p -m 0755 /nix/var/nix/profiles
+          mkdir -p -m 0755 /nix/var/nix/temproots
+          mkdir -p -m 0755 /nix/var/nix/userpool
+          mkdir -p -m 1777 /nix/var/nix/gcroots/per-user
+          mkdir -p -m 1777 /nix/var/nix/profiles/per-user
+          mkdir -p -m 0755 /nix/var/nix/profiles/per-user/root
+          mkdir -p -m 0700 "$HOME/.nix-defexpr"
+          mkdir -p -m 0700 "$HOME/.ssh"
+          cat >> "$HOME/.ssh/known_hosts" << EOF
+          bscpm04.bsc.es ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPx4mC0etyyjYUT2Ztc/bs4ZXSbVMrogs1ZTP924PDgT
+          gitlab-internal.bsc.es ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF9arsAOSRB06hdy71oTvJHG2Mg8zfebADxpvc37lZo3
+          EOF
+          . ${pkgs.nix}/etc/profile.d/nix-daemon.sh
+          # Required to load SSL certificate paths
+          . ${pkgs.cacert}/nix-support/setup-hook
+        '';
+        environmentVariables = {
+          ENV = "/etc/profile";
+          USER = "root";
+          NIX_REMOTE = "daemon";
+          PATH = "${config.system.path}/bin:/bin:/sbin:/usr/bin:/usr/sbin";
+        };
+      };
     };
   };
 
@@ -35,6 +78,7 @@
     home = "/var/lib/gitlab-runner";
     description = "Gitlab Runner";
     group = "gitlab-runner";
+    extraGroups = [ "docker" ];
     createHome = true;
   };
   users.groups.gitlab-runner.gid = config.ids.gids.gitlab-runner;
