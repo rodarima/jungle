@@ -48,6 +48,12 @@ in
           proxy_set_header Upgrade $http_upgrade;
           proxy_set_header Connection "upgrade";
         }
+        location ~ ^/~(.+?)(/.*)?$ {
+          alias /vault/home/$1/public_html$2;
+          index  index.html index.htm;
+          autoindex on;
+          absolute_redirect off;
+        }
       '';
     };
   };
