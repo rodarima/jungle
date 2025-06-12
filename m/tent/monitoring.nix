@@ -166,6 +166,7 @@
             "arenys5.ac.upc.edu"
             "arenys0-2.ac.upc.edu"
             "epi01.bsc.es"
+            "axle.bsc.es"
           ];
         }];
         relabel_configs = [
