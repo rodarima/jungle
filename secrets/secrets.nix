@@ -12,7 +12,7 @@ in
   "gitlab-runner-shell-token.age".publicKeys = hut;
   "gitlab-bsc-docker-token.age".publicKeys = hut;
   "nix-serve.age".publicKeys = mon;
-  "jungle-robot-password.age".publicKeys = hut;
+  "jungle-robot-password.age".publicKeys = mon;
   "ipmi.yml.age".publicKeys = mon;
 
   "ceph-user.age".publicKeys = safe;
