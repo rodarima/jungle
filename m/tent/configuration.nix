@@ -8,6 +8,7 @@
     ../module/ssh-hut-extern.nix
     ./monitoring.nix
     ./nginx.nix
+    ./nix-serve.nix
   ];
 
   # Select the this using the ID to avoid mismatches
