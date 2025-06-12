@@ -7,6 +7,7 @@
     ../module/debuginfod.nix
     ../module/ssh-hut-extern.nix
     ./monitoring.nix
+    ./nginx.nix
   ];
 
   # Select the this using the ID to avoid mismatches
