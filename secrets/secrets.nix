@@ -2,6 +2,7 @@ let
   keys = import ../keys.nix;
   adminsKeys = builtins.attrValues keys.admins;
   hut = [ keys.hosts.hut ] ++ adminsKeys;
+  mon = [ keys.hosts.hut keys.hosts.tent ] ++ adminsKeys;
   # Only expose ceph keys to safe nodes and admins
   safe = keys.hostGroup.safe ++ adminsKeys;
 in
@@ -12,7 +13,7 @@ in
   "gitlab-bsc-docker-token.age".publicKeys = hut;
   "nix-serve.age".publicKeys = hut;
   "jungle-robot-password.age".publicKeys = hut;
-  "ipmi.yml.age".publicKeys = hut;
+  "ipmi.yml.age".publicKeys = mon;
 
   "ceph-user.age".publicKeys = safe;
   "munge-key.age".publicKeys = safe;
