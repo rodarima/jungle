@@ -22,6 +22,8 @@
   # Use performance for benchmarks
   powerManagement.cpuFreqGovernor = "performance";
 
+  services.openssh.settings.X11Forwarding = true;
+
   networking = {
     timeServers = [ "ntp1.upc.edu" "ntp2.upc.edu" ];
     hostName = "fox";
