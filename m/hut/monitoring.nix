@@ -6,7 +6,7 @@
     ../module/meteocat-exporter.nix
     ../module/upc-qaire-exporter.nix
     ./gpfs-probe.nix
-    ./nix-daemon-exporter.nix
+    ../module/nix-daemon-exporter.nix
   ];
 
   age.secrets.grafanaJungleRobotPassword = {
