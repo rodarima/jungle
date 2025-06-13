@@ -11,6 +11,7 @@
     ./nix-serve.nix
     ./gitlab-runner.nix
     ./gitea.nix
+    ../hut/public-inbox.nix
   ];
 
   # Select the this using the ID to avoid mismatches

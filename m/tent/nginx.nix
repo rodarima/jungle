@@ -45,6 +45,10 @@ in
           proxy_pass http://127.0.0.1:5000;
           proxy_redirect http:// $scheme://;
         }
+        location /lists {
+          proxy_pass http://127.0.0.1:8081;
+          proxy_redirect http:// $scheme://;
+        }
         location /grafana {
           proxy_pass http://127.0.0.1:2342;
           proxy_redirect http:// $scheme://;
