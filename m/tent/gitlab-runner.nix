@@ -2,6 +2,7 @@
 
 {
   age.secrets.tent-gitlab-runner-pm-shell.file = ../../secrets/tent-gitlab-runner-pm-shell-token.age;
+  age.secrets.tent-gitlab-runner-pm-docker.file = ../../secrets/tent-gitlab-runner-pm-docker-token.age;
   age.secrets.tent-gitlab-runner-bsc-docker.file = ../../secrets/tent-gitlab-runner-bsc-docker-token.age;
 
   services.gitlab-runner = let sec = config.age.secrets; in {
@@ -20,6 +21,13 @@
           env
         '';
       };
+      gitlab-pm-docker = {
+        authenticationTokenConfigFile = sec.tent-gitlab-runner-pm-docker.path;
+        executor = "docker";
+        dockerImage = "debian:stable";
+      };
+
+      # For gitlab.bsc.es
       gitlab-bsc-docker = {
         # gitlab.bsc.es still uses the old token mechanism
         registrationConfigFile = sec.tent-gitlab-runner-bsc-docker.path;
