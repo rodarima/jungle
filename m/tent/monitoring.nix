@@ -4,6 +4,7 @@
   imports = [
     ../module/meteocat-exporter.nix
     ../module/upc-qaire-exporter.nix
+    ../module/nix-daemon-exporter.nix
   ];
 
   age.secrets.grafanaJungleRobotPassword = {
@@ -116,6 +117,7 @@
             "127.0.0.1:9290" # IPMI exporter for local node
             "127.0.0.1:9928" # UPC Qaire custom exporter
             "127.0.0.1:9929" # Meteocat custom exporter
+            "127.0.0.1:9999" # Nix-daemon custom exporter
           ];
         }];
       }
