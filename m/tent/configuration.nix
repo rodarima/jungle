@@ -12,6 +12,7 @@
     ./gitlab-runner.nix
     ./gitea.nix
     ../hut/public-inbox.nix
+    ../module/p.nix
   ];
 
   # Select the this using the ID to avoid mismatches
@@ -31,6 +32,8 @@
     search = [ "bsc.es" ];
     defaultGateway = "10.0.44.1";
   };
+
+  services.p.enable = true;
 
   services.prometheus.exporters.node = {
     enable = true;

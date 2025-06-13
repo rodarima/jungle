@@ -64,6 +64,9 @@ in
           autoindex on;
           absolute_redirect off;
         }
+        location /p/ {
+          alias /var/lib/p/;
+        }
       '';
     };
   };
