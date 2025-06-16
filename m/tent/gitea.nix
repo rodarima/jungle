@@ -12,6 +12,7 @@
       };
       metrics.ENABLED = true;
       service = {
+        DISABLE_REGISTRATION = true;
         REGISTER_MANUAL_CONFIRM = true;
         ENABLE_NOTIFY_MAIL = true;
       };
