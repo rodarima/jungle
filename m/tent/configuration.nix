@@ -12,6 +12,7 @@
     ./gitlab-runner.nix
     ./gitea.nix
     ../hut/public-inbox.nix
+    ../hut/msmtp.nix
     ../module/p.nix
   ];
 
