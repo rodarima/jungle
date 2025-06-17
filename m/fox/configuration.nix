@@ -22,6 +22,9 @@
   # Use performance for benchmarks
   powerManagement.cpuFreqGovernor = "performance";
 
+  # Disable NUMA balancing
+  boot.kernel.sysctl."kernel.numa_balancing" = 0;
+
   services.openssh.settings.X11Forwarding = true;
 
   networking = {
