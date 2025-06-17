@@ -200,6 +200,17 @@
           module = [ "raccoon" ];
         };
       }
+      {
+        job_name = "ipmi-fox";
+        metrics_path = "/ipmi";
+        static_configs = [
+          { targets = [ "127.0.0.1:9290" ]; }
+        ];
+        params = {
+          target = [ "fox-ipmi.ac.upc.edu" ];
+          module = [ "fox" ];
+        };
+      }
     ];
   };
 }
