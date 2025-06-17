@@ -14,6 +14,7 @@
     ../hut/public-inbox.nix
     ../hut/msmtp.nix
     ../module/p.nix
+    ../module/vpn-dac.nix
   ];
 
   # Select the this using the ID to avoid mismatches

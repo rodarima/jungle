@@ -19,6 +19,8 @@ in
   "tent-gitlab-runner-pm-docker-token.age".publicKeys = tent;
   "tent-gitlab-runner-pm-shell-token.age".publicKeys = tent;
   "tent-gitlab-runner-bsc-docker-token.age".publicKeys = tent;
+  "vpn-dac-login.age".publicKeys = tent;
+  "vpn-dac-client-key.age".publicKeys = tent;
 
   "ceph-user.age".publicKeys = safe;
   "munge-key.age".publicKeys = safe;

@@ -1,0 +1,100 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 2 (0x2)
+    Signature Algorithm: sha256WithRSAEncryption
+        Issuer: C=ES, ST=Barcelona, L=Barcelona, O=Universitat Politecnica de Catalunya, OU=Arquitectura de Computadors, CN=LCAC CA/name=LCAC/emailAddress=lcac@ac.upc.edu
+        Validity
+            Not Before: Jan 12 12:45:41 2016 GMT
+            Not After : Jan 12 12:45:41 2046 GMT
+        Subject: C=ES, ST=Barcelona, L=Barcelona, O=Universitat Politecnica de Catalunya, OU=Arquitectura de Computadors, CN=client/name=LCAC/emailAddress=lcac@ac.upc.edu
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (2048 bit)
+                Modulus:
+                    00:97:99:fa:7a:0e:4d:e2:1d:a5:b1:a8:14:18:64:
+                    c7:66:bf:de:99:1d:92:3b:86:82:4d:95:39:f7:a6:
+                    56:49:97:14:4f:e3:37:00:6c:f4:d0:1d:56:79:e7:
+                    19:b5:dd:36:15:8e:1d:57:7b:59:29:d2:11:bf:58:
+                    48:e0:f7:41:3d:16:64:8d:a2:0b:4a:ac:fa:c6:83:
+                    dc:10:2a:2c:d9:97:48:ee:11:2a:bc:4b:60:dd:b9:
+                    2e:8f:45:ca:87:0b:38:65:1c:f8:a2:1d:f9:50:aa:
+                    6e:60:f9:48:df:57:12:23:e1:e7:0c:81:5c:9f:c5:
+                    b2:e6:99:99:95:30:6d:57:36:06:8c:fd:fb:f9:4f:
+                    60:d2:3c:ba:ae:28:56:2f:da:58:5c:e8:c5:7b:ec:
+                    76:d9:28:6e:fb:8c:07:f9:d7:23:c3:72:76:3c:fa:
+                    dc:20:67:8f:cc:16:e0:91:07:d5:68:f9:20:4d:7d:
+                    5c:2d:02:04:16:76:52:f3:53:be:a3:dc:0d:d5:fb:
+                    6b:55:29:f3:52:35:c8:7d:99:d1:4a:94:be:b1:8e:
+                    fd:85:18:25:eb:41:e9:56:da:af:62:84:20:0a:00:
+                    17:94:92:94:91:6a:f8:54:37:17:ee:1e:bb:fb:93:
+                    71:91:d9:e4:e9:b8:3b:18:7d:6d:7d:4c:ce:58:55:
+                    f9:41
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Basic Constraints: 
+                CA:FALSE
+            Netscape Comment: 
+                Easy-RSA Generated Certificate
+            X509v3 Subject Key Identifier: 
+                1B:88:06:D5:33:1D:5C:48:46:B5:DE:78:89:36:96:91:3A:74:43:18
+            X509v3 Authority Key Identifier: 
+                keyid:DC:9E:CD:7D:5C:1F:53:78:41:1D:78:79:B0:69:96:3A:A6:B4:4E:EA
+                DirName:/C=ES/ST=Barcelona/L=Barcelona/O=Universitat Politecnica de Catalunya/OU=Arquitectura de Computadors/CN=LCAC CA/name=LCAC/emailAddress=lcac@ac.upc.edu
+                serial:91:F5:D7:C3:C0:A6:4E:61
+
+            X509v3 Extended Key Usage: 
+                TLS Web Client Authentication
+            X509v3 Key Usage: 
+                Digital Signature
+            X509v3 Subject Alternative Name: 
+                DNS:client
+    Signature Algorithm: sha256WithRSAEncryption
+         42:e8:50:b2:e7:88:75:86:0b:bb:29:e3:aa:c6:0e:4c:e8:ea:
+         3d:0c:02:31:7f:3b:80:0c:3f:80:af:45:d6:62:27:a0:0e:e7:
+         26:09:12:97:95:f8:d9:9b:89:b5:ef:56:64:f1:de:82:74:e0:
+         31:0a:cc:90:0a:bd:50:b8:54:95:0a:ae:3b:40:df:76:b6:d1:
+         01:2e:f3:96:9f:52:d4:e9:14:6d:b7:14:9d:45:99:33:36:2a:
+         01:0b:15:1a:ed:55:dc:64:83:65:1a:06:42:d9:c7:dc:97:d4:
+         02:81:c2:58:2b:ea:e4:b7:ae:84:3a:e4:3f:f1:2e:fa:ec:f3:
+         40:5d:b8:6a:d5:5e:e1:e8:2f:e2:2f:48:a4:38:a1:4f:22:e3:
+         4f:66:94:aa:02:78:9a:2b:7a:5d:aa:aa:51:a5:e3:d0:91:e9:
+         1d:f9:08:ed:8b:51:c9:a6:af:46:85:b5:1c:ed:12:a1:28:33:
+         75:36:00:d8:5c:14:65:96:c0:28:7d:47:50:a4:89:5f:b0:72:
+         1a:4b:13:17:26:0f:f0:b8:65:3c:e9:96:36:f9:bf:90:59:33:
+         87:1f:01:03:25:f8:f0:3a:9b:33:02:d0:0a:43:b5:0a:cf:62:
+         a1:45:38:37:07:9d:9c:94:0b:31:c6:3c:34:b7:fc:5a:0c:e4:
+         bf:23:f6:7d
+-----BEGIN CERTIFICATE-----
+MIIFqjCCBJKgAwIBAgIBAjANBgkqhkiG9w0BAQsFADCByzELMAkGA1UEBhMCRVMx
+EjAQBgNVBAgTCUJhcmNlbG9uYTESMBAGA1UEBxMJQmFyY2Vsb25hMS0wKwYDVQQK
+EyRVbml2ZXJzaXRhdCBQb2xpdGVjbmljYSBkZSBDYXRhbHVueWExJDAiBgNVBAsT
+G0FycXVpdGVjdHVyYSBkZSBDb21wdXRhZG9yczEQMA4GA1UEAxMHTENBQyBDQTEN
+MAsGA1UEKRMETENBQzEeMBwGCSqGSIb3DQEJARYPbGNhY0BhYy51cGMuZWR1MB4X
+DTE2MDExMjEyNDU0MVoXDTQ2MDExMjEyNDU0MVowgcoxCzAJBgNVBAYTAkVTMRIw
+EAYDVQQIEwlCYXJjZWxvbmExEjAQBgNVBAcTCUJhcmNlbG9uYTEtMCsGA1UEChMk
+VW5pdmVyc2l0YXQgUG9saXRlY25pY2EgZGUgQ2F0YWx1bnlhMSQwIgYDVQQLExtB
+cnF1aXRlY3R1cmEgZGUgQ29tcHV0YWRvcnMxDzANBgNVBAMTBmNsaWVudDENMAsG
+A1UEKRMETENBQzEeMBwGCSqGSIb3DQEJARYPbGNhY0BhYy51cGMuZWR1MIIBIjAN
+BgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAl5n6eg5N4h2lsagUGGTHZr/emR2S
+O4aCTZU596ZWSZcUT+M3AGz00B1WeecZtd02FY4dV3tZKdIRv1hI4PdBPRZkjaIL
+Sqz6xoPcECos2ZdI7hEqvEtg3bkuj0XKhws4ZRz4oh35UKpuYPlI31cSI+HnDIFc
+n8Wy5pmZlTBtVzYGjP37+U9g0jy6rihWL9pYXOjFe+x22Shu+4wH+dcjw3J2PPrc
+IGePzBbgkQfVaPkgTX1cLQIEFnZS81O+o9wN1ftrVSnzUjXIfZnRSpS+sY79hRgl
+60HpVtqvYoQgCgAXlJKUkWr4VDcX7h67+5Nxkdnk6bg7GH1tfUzOWFX5QQIDAQAB
+o4IBljCCAZIwCQYDVR0TBAIwADAtBglghkgBhvhCAQ0EIBYeRWFzeS1SU0EgR2Vu
+ZXJhdGVkIENlcnRpZmljYXRlMB0GA1UdDgQWBBQbiAbVMx1cSEa13niJNpaROnRD
+GDCCAQAGA1UdIwSB+DCB9YAU3J7NfVwfU3hBHXh5sGmWOqa0TuqhgdGkgc4wgcsx
+CzAJBgNVBAYTAkVTMRIwEAYDVQQIEwlCYXJjZWxvbmExEjAQBgNVBAcTCUJhcmNl
+bG9uYTEtMCsGA1UEChMkVW5pdmVyc2l0YXQgUG9saXRlY25pY2EgZGUgQ2F0YWx1
+bnlhMSQwIgYDVQQLExtBcnF1aXRlY3R1cmEgZGUgQ29tcHV0YWRvcnMxEDAOBgNV
+BAMTB0xDQUMgQ0ExDTALBgNVBCkTBExDQUMxHjAcBgkqhkiG9w0BCQEWD2xjYWNA
+YWMudXBjLmVkdYIJAJH118PApk5hMBMGA1UdJQQMMAoGCCsGAQUFBwMCMAsGA1Ud
+DwQEAwIHgDARBgNVHREECjAIggZjbGllbnQwDQYJKoZIhvcNAQELBQADggEBAELo
+ULLniHWGC7sp46rGDkzo6j0MAjF/O4AMP4CvRdZiJ6AO5yYJEpeV+NmbibXvVmTx
+3oJ04DEKzJAKvVC4VJUKrjtA33a20QEu85afUtTpFG23FJ1FmTM2KgELFRrtVdxk
+g2UaBkLZx9yX1AKBwlgr6uS3roQ65D/xLvrs80BduGrVXuHoL+IvSKQ4oU8i409m
+lKoCeJorel2qqlGl49CR6R35CO2LUcmmr0aFtRztEqEoM3U2ANhcFGWWwCh9R1Ck
+iV+wchpLExcmD/C4ZTzpljb5v5BZM4cfAQMl+PA6mzMC0ApDtQrPYqFFODcHnZyU
+CzHGPDS3/FoM5L8j9n0=
+-----END CERTIFICATE-----
