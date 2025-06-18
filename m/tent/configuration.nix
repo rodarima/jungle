@@ -30,7 +30,7 @@
 
     # Only BSC DNSs seem to be reachable from the office VLAN
     nameservers = [ "84.88.52.35" "84.88.52.36" ];
-    search = [ "bsc.es" ];
+    search = [ "bsc.es" "ac.upc.edu" ];
     defaultGateway = "10.0.44.1";
   };
 
