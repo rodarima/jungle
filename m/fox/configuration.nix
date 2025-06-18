@@ -25,6 +25,9 @@
   # Disable NUMA balancing
   boot.kernel.sysctl."kernel.numa_balancing" = 0;
 
+  # Expose kernel addresses
+  boot.kernel.sysctl."kernel.kptr_restrict" = 0;
+
   services.openssh.settings.X11Forwarding = true;
 
   networking = {
