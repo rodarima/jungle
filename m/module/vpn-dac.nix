@@ -26,8 +26,9 @@
         auth-user-pass ${config.age.secrets.vpn-dac-login.path}
         reneg-sec 0
 
-	# Ignore 10.0.0.0 route as is not needed
-        pull-filter ignore "route 10.0.0.0"
+        # Only route fox-ipmi
+        pull-filter ignore "route "
+        route 147.83.35.27 255.255.255.255
       '';
     };
   };
