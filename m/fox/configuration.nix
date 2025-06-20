@@ -4,6 +4,7 @@
   imports = [
     ../common/base.nix
     ../common/xeon/console.nix
+    ../module/amd-uprof.nix
     ../module/emulation.nix
     ../module/nvidia.nix
     ../module/slurm-client.nix
@@ -28,6 +29,8 @@
 
   # Use performance for benchmarks
   powerManagement.cpuFreqGovernor = "performance";
+
+  services.amd-uprof.enable = true;
 
   # Disable NUMA balancing
   boot.kernel.sysctl."kernel.numa_balancing" = 0;
