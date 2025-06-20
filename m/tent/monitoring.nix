@@ -165,6 +165,7 @@
             "anella-bsc.cesca.cat"
             "upc-anella.cesca.cat"
             "fox.ac.upc.edu"
+            "fox-ipmi.ac.upc.edu"
             "arenys5.ac.upc.edu"
             "arenys0-2.ac.upc.edu"
             "epi01.bsc.es"
