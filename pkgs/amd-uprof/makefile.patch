@@ -1,0 +1,66 @@
+--- a/Makefile	2025-06-19 20:36:49.346693267 +0200
++++ b/Makefile	2025-06-19 20:42:29.778088660 +0200
+@@ -27,7 +27,7 @@ MODULE_VERSION=$(shell cat AMDPowerProfi
+ MODULE_NAME_KO=$(MODULE_NAME).ko
+ 
+ # check is module inserted
+-MODPROBE_OUTPUT=$(shell lsmod | grep $(MODULE_NAME))
++#MODPROBE_OUTPUT=$(shell lsmod | grep $(MODULE_NAME))
+ 
+ # check pcore dkms status
+ PCORE_DKMS_STATUS=$(shell dkms status | grep $(MODULE_NAME) | grep $(MODULE_VERSION))
+@@ -50,7 +50,7 @@ endif
+ # “-Wno-missing-attributes” is added for GCC version >= 9.0 and kernel version <= 5.00
+ G_VERSION=9
+ K_VERSION=5
+-KERNEL_MAJOR_VERSION=$(shell uname -r | cut -f1 -d.)
++KERNEL_MAJOR_VERSION=$(shell echo "$(KERNEL_VERSION)" | cut -f1 -d.)
+ GCCVERSION = $(shell gcc -dumpversion | cut -f1 -d.)
+ ifeq ($(G_VERSION),$(firstword $(sort $(GCCVERSION) $(G_VERSION))))
+ 	ifeq ($(K_VERSION),$(lastword $(sort $(KERNEL_MAJOR_VERSION) $(K_VERSION))))
+@@ -66,17 +66,7 @@ ${MODULE_NAME}-objs :=  src/PmcDataBuffe
+ 
+ # make
+ all:
+-	@chmod a+x ./AMDPPcert.sh
+-	@./AMDPPcert.sh 0 1; echo $$? > $(PWD)/sign_status;
+-	@SIGSTATUS1=`cat $(PWD)/sign_status | tr -d '\n'`; \
+-                if [ $$SIGSTATUS1 -eq 1 ]; then \
+-			exit 1; \
+-		fi
+-	@make -C /lib/modules/$(KERNEL_VERSION)/build M=$(PWD) $(MAKE_OPTS) EXTRA_CFLAGS="$(EXTRA_CFLAGS)" modules
+-	@SIGSTATUS3=`cat $(PWD)/sign_status | tr -d '\n'`; \
+-                if [ $$SIGSTATUS3 -eq 0 ]; then \
+-			./AMDPPcert.sh 1 $(MODULE_NAME_KO); \
+-		fi
++	make -C $(KERNEL_DIR) M=$(PWD) $(MAKE_OPTS) EXTRA_CFLAGS="$(EXTRA_CFLAGS)" modules
+ 
+ # make clean
+ clean:
+@@ -84,23 +74,9 @@ clean:
+ 
+ # make install
+ install:
+-	@mkdir -p /lib/modules/`uname -r`/kernel/drivers/extra
+-	@rm  -f /lib/modules/`uname -r`/kernel/drivers/extra/$(MODULE_NAME_KO)
+-	@cp $(MODULE_NAME_KO) /lib/modules/`uname -r`/kernel/drivers/extra/
+-	@depmod -a
+-	@if [ ! -z "$(MODPROBE_OUTPUT)" ]; then \
+-		echo "Uninstalling AMDPowerProfiler Linux kernel module.";\
+-		rmmod $(MODULE_NAME);\
+-	fi
+-	@modprobe $(MODULE_NAME) 2> $(PWD)/sign_status1; \
+-		cat $(PWD)/sign_status1 | grep "Key was rejected by service"; \
+-		echo $$? > $(PWD)/sign_status; SIGSTATUS1=`cat $(PWD)/sign_status | tr -d '\n'`; \
+-                if [ $$SIGSTATUS1 -eq 0 ]; then \
+-			echo "ERROR: Secure Boot enabled, correct key is not yet enrolled in BIOS key table"; \
+-			exit 1; \
+-		else \
+-			cat $(PWD)/sign_status1; \
+-		fi
++	mkdir -p $(INSTALL_MOD_PATH)/lib/modules/$(KERNEL_VERSION)/kernel/drivers/extra/
++	cp -a $(MODULE_NAME_KO) $(INSTALL_MOD_PATH)/lib/modules/$(KERNEL_VERSION)/kernel/drivers/extra/
++
+ # make dkms
+ dkms:
+ 	@chmod a+x ./AMDPPcert.sh
