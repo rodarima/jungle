@@ -21,6 +21,8 @@
     }
   ];
 
+  environment.enableAllTerminfo = true;
+
   environment.variables = {
     EDITOR = "vim";
     VISUAL = "vim";
