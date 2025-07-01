@@ -43,19 +43,21 @@ let
 
   source = if (useGit) then git else release;
 
-in stdenv.mkDerivation rec {
+in stdenv.mkDerivation {
   pname = "clang-ompss2";
   inherit (source) src version;
 
   enableParallelBuilding = true;
-  isClang = true;
 
   passthru = {
     CC = "clang";
     CXX = "clang++";
-  };
 
-  isClangWithOmpss = true;
+    isClang = true;
+    isClangWithOmpss = true;
+
+    inherit gcc zlib;
+  };
 
   nativeBuildInputs = [
     bash
