@@ -140,6 +140,20 @@
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKGt0ESYxekBiHJQowmKpfdouw0hVm3N7tUMtAaeLejK vincent@varch"
         ];
       };
+
+      pmartin1 = {
+        # Arbitrary UID but large so it doesn't collide with other users on ssfhead.
+        uid = 9652;
+        isNormalUser = true;
+        home = "/home/Computational/pmartin1";
+        description = "Pedro J. Martinez-Ferrer";
+        group = "Computational";
+        hosts = [ "fox" ];
+        hashedPassword = "$6$nIgDMGnt4YIZl3G.$.JQ2jXLtDPRKsbsJfJAXdSvjDIzRrg7tNNjPkLPq3KJQhMjfDXRUvzagUHUU2TrE2hHM8/6uq8ex0UdxQ0ysl.";
+        openssh.authorizedKeys.keys = [
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIV5LEAII5rfe1hYqDYIIrhb1gOw7RcS1p2mhOTqG+zc pedro@pedro-ThinkPad-P14s-Gen-2a"
+        ];
+      };
     };
 
     groups = {
