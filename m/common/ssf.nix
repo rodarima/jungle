@@ -4,6 +4,7 @@
     ./xeon.nix
     ./ssf/fs.nix
     ./ssf/net.nix
+    ./ssf/hosts.nix
     ./ssf/ssh.nix
   ];
 }

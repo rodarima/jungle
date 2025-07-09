@@ -11,6 +11,7 @@ rec {
     lake2 = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINo66//S1yatpQHE/BuYD/Gfq64TY7ZN5XOGXmNchiO0 lake2";
     fox   = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDwItIk5uOJcQEVPoy/CVGRzfmE1ojrdDcI06FrU4NFT fox";
     tent  = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFAtTpHtdYoelbknD/IcfBlThwLKJv/dSmylOgpg3FRM tent";
+    apex  = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBvUFjSfoxXnKwXhEFXx5ckRKJ0oewJ82mRitSMNMKjh apex";
   };
 
   hostGroup = with hosts; rec {
@@ -19,8 +20,9 @@ rec {
     playground = [ eudy koro ];
     storage    = [ bay lake2 ];
     monitor    = [ hut ];
+    login      = [ apex ];
 
-    system     = storage ++ monitor;
+    system     = storage ++ monitor ++ login;
     safe       = system ++ compute;
     all        = safe ++ playground;
   };

@@ -27,6 +27,7 @@ in
       lake2   = mkConf "lake2";
       raccoon = mkConf "raccoon";
       fox     = mkConf "fox";
+      apex    = mkConf "apex";
     };
 
     packages.x86_64-linux = self.nixosConfigurations.hut.pkgs // {

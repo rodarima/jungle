@@ -6,7 +6,7 @@
     switch-opa = { pos=41; size=1; };
 
     # SSF login
-    ssfhead = { pos=39; size=2; label="SSFHEAD"; board="R2208WTTYSR"; contact="operations@bsc.es"; };
+    apex = { pos=39; size=2; label="SSFHEAD"; board="R2208WTTYSR"; contact="rodrigo.arias@bsc.es"; };
 
     # Storage
     bay   = { pos=38; size=1; label="MDS01"; board="S2600WT2R"; sn="BQWL64850303"; contact="rodrigo.arias@bsc.es"; };
