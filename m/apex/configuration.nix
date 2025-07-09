@@ -15,6 +15,10 @@
     "megaraid_sas" # For HW RAID
   ];
 
+  environment.systemPackages = with pkgs; [
+    storcli # To manage HW RAID
+  ];
+
   fileSystems."/home" = {
     device = "/dev/disk/by-label/home";
     fsType = "ext4";

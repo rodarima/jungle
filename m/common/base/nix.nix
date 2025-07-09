@@ -6,6 +6,8 @@
     (import ../../../pkgs/overlay.nix)
   ];
 
+  nixpkgs.config.allowUnfree = true;
+
   nix = {
     nixPath = [
       "nixpkgs=${nixpkgs}"
