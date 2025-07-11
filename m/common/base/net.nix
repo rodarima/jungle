@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   networking = {
@@ -9,6 +9,9 @@
       enable = true;
       allowedTCPPorts = [ 22 ];
     };
+
+    # Make sure we use iptables
+    nftables.enable = lib.mkForce false;
 
     hosts = {
       "84.88.53.236" = [ "apex" "ssfhead.bsc.es" "ssfhead" ];
