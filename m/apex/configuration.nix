@@ -54,6 +54,17 @@
     };
   };
 
+  # Use SSH tunnel to reach internal hosts
+  programs.ssh.extraConfig = ''
+    Host bscpm04.bsc.es gitlab-internal.bsc.es knights3.bsc.es
+      ProxyCommand nc -X connect -x localhost:23080 %h %p
+    Host raccoon
+      HostName knights3.bsc.es
+      ProxyCommand nc -X connect -x localhost:23080 %h %p
+    Host tent
+      ProxyJump raccoon
+  '';
+
   # Use tent for cache
   nix.settings = {
     extra-substituters = [ "https://jungle.bsc.es/cache" ];
