@@ -28,10 +28,5 @@
       iptables -A nixos-fw -p udp -s 10.0.40.0/24 --dport 4002  -j nixos-fw-accept
       iptables -A nixos-fw -p udp -s 10.0.40.0/24 --dport 20048 -j nixos-fw-accept
     '';
-    # Flush all rules and chains on stop so it won't break on start
-    extraStopCommands = ''
-      iptables -F
-      iptables -X
-    '';
   };
 }
