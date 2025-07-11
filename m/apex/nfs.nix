@@ -7,7 +7,7 @@
     mountdPort = 4002;
     statdPort = 4000;
     exports = ''
-      /home 10.0.40.0/24(rw,sync,no_subtree_check,root_squash)
+      /home 10.0.40.0/24(rw,sync,no_subtree_check,no_root_squash)
     '';
   };
   networking.firewall = {
