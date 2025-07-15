@@ -70,9 +70,9 @@
         description = "Antoni Navarro";
         group = "Computational";
         hosts = [ "apex" "hut" "tent" "raccoon" "fox" "weasel" ];
-        hashedPassword = "$6$QdNDsuLehoZTYZlb$CDhCouYDPrhoiB7/seu7RF.Gqg4zMQz0n5sA4U1KDgHaZOxy2as9pbIGeF8tOHJKRoZajk5GiaZv0rZMn7Oq31";
+        hashedPassword = "$6$EgturvVYXlKgP43g$gTN78LLHIhaF8hsrCXD.O6mKnZSASWSJmCyndTX8QBWT6wTlUhcWVAKz65lFJPXjlJA4u7G1ydYQ0GG6Wk07b1";
         openssh.authorizedKeys.keys = [
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILWjRSlKgzBPZQhIeEtk6Lvws2XNcYwHcwPv4osSgst5 anavarro@ssfhead"
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMsbM21uepnJwPrRe6jYFz8zrZ6AYMtSEvvt4c9spmFP toni@delltoni"
         ];
       };
 
