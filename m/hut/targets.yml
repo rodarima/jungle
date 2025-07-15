@@ -4,7 +4,7 @@
   - xeon03-ipmi
   - xeon04-ipmi
   - koro-ipmi
-  - xeon06-ipmi
+  - weasel-ipmi
   - hut-ipmi
   - eudy-ipmi
   # Storage
