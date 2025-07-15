@@ -65,6 +65,14 @@
       ProxyJump raccoon
   '';
 
+  networking.firewall = {
+    extraCommands = ''
+      # Blackhole BSC vulnerability scanner (OpenVAS) as it is spamming our
+      # logs. Insert as first position so we also protect SSH.
+      iptables -I nixos-fw 1 -p tcp -s 192.168.8.16 -j nixos-fw-refuse
+    '';
+  };
+
   # Use tent for cache
   nix.settings = {
     extra-substituters = [ "https://jungle.bsc.es/cache" ];
