@@ -19,7 +19,7 @@
     xeon03 = { pos=33; size=1; label="SSF-XEON03"; board="S2600WTTR"; sn="BQWL64750826"; contact="rodrigo.arias@bsc.es"; };
     # Slot 34 empty
     koro   = { pos=31; size=1; label="SSF-XEON05"; board="S2600WTTR"; sn="BQWL64954293"; contact="rodrigo.arias@bsc.es"; };
-    xeon06 = { pos=30; size=1; label="SSF-XEON06"; board="S2600WTTR"; sn="BQWL64750846"; contact="antoni.navarro@bsc.es"; };
+    weasel = { pos=30; size=1; label="SSF-XEON06"; board="S2600WTTR"; sn="BQWL64750846"; contact="antoni.navarro@bsc.es"; };
     hut    = { pos=29; size=1; label="SSF-XEON07"; board="S2600WTTR"; sn="BQWL64751184"; contact="rodrigo.arias@bsc.es"; };
     eudy   = { pos=28; size=1; label="SSF-XEON08"; board="S2600WTTR"; sn="BQWL64756586"; contact="aleix.rocanonell@bsc.es"; };
 

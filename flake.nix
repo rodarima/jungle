@@ -28,6 +28,7 @@ in
       raccoon = mkConf "raccoon";
       fox     = mkConf "fox";
       apex    = mkConf "apex";
+      weasel  = mkConf "weasel";
     };
 
     packages.x86_64-linux = self.nixosConfigurations.hut.pkgs // {
