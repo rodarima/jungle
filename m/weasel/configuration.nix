@@ -14,6 +14,10 @@
   # Users with sudo access
   users.groups.wheel.members = [ "abonerib" "anavarro" ];
 
+  # Run julia installed with juliaup using julia's own libraries:
+  # NIX_LD_LIBRARY_PATH=~/.julia/juliaup/${VERS}/lib/julia ~/.juliaup/bin/julia
+  programs.nix-ld.enable = true;
+
   networking = {
     hostName = "weasel";
     interfaces.eno1.ipv4.addresses = [ {
