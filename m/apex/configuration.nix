@@ -70,6 +70,8 @@
       # Blackhole BSC vulnerability scanner (OpenVAS) as it is spamming our
       # logs. Insert as first position so we also protect SSH.
       iptables -I nixos-fw 1 -p tcp -s 192.168.8.16 -j nixos-fw-refuse
+      # Same with opsmonweb01.bsc.es which seems to be trying to access via SSH
+      iptables -I nixos-fw 2 -p tcp -s 84.88.52.176 -j nixos-fw-refuse
     '';
   };
 
