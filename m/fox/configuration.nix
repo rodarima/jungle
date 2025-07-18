@@ -5,6 +5,7 @@
     ../common/base.nix
     ../common/xeon/console.nix
     ../module/emulation.nix
+    ../module/nvidia.nix
   ];
 
   # Select the this using the ID to avoid mismatches
@@ -53,12 +54,8 @@
     extra-trusted-public-keys = [ "jungle.bsc.es:pEc7MlAT0HEwLQYPtpkPLwRsGf80ZI26aj29zMw/HH0=" ];
   };
 
-  # Configure Nvidia driver to use with CUDA
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.production;
+  # Recommended for new graphics cards
   hardware.nvidia.open = true;
-  hardware.graphics.enable = true;
-  nixpkgs.config.nvidia.acceptLicense = true;
-  services.xserver.videoDrivers = [ "nvidia" ];
 
   # Mount NVME disks
   fileSystems."/nvme0" = { device = "/dev/disk/by-label/nvme0"; fsType = "ext4"; };
