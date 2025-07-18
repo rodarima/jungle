@@ -51,6 +51,7 @@
 
   # Configure Nvidia driver to use with CUDA
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.production;
+  hardware.nvidia.open = false; # Maxwell is older than Turing architecture
   hardware.graphics.enable = true;
   nixpkgs.config.nvidia.acceptLicense = true;
   services.xserver.videoDrivers = [ "nvidia" ];
