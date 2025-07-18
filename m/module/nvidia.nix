@@ -6,4 +6,9 @@
   hardware.graphics.enable = true;
   nixpkgs.config.nvidia.acceptLicense = true;
   services.xserver.videoDrivers = [ "nvidia" ];
+
+  # enable support for derivations which require nvidia-gpu to be available
+  # > requiredSystemFeatures = [ "cuda" ];
+  programs.nix-required-mounts.enable = true;
+  programs.nix-required-mounts.presets.nvidia-gpu.enable = true;
 }
