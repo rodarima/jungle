@@ -1,9 +1,8 @@
 {
   programs.ssh.extraConfig = ''
-    Host ssfhead
+    Host apex ssfhead
       HostName ssflogin.bsc.es
     Host hut
-      ProxyJump ssfhead
-      HostName xeon07
+      ProxyJump apex
   '';
 }
