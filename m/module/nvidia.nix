@@ -11,4 +11,8 @@
   # > requiredSystemFeatures = [ "cuda" ];
   programs.nix-required-mounts.enable = true;
   programs.nix-required-mounts.presets.nvidia-gpu.enable = true;
+  # They forgot to add the symlink
+  programs.nix-required-mounts.allowedPatterns.nvidia-gpu.paths = [
+    config.systemd.tmpfiles.settings.graphics-driver."/run/opengl-driver"."L+".argument
+  ];
 }
