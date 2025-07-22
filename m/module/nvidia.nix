@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ lib, config, pkgs, ... }:
 {
   # Configure Nvidia driver to use with CUDA
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.production;
@@ -15,4 +15,6 @@
   programs.nix-required-mounts.allowedPatterns.nvidia-gpu.paths = [
     config.systemd.tmpfiles.settings.graphics-driver."/run/opengl-driver"."L+".argument
   ];
+
+  environment.systemPackages = [ pkgs.cudainfo ];
 }
