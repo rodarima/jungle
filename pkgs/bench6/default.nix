@@ -27,10 +27,13 @@ stdenv.mkDerivation rec {
     rev = gitCommit;
   };
 
-  buildInputs = [
-    bigotes
+  nativeBuildInputs = [
     cmake
     clangOmpss2
+  ];
+
+  buildInputs = [
+    bigotes
     openmp
     openmpv
     nanos6
