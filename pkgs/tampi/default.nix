@@ -41,20 +41,24 @@ let
     };
   };
   source = if (useGit) then git else release;
-in stdenv.mkDerivation rec {
+in stdenv.mkDerivation {
   pname = "tampi";
   inherit (source) src version;
   enableParallelBuilding = true;
   separateDebugInfo = true;
-  buildInputs = [
-    autoreconfHook
-    automake
+
+  nativeBuildInputs = [
     autoconf
-    libtool
+    automake
+    autoreconfHook
+    gcc
     gnumake
+    libtool
+  ];
+
+  buildInputs = [
     boost
     mpi
-    gcc
   ] ++ optional (enableOvni) ovni;
   configureFlags = optional (enableOvni) "--with-ovni=${ovni}";
   dontDisableStatic = true;
