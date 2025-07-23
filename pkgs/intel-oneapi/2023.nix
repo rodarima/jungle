@@ -78,7 +78,7 @@ let
   uncompressDebs = debs: name: stdenv.mkDerivation {
     name = name;
     srcs = debs;
-    buildInputs = [ dpkg ];
+    nativeBuildInputs = [ dpkg ];
     phases = [ "installPhase" ];
     installPhase = ''
       mkdir -p $out
@@ -108,14 +108,17 @@ let
       "intel-oneapi-mpi-${version}"
     ];
 
-    buildInputs = [
+    nativeBuildInputs = [
+      autoPatchelfHook
       rsync
+    ];
+
+    buildInputs = [
       libfabric
       zlib
       stdenv.cc.cc.lib
     ];
 
-    nativeBuildInputs = [ autoPatchelfHook ];
     phases = [ "installPhase" "fixupPhase" ];
     dontStrip = true;
     installPhase = ''
@@ -154,7 +157,6 @@ let
 
     buildInputs = [
       intel-mpi
-      rsync
       libffi_3_3
       libelf
       libxml2
@@ -162,7 +164,10 @@ let
       stdenv.cc.cc.lib
     ];
 
-    nativeBuildInputs = [ autoPatchelfHook ];
+    nativeBuildInputs = [
+      autoPatchelfHook
+      rsync
+    ];
     phases = [ "installPhase" "fixupPhase" ];
     dontStrip = true;
 
@@ -192,7 +197,6 @@ let
     buildInputs = [
       intel-mpi
       intel-tbb
-      rsync
       libffi_3_3
       libelf
       libxml2
@@ -201,7 +205,10 @@ let
       stdenv.cc.cc.lib
     ];
 
-    nativeBuildInputs = [ autoPatchelfHook ];
+    nativeBuildInputs = [
+      autoPatchelfHook
+      rsync
+    ];
     phases = [ "installPhase" "fixupPhase" ];
     dontStrip = true;
 
@@ -254,7 +261,6 @@ let
     buildInputs = [
       intel-mpi
       intel-compiler-shared
-      rsync
       libffi_3_3
       libelf
       libxml2
@@ -262,7 +268,10 @@ let
       stdenv.cc.cc.lib
     ];
 
-    nativeBuildInputs = [ autoPatchelfHook ];
+    nativeBuildInputs = [
+      autoPatchelfHook
+      rsync
+    ];
 
     phases = [ "installPhase" "fixupPhase" ];
 
@@ -337,7 +346,6 @@ let
 
     buildInputs = [
       intel-compiler-shared
-      rsync
       libffi_3_3
       libelf
       libxml2
@@ -345,7 +353,10 @@ let
       stdenv.cc.cc.lib
     ];
 
-    nativeBuildInputs = [ autoPatchelfHook ];
+    nativeBuildInputs = [
+      autoPatchelfHook
+      rsync
+    ];
     autoPatchelfIgnoreMissingDeps = [ "libtbb.so.12" "libtbbmalloc.so.2" "libze_loader.so.1" ];
 
     phases = [ "installPhase" "fixupPhase" ];
