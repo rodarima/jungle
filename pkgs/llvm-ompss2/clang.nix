@@ -57,18 +57,20 @@ in stdenv.mkDerivation rec {
 
   isClangWithOmpss = true;
 
-  nativeBuildInputs = [ zlib ];
-
-  buildInputs = [
-    which
+  nativeBuildInputs = [
     bash
+    cmake
+    elfutils
+    llvmPackages_latest.lld
+    pkg-config
     python3
     perl
-    cmake
-    llvmPackages_latest.lld
-    elfutils
+    which
+    zlib
+  ];
+
+  buildInputs = [
     libffi
-    pkg-config
     zlib
     gcc.cc.lib # Required for libstdc++.so.6
   ];
