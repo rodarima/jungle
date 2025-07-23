@@ -88,11 +88,19 @@ in
     dontStrip = enableDebug;
     separateDebugInfo = true;
 
-    buildInputs = [
+    nativeBuildInputs = [
       autoconf
       automake
       libtool
       pkg-config
+
+      # TODO: papi_version is needed for configure:
+      # ./configure: line 27378: papi_version: command not found
+      # This probably breaks cross-compilation
+      papi
+    ];
+
+    buildInputs = [
       boost
       numactl
       hwloc
@@ -104,7 +112,7 @@ in
     postInstall = ''
       mkdir -p $out/nix-support
       echo "export NANOS6_HOME=$out" >> $out/nix-support/setup-hook
-    ''; 
+    '';
 
     meta = with lib; {
       homepage = "https://github.com/bsc-pm/nanos6";
