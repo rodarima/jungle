@@ -18,8 +18,12 @@ stdenv.mkDerivation rec {
   hardeningDisable = [ "all" ];
   dontStrip = true;
   configureFlags = [ "--with-ovni=${ovni}" ];
-  buildInputs = [
+
+  nativeBuildInputs = [
     autoreconfHook
+  ];
+
+  buildInputs = [
     ovni
     mpi
   ];
