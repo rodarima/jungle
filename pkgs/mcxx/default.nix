@@ -32,17 +32,20 @@ stdenv.mkDerivation rec {
 
   enableParallelBuilding = true;
 
-  buildInputs = [
+  nativeBuildInputs = [
     autoreconfHook
-    nanos6
-    gperf
+    bison
+    flex
     python3
     gfortran
     pkg-config
-    sqlite.dev
-    bison
-    flex
+    gperf
     gcc
+  ];
+
+  buildInputs = [
+    nanos6
+    sqlite.dev
   ];
 
   patches = [ ./intel.patch ];
