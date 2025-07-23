@@ -44,14 +44,17 @@ stdenv.mkDerivation rec {
     "--enable-openmp"
   ];
 
-  buildInputs = [
+  nativeBuildInputs = [
     autoreconfHook
-    boost
-    libxml2.dev
-    xml2
     autoconf
     automake
     pkg-config
+  ];
+
+  buildInputs = [
+    boost
+    libxml2.dev
+    xml2
     zlib
   ];
 }

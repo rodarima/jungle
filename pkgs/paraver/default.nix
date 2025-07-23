@@ -60,17 +60,17 @@ stdenv.mkDerivation rec {
   ];
 
   nativeBuildInputs = [
+    autoconf
+    automake
+    autoreconfHook
     wrapGAppsHook
   ];
 
   buildInputs = [
-    autoreconfHook
     boost
     libxml2.dev
     xml2
     wx
-    autoconf
-    automake
     paraverKernel
     openssl.dev
   ];

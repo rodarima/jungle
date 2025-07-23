@@ -61,13 +61,16 @@ stdenv.mkDerivation rec {
     "--with-wx-config=${wx}/bin/wx-config"
   ];
 
+  nativeBuildInputs = [
+    autoconf
+    automake
+  ];
+
   buildInputs = [
     boost
     xml2
     libxml2.dev
     wx
-    autoconf
-    automake
     openssl.dev
   ];
 
