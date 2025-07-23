@@ -24,9 +24,10 @@ stdenv.mkDerivation rec {
 
   doCheck = true;
   enableParallelBuilding = true;
+  nativeBuildInputs = [ mpiAll ];
   buildInputs = [ mpiAll ];
   hardeningDisable = [ "all" ];
-  configureFlags = [ 
+  configureFlags = [
       "CC=mpicc"
       "CXX=mpicxx"
   ];
@@ -40,7 +41,7 @@ stdenv.mkDerivation rec {
 
   meta = {
     description = "OSU Micro-Benchmarks";
-    homepage = http://mvapich.cse.ohio-state.edu/benchmarks/;
+    homepage = "http://mvapich.cse.ohio-state.edu/benchmarks/";
     maintainers = [ ];
     platforms = lib.platforms.all;
   };
