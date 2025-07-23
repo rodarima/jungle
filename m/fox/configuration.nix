@@ -8,6 +8,10 @@
     ../module/nvidia.nix
   ];
 
+  # Don't turn off on August as UPC has different dates.
+  # Fox works fine on power cuts.
+  systemd.timers.august-shutdown.enable = false;
+
   # Select the this using the ID to avoid mismatches
   boot.loader.grub.device = "/dev/disk/by-id/wwn-0x500a07514b0c1103";
 
