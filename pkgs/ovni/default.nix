@@ -13,8 +13,6 @@
 , useMpi ? (stdenv.buildPlatform.canExecute stdenv.hostPlatform)
 }:
 
-with lib;
-
 let
   release = rec {
     version = "1.12.0";
@@ -45,7 +43,7 @@ in
     postPatch = ''
       patchShebangs --build test/
     '';
-    nativeBuildInputs = [ cmake ];
+    nativeBuildInputs = [ cmake ] ++ lib.optionals (useMpi) [ mpi ];
     buildInputs = lib.optionals (useMpi) [ mpi ];
     cmakeBuildType = if (enableDebug) then "Debug" else "Release";
     cmakeFlags = [
