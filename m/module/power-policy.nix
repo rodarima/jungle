@@ -18,13 +18,15 @@ in
     systemd.services."power-policy" = {
       description = "Set power policy to use via IPMI";
       wantedBy = [ "multi-user.target" ];
+      unitConfig = {
+        StartLimitBurst = "10";
+        StartLimitIntervalSec = "10m";
+      };
       serviceConfig = {
         ExecStart = "${pkgs.ipmitool}/bin/ipmitool chassis policy ${cfg}";
         Type = "oneshot";
         Restart = "on-failure";
         RestartSec = "5s";
-        StartLimitBurst = "10";
-        StartLimitIntervalSec = "10m";
       };
     };
   };
