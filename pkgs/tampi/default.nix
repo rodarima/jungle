@@ -8,7 +8,6 @@
 , gnumake
 , boost
 , mpi
-, gcc
 , autoreconfHook
 , enableOvni ? true
 , ovni ? null
@@ -51,7 +50,6 @@ in stdenv.mkDerivation {
     autoconf
     automake
     autoreconfHook
-    gcc
     gnumake
     libtool
   ];
