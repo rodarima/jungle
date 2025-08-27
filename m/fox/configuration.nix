@@ -35,6 +35,16 @@
 
   services.openssh.settings.X11Forwarding = true;
 
+  # Use SSH tunnel to reach internal hosts
+  programs.ssh.extraConfig = ''
+    Host bscpm04.bsc.es gitlab-internal.bsc.es tent
+      ProxyJump raccoon
+    Host raccoon
+      ProxyJump apex
+      HostName 127.0.0.1
+      Port 22022
+  '';
+
   networking = {
     timeServers = [ "ntp1.upc.edu" "ntp2.upc.edu" ];
     hostName = "fox";
