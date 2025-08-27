@@ -165,7 +165,7 @@
         hosts = [ "apex" "weasel" ];
         hashedPassword = "$6$0IsZlju8jFukLlAw$VKm0FUXbS.mVmPm3rcJeizTNU4IM5Nmmy21BvzFL.cQwvlGwFI1YWRQm6gsbd4nbg47mPDvYkr/ar0SlgF6GO1";
         openssh.authorizedKeys.keys = [
-          "sh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHA65zvvG50iuFEMf+guRwZB65jlGXfGLF4HO+THFaed csiringo@bsc.es"
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHA65zvvG50iuFEMf+guRwZB65jlGXfGLF4HO+THFaed csiringo@bsc.es"
         ];
       };
     };
