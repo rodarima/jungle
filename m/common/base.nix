@@ -11,6 +11,7 @@
     ./base/hw.nix
     ./base/net.nix
     ./base/nix.nix
+    ./base/sys-devices.nix
     ./base/ntp.nix
     ./base/rev.nix
     ./base/ssh.nix
