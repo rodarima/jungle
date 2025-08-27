@@ -5,7 +5,6 @@
     ../common/xeon.nix
     ../common/ssf/hosts.nix
     ../module/ceph.nix
-    ../module/slurm-client.nix
     ../module/slurm-server.nix
     ./nfs.nix
   ];
