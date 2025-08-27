@@ -7,7 +7,6 @@
     ../module/ceph.nix
     ../module/debuginfod.nix
     ../module/emulation.nix
-    ../module/slurm-client.nix
     ./gitlab-runner.nix
     ./monitoring.nix
     ./nfs.nix

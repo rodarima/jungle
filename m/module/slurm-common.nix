@@ -33,7 +33,6 @@ in {
     clusterName = "jungle";
     nodeName = [
       "owl[1,2]  Sockets=2 CoresPerSocket=14 ThreadsPerCore=2 Feature=owl"
-      "hut       Sockets=2 CoresPerSocket=14 ThreadsPerCore=2"
     ];
 
     partitionName = [
@@ -65,7 +64,7 @@ in {
       SuspendTimeout=60
       ResumeProgram=${resumeProgram}
       ResumeTimeout=300
-      SuspendExcNodes=hut
+      #SuspendExcNodes=
 
       # Turn the nodes off after 1 hour of inactivity
       SuspendTime=3600
