@@ -11,7 +11,6 @@
     ./gitlab-runner.nix
     ./monitoring.nix
     ./nfs.nix
-    ./slurm-server.nix
     ./nix-serve.nix
     ./public-inbox.nix
     ./gitea.nix
