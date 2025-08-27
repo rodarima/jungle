@@ -154,6 +154,20 @@
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIV5LEAII5rfe1hYqDYIIrhb1gOw7RcS1p2mhOTqG+zc pedro@pedro-ThinkPad-P14s-Gen-2a"
         ];
       };
+
+      csiringo = {
+        # Arbitrary UID but large so it doesn't collide with other users on ssfhead.
+        uid = 9653;
+        isNormalUser = true;
+        home = "/home/Computational/csiringo";
+        description = "Cesare Siringo";
+        group = "Computational";
+        hosts = [ "apex" "weasel" ];
+        hashedPassword = "$6$0IsZlju8jFukLlAw$VKm0FUXbS.mVmPm3rcJeizTNU4IM5Nmmy21BvzFL.cQwvlGwFI1YWRQm6gsbd4nbg47mPDvYkr/ar0SlgF6GO1";
+        openssh.authorizedKeys.keys = [
+          "sh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHA65zvvG50iuFEMf+guRwZB65jlGXfGLF4HO+THFaed csiringo@bsc.es"
+        ];
+      };
     };
 
     groups = {
