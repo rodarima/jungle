@@ -36,4 +36,11 @@
   networking.hosts = {
     "10.100.0.30" = [ "apex" ];
   };
+
+  networking.firewall = {
+    extraCommands = ''
+      # Accept slurm connections to slurmd from apex (via wireguard)
+      iptables -A nixos-fw -p tcp -i wg0 -s 10.100.0.30/32 -d 10.100.0.1/32 --dport 6818 -j nixos-fw-accept
+    '';
+  };
 }
