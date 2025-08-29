@@ -33,6 +33,9 @@
     nameservers = [ "84.88.52.35" "84.88.52.36" ];
     search = [ "bsc.es" "ac.upc.edu" ];
     defaultGateway = "10.0.44.1";
+    hosts = {
+      "84.88.53.236" = [ "apex" ];
+    };
   };
 
   services.p.enable = true;
