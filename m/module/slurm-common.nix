@@ -1,8 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  suspendProgram = pkgs.writeScript "suspend.sh" ''
-    #!/usr/bin/env bash
+  suspendProgram = pkgs.writeShellScript "suspend.sh" ''
     exec 1>>/var/log/power_save.log 2>>/var/log/power_save.log
     set -x
     export "PATH=/run/current-system/sw/bin:$PATH"
@@ -14,8 +13,7 @@ let
     done
   '';
 
-  resumeProgram = pkgs.writeScript "resume.sh" ''
-    #!/usr/bin/env bash
+  resumeProgram = pkgs.writeShellScript "resume.sh" ''
     exec 1>>/var/log/power_save.log 2>>/var/log/power_save.log
     set -x
     export "PATH=/run/current-system/sw/bin:$PATH"
