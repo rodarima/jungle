@@ -7,6 +7,7 @@
     ../module/ceph.nix
     ../module/slurm-server.nix
     ./nfs.nix
+    ./wireguard.nix
   ];
 
   # Don't install grub MBR for now
