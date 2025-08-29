@@ -31,10 +31,12 @@ in {
     clusterName = "jungle";
     nodeName = [
       "owl[1,2]  Sockets=2 CoresPerSocket=14 ThreadsPerCore=2 Feature=owl"
+      "fox       Sockets=8 CoresPerSocket=24 ThreadsPerCore=1"
     ];
 
     partitionName = [
       "owl Nodes=owl[1-2]     Default=YES DefaultTime=01:00:00 MaxTime=INFINITE State=UP"
+      "fox Nodes=fox          Default=NO  DefaultTime=01:00:00 MaxTime=INFINITE State=UP"
     ];
 
     # See slurm.conf(5) for more details about these options.
@@ -62,7 +64,7 @@ in {
       SuspendTimeout=60
       ResumeProgram=${resumeProgram}
       ResumeTimeout=300
-      #SuspendExcNodes=
+      SuspendExcNodes=fox
 
       # Turn the nodes off after 1 hour of inactivity
       SuspendTime=3600

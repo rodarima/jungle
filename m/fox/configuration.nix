@@ -6,6 +6,7 @@
     ../common/xeon/console.nix
     ../module/emulation.nix
     ../module/nvidia.nix
+    ../module/slurm-client.nix
     ./wireguard.nix
   ];
 
