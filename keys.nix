@@ -31,6 +31,7 @@ rec {
   admins = {
     "rarias@hut"  = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE1oZTPtlEXdGt0Ak+upeCIiBdaDQtcmuWoTUCVuSVIR rarias@hut";
     "rarias@tent" = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIwlWSBTZi74WTz5xn6gBvTmCoVltmtIAeM3RMmkh4QZ rarias@tent";
+    "rarias@fox"  = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDSbw3REAKECV7E2c/e2XJITudJQWq2qDSe2N1JHqHZd rarias@fox";
     root          = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIII/1TNArcwA6D47mgW4TArwlxQRpwmIGiZDysah40Gb root@hut";
   };
 }

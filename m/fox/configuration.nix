@@ -6,6 +6,7 @@
     ../common/xeon/console.nix
     ../module/emulation.nix
     ../module/nvidia.nix
+    ./wireguard.nix
   ];
 
   # Don't turn off on August as UPC has different dates.

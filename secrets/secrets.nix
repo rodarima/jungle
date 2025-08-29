@@ -2,6 +2,7 @@ let
   keys = import ../keys.nix;
   adminsKeys = builtins.attrValues keys.admins;
   hut = [ keys.hosts.hut ] ++ adminsKeys;
+  fox = [ keys.hosts.fox ] ++ adminsKeys;
   mon = [ keys.hosts.hut keys.hosts.tent ] ++ adminsKeys;
   tent = [ keys.hosts.tent ] ++ adminsKeys;
   # Only expose ceph keys to safe nodes and admins
@@ -24,4 +25,6 @@ in
 
   "ceph-user.age".publicKeys = safe;
   "munge-key.age".publicKeys = safe;
+
+  "wg-fox.age".publicKeys = fox;
 }
