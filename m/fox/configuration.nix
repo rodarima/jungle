@@ -37,6 +37,8 @@
 
   services.openssh.settings.X11Forwarding = true;
 
+  services.fail2ban.enable = true;
+
   # Use SSH tunnel to reach internal hosts
   programs.ssh.extraConfig = ''
     Host bscpm04.bsc.es gitlab-internal.bsc.es tent
