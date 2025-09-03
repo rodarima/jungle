@@ -12,7 +12,7 @@
   networking.wireguard.interfaces = {
     # "wg0" is the network interface name. You can name the interface arbitrarily.
     wg0 = {
-      ips = [ "10.100.0.30/24" ];
+      ips = [ "10.106.0.30/24" ];
       listenPort = 666;
       privateKeyFile = config.age.secrets.wgApex.path;
       # Public key: VwhcN8vSOzdJEotQTpmPHBC52x3Hbv1lkFIyKubrnUA=
@@ -20,7 +20,7 @@
         {
           name = "Fox";
           publicKey = "VfMPBQLQTKeyXJSwv8wBhc6OV0j2qAxUpX3kLHunK2Y=";
-          allowedIPs = [ "10.100.0.0/24" ];
+          allowedIPs = [ "10.106.0.0/24" ];
           endpoint = "fox.ac.upc.edu:666";
           # Send keepalives every 25 seconds. Important to keep NAT tables alive.
           persistentKeepalive = 25;
@@ -30,6 +30,6 @@
   };
 
   networking.hosts = {
-    "10.100.0.1" = [ "fox" ];
+    "10.106.0.1" = [ "fox" ];
   };
 }
