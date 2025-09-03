@@ -79,6 +79,13 @@
   fileSystems."/nvme0" = { device = "/dev/disk/by-label/nvme0"; fsType = "ext4"; };
   fileSystems."/nvme1" = { device = "/dev/disk/by-label/nvme1"; fsType = "ext4"; };
 
+  # Mount the NFS home
+  fileSystems."/nfs/home" = {
+    device = "10.106.0.30:/home";
+    fsType = "nfs";
+    options = [ "nfsvers=3" "rsize=1024" "wsize=1024" "cto" "nofail" ];
+  };
+
   # Make a /nvme{0,1}/$USER directory for each user.
   systemd.services.create-nvme-dirs = let
     # Take only normal users in fox
