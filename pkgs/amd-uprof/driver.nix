@@ -19,7 +19,7 @@ in stdenv.mkDerivation {
   '';
   hardeningDisable = [ "pic" "format" ];
   nativeBuildInputs = kernel.moduleBuildDependencies;
-  patches = [ ./makefile.patch ];
+  patches = [ ./makefile.patch ./hrtimer.patch ];
   makeFlags = [
     "KERNEL_VERSION=${kernel.modDirVersion}"
     "KERNEL_DIR=${kernel.dev}/lib/modules/${kernel.modDirVersion}/build"

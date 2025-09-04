@@ -1,0 +1,31 @@
+--- a/src/PmcTimerConfig.c	2025-09-04 12:17:16.771707049 +0200
++++ b/src/PmcTimerConfig.c	2025-09-04 12:17:04.878515468 +0200
+@@ -99,7 +99,7 @@ static void PmcInitTimer(void* pInfo)
+ 
+     DRVPRINT("pTimerConfig(%p)", pTimerConfig);
+ 
+-    hrtimer_init(&pTimerConfig->m_hrTimer, CLOCK_MONOTONIC, HRTIMER_MODE_REL_PINNED);
++    hrtimer_setup(&pTimerConfig->m_hrTimer, PmcTimerCallback, CLOCK_MONOTONIC, HRTIMER_MODE_REL_PINNED);
+ }
+ 
+ int PmcSetupTimer(ClientContext* pClientCtx)
+@@ -157,7 +157,6 @@ int PmcSetupTimer(ClientContext* pClient
+                 {
+                     /* Interval in ms */
+                     pTimerConfig->m_time = ktime_set(interval / 1000, interval * 1000000);
+-                    pTimerConfig->m_hrTimer.function = PmcTimerCallback;
+ 
+                     DRVPRINT("retVal(%d) m_time(%lld)", retVal, (long long int) pTimerConfig->m_time);
+                 }
+--- a/src/PwrProfTimer.c	2025-09-04 12:18:08.750544327 +0200
++++ b/src/PwrProfTimer.c	2025-09-04 12:18:28.557863382 +0200
+@@ -573,8 +573,7 @@ void InitHrTimer(uint32 cpu)
+     pCoreClientData = &per_cpu(g_coreClientData, cpu);
+ 
+     // initialize HR timer
+-    hrtimer_init(&pCoreClientData->m_hrTimer, CLOCK_MONOTONIC, HRTIMER_MODE_REL_PINNED);
+-    pCoreClientData->m_hrTimer.function = &HrTimerCallback;
++    hrtimer_setup(&pCoreClientData->m_hrTimer, &HrTimerCallback, CLOCK_MONOTONIC, HRTIMER_MODE_REL_PINNED);
+ 
+     return;
+ } // InitHrTimer
