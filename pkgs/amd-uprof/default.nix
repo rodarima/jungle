@@ -3,6 +3,19 @@
 , curl
 , cacert
 , runCommandLocal
+, autoPatchelfHook
+, elfutils
+, glib
+, libGL
+, ncurses5
+, xorg
+, zlib
+, libxkbcommon
+, freetype
+, fontconfig
+, libGLU
+, dbus
+, rocmPackages
 }:
 
 let
@@ -31,11 +44,36 @@ in
     src = uprofSrc;
     dontStrip = true;
     phases = [ "installPhase" "fixupPhase" ];
+    nativeBuildInputs = [ autoPatchelfHook ];
+    buildInputs = [
+      stdenv.cc.cc.lib
+      ncurses5
+      elfutils
+      glib
+      libGL
+      libGLU
+      xorg.libX11
+      xorg.libXext
+      xorg.libXi
+      xorg.libXmu
+      xorg.libxcb
+      xorg.xcbutilwm
+      xorg.xcbutilrenderutil
+      xorg.xcbutilkeysyms
+      xorg.xcbutilimage
+      fontconfig.lib
+      libxkbcommon
+      zlib
+      freetype
+      dbus
+      rocmPackages.rocprofiler
+    ];
     installPhase = ''
       set -x
       mkdir -p $out
       tar -x -v -C $out --strip-components=1 -f $src
       rm $out/bin/AMDPowerProfilerDriverSource.tar.gz
+      patchelf --replace-needed libroctracer64.so.1 libroctracer64.so $out/bin/ProfileAgents/x64/libAMDGpuAgent.so
       set +x
     '';
   }
