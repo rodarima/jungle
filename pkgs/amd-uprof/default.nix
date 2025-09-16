@@ -16,6 +16,7 @@
 , libGLU
 , dbus
 , rocmPackages
+, libxcrypt-legacy
 }:
 
 let
@@ -52,6 +53,7 @@ in
       glib
       libGL
       libGLU
+      libxcrypt-legacy
       xorg.libX11
       xorg.libXext
       xorg.libXi
@@ -74,6 +76,7 @@ in
       tar -x -v -C $out --strip-components=1 -f $src
       rm $out/bin/AMDPowerProfilerDriverSource.tar.gz
       patchelf --replace-needed libroctracer64.so.1 libroctracer64.so $out/bin/ProfileAgents/x64/libAMDGpuAgent.so
+      patchelf --add-needed libcrypt.so.1 --add-needed libstdc++.so.6 $out/bin/AMDuProfSys
       set +x
     '';
   }
