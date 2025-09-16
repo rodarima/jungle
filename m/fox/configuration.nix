@@ -38,6 +38,9 @@
   # Expose kernel addresses
   boot.kernel.sysctl."kernel.kptr_restrict" = 0;
 
+  # Disable NMI watchdog to save one hw counter (for AMD uProf)
+  boot.kernel.sysctl."kernel.nmi_watchdog" = 0;
+
   services.openssh.settings.X11Forwarding = true;
 
   services.fail2ban.enable = true;
