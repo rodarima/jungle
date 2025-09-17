@@ -67,6 +67,9 @@ in
         location /p/ {
           alias /var/lib/p/;
         }
+        location /pub/ {
+          alias /vault/pub/;
+        }
       '';
     };
   };
