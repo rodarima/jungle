@@ -17,12 +17,15 @@
 , dbus
 , rocmPackages
 , libxcrypt-legacy
+, numactl
+, radare2
 }:
 
 let
   version = "5.1.701";
   tarball = "AMDuProf_Linux_x64_${version}.tar.bz2";
 
+  # NOTE: Remember to update the radare2 patch below if AMDuProfPcm changes.
   uprofSrc = runCommandLocal tarball {
     nativeBuildInputs = [ curl ];
     outputHash = "sha256-j9gxcBcIg6Zhc5FglUXf/VV9bKSo+PAKeootbN7ggYk=";
@@ -45,7 +48,7 @@ in
     src = uprofSrc;
     dontStrip = true;
     phases = [ "installPhase" "fixupPhase" ];
-    nativeBuildInputs = [ autoPatchelfHook ];
+    nativeBuildInputs = [ autoPatchelfHook radare2 ];
     buildInputs = [
       stdenv.cc.cc.lib
       ncurses5
@@ -69,6 +72,7 @@ in
       freetype
       dbus
       rocmPackages.rocprofiler
+      numactl
     ];
     installPhase = ''
       set -x
@@ -77,6 +81,9 @@ in
       rm $out/bin/AMDPowerProfilerDriverSource.tar.gz
       patchelf --replace-needed libroctracer64.so.1 libroctracer64.so $out/bin/ProfileAgents/x64/libAMDGpuAgent.so
       patchelf --add-needed libcrypt.so.1 --add-needed libstdc++.so.6 $out/bin/AMDuProfSys
+      echo "16334a51fcc48668307ad94e20482ca4  $out/bin/AMDuProfPcm" | md5sum -c -
+      radare2 -w -q -i ${./libnuma.r2} $out/bin/AMDuProfPcm
+      patchelf --add-needed libnuma.so $out/bin/AMDuProfPcm
       set +x
     '';
   }
