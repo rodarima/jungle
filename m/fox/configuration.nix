@@ -22,7 +22,7 @@
   swapDevices = lib.mkForce [];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
-  boot.kernelModules = [ "kvm-amd" "amd_uncore" ];
+  boot.kernelModules = [ "kvm-amd" "amd_uncore" "amd_hsmp" ];
 
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   hardware.cpu.intel.updateMicrocode = lib.mkForce false;
