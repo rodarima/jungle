@@ -24,7 +24,7 @@
       peers = [
         # List of allowed peers.
         { 
-          name = "Apex";
+          name = "apex";
           publicKey = "VwhcN8vSOzdJEotQTpmPHBC52x3Hbv1lkFIyKubrnUA=";
           # List of IPs assigned to this peer within the tunnel subnet. Used to configure routing.
           allowedIPs = [ "10.106.0.30/32" ];

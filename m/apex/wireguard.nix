@@ -18,7 +18,7 @@
       # Public key: VwhcN8vSOzdJEotQTpmPHBC52x3Hbv1lkFIyKubrnUA=
       peers = [
         {
-          name = "Fox";
+          name = "fox";
           publicKey = "VfMPBQLQTKeyXJSwv8wBhc6OV0j2qAxUpX3kLHunK2Y=";
           allowedIPs = [ "10.106.0.0/24" ];
           endpoint = "fox.ac.upc.edu:666";
