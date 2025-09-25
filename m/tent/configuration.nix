@@ -3,9 +3,9 @@
 {
   imports = [
     ../common/xeon.nix
+    ../common/ssf/hosts.nix
     ../module/emulation.nix
     ../module/debuginfod.nix
-    ../module/ssh-hut-extern.nix
     ./monitoring.nix
     ./nginx.nix
     ./nix-serve.nix

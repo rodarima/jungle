@@ -3,9 +3,9 @@
 {
   imports = [
     ../common/base.nix
+    ../common/ssf/hosts.nix
     ../module/emulation.nix
     ../module/debuginfod.nix
-    ../module/ssh-hut-extern.nix
     ../module/nvidia.nix
     ../eudy/kernel/perf.nix
     ./wireguard.nix

@@ -16,6 +16,8 @@
     hosts = {
       "84.88.53.236" = [ "ssfhead.bsc.es" "ssfhead" ];
       "84.88.51.142" = [ "raccoon-ipmi" ];
+      "192.168.11.12" = [ "bscpm04.bsc.es" ];
+      "192.168.11.15" = [ "gitlab-internal.bsc.es" ];
     };
   };
 }

@@ -56,17 +56,6 @@
     };
   };
 
-  # Use SSH tunnel to reach internal hosts
-  programs.ssh.extraConfig = ''
-    Host bscpm04.bsc.es gitlab-internal.bsc.es knights3.bsc.es
-      ProxyCommand nc -X connect -x localhost:23080 %h %p
-    Host raccoon
-      HostName knights3.bsc.es
-      ProxyCommand nc -X connect -x localhost:23080 %h %p
-    Host tent
-      ProxyJump raccoon
-  '';
-
   networking.firewall = {
     extraCommands = ''
       # Blackhole BSC vulnerability scanner (OpenVAS) as it is spamming our
