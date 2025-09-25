@@ -8,6 +8,7 @@
     ../module/ssh-hut-extern.nix
     ../module/nvidia.nix
     ../eudy/kernel/perf.nix
+    ./wireguard.nix
   ];
 
   # Don't install Grub on the disk yet

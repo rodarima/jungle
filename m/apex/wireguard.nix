@@ -25,11 +25,18 @@
           # Send keepalives every 25 seconds. Important to keep NAT tables alive.
           persistentKeepalive = 25;
         }
+        {
+          name = "raccoon";
+          publicKey = "QUfnGXSMEgu2bviglsaSdCjidB51oEDBFpnSFcKGfDI=";
+          allowedIPs = [ "10.106.0.236/32" "192.168.0.0/16" "10.0.44.0/24" ];
+        }
       ];
     };
   };
 
   networking.hosts = {
     "10.106.0.1" = [ "fox" ];
+    "10.106.0.236" = [ "raccoon" ];
+    "10.0.44.4" = [ "tent" ];
   };
 }

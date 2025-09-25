@@ -4,6 +4,7 @@
     ./xeon.nix
     ./ssf/fs.nix
     ./ssf/hosts.nix
+    ./ssf/hosts-remote.nix
     ./ssf/net.nix
     ./ssf/ssh.nix
   ];
