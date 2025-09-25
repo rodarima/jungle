@@ -3,6 +3,7 @@
 {
   imports = [
     ../common/ssf.nix
+    ../module/hut-substituter.nix
   ];
 
   # Select this using the ID to avoid mismatches

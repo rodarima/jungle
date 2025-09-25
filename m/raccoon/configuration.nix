@@ -9,6 +9,7 @@
     ../module/nvidia.nix
     ../eudy/kernel/perf.nix
     ./wireguard.nix
+    ../module/hut-substituter.nix
   ];
 
   # Don't install Grub on the disk yet
@@ -49,11 +50,6 @@
     device = "10.106.0.30:/home";
     fsType = "nfs";
     options = [ "nfsvers=3" "rsize=1024" "wsize=1024" "cto" "nofail" ];
-  };
-
-  nix.settings = {
-    extra-substituters = [ "https://jungle.bsc.es/cache" ];
-    extra-trusted-public-keys = [ "jungle.bsc.es:pEc7MlAT0HEwLQYPtpkPLwRsGf80ZI26aj29zMw/HH0=" ];
   };
 
   # Enable performance governor

@@ -4,6 +4,7 @@
   imports = [
     ../common/ssf.nix
     ../module/monitoring.nix
+    ../module/hut-substituter.nix
   ];
 
   boot.loader.grub.device = "/dev/disk/by-id/wwn-0x55cd2e414d53563a";

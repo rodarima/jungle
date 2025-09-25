@@ -3,6 +3,7 @@
 {
   imports = [
     ../common/ssf.nix
+    ../module/hut-substituter.nix
     ../module/monitoring.nix
   ];
 

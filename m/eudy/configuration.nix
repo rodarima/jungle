@@ -9,6 +9,7 @@
     ./cpufreq.nix
     ./fs.nix
     ./users.nix
+    ../module/hut-substituter.nix
     ../module/debuginfod.nix
   ];
 

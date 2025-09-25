@@ -15,6 +15,7 @@
     ../hut/msmtp.nix
     ../module/p.nix
     ../module/vpn-dac.nix
+    ../module/hut-substituter.nix
   ];
 
   # Select the this using the ID to avoid mismatches

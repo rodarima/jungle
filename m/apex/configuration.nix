@@ -5,6 +5,7 @@
     ../common/xeon.nix
     ../common/ssf/hosts.nix
     ../module/ceph.nix
+    ../module/hut-substituter.nix
     ../module/slurm-server.nix
     ./nfs.nix
     ./wireguard.nix
@@ -64,11 +65,5 @@
       # Same with opsmonweb01.bsc.es which seems to be trying to access via SSH
       iptables -I nixos-fw 2 -p tcp -s 84.88.52.176 -j nixos-fw-refuse
     '';
-  };
-
-  # Use tent for cache
-  nix.settings = {
-    extra-substituters = [ "https://jungle.bsc.es/cache" ];
-    extra-trusted-public-keys = [ "jungle.bsc.es:pEc7MlAT0HEwLQYPtpkPLwRsGf80ZI26aj29zMw/HH0=" ];
   };
 }
