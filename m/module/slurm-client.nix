@@ -12,6 +12,12 @@
     # https://github.com/NixOS/nixpkgs/commit/ae93ed0f0d4e7be0a286d1fca86446318c0c6ffb
     # https://bugs.schedmd.com/show_bug.cgi?id=2095#c24
     KillMode = lib.mkForce "control-group";
+
+    # If slurmd fails to contact the control server it will fail, causing the
+    # node to remain out of service until manually restarted. Always try to
+    # restart it.
+    Restart = "always";
+    RestartSec = "30s";
   };
 
   services.slurm.client.enable = true;
