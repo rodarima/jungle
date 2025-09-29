@@ -35,6 +35,8 @@ stdenv.mkDerivation rec {
       CFLAGS=-Wno-implicit-int
       CPPFLAGS=-I${libtirpc.dev}/include/tirpc
       LDFLAGS=-ltirpc
+      CC=$CC
+      AR=$AR
     )
   '';
 
