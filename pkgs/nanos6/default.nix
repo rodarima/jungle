@@ -48,6 +48,8 @@ let
   };
 
   source = if (useGit) then git else release;
+
+  isCross = stdenv.hostPlatform != stdenv.buildPlatform;
 in
   stdenv.mkDerivation (source // {
     pname = "nanos6";
@@ -72,9 +74,13 @@ in
       "--disable-all-instrumentations"
       "--enable-ovni-instrumentation"
       "--with-ovni=${ovni}"
+      "--with-boost=${boost.dev}"
     ] ++
       (optional enableJemalloc "--with-jemalloc=${jemallocNanos6}") ++
-      (optional enableGlibcxxDebug "CXXFLAGS=-D_GLIBCXX_DEBUG");
+      (optional enableGlibcxxDebug "CXXFLAGS=-D_GLIBCXX_DEBUG") ++
+      # Most nanos6 api symbols are resolved at runtime, so prefer
+      # ifunc by default
+      (optional isCross "--with-symbol-resolution=ifunc");
 
     postConfigure = lib.optionalString (!enableDebug) ''
       # Disable debug
