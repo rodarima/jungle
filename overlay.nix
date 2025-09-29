@@ -96,6 +96,10 @@ in bscPkgs // {
     tests = final.runCommand "ci-tests" { }
       "printf '%s\n' ${toString (collect isDerivation final.bsc-ci.test)} > $out";
 
+    cross = prev.lib.genAttrs [ "riscv64" ] (target:
+      final.pkgsCross.${target}.bsc-ci.pkgs
+    );
+
     all = final.runCommand "ci-all" { }
     ''
       deps="${toString [ final.bsc-ci.pkgsList final.bsc-ci.tests ]}"

@@ -17,7 +17,7 @@
       legacyPackages.${system} = pkgs;
 
       hydraJobs = {
-        inherit (self.legacyPackages.${system}.bsc-ci) test pkgs;
+        inherit (self.legacyPackages.${system}.bsc-ci) test pkgs cross;
       };
 
       # propagate nixpkgs lib, so we can do bscpkgs.lib
