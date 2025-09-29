@@ -6,5 +6,8 @@
     {
       extra-substituters = [ "http://hut/cache" ];
       extra-trusted-public-keys = [ "jungle.bsc.es:pEc7MlAT0HEwLQYPtpkPLwRsGf80ZI26aj29zMw/HH0=" ];
+
+      # Set a low timeout in case hut is down
+      connect-timeout = 3; # seconds
     };
 }
