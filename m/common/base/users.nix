@@ -162,7 +162,7 @@
         home = "/home/Computational/csiringo";
         description = "Cesare Siringo";
         group = "Computational";
-        hosts = [ "apex" "weasel" ];
+        hosts = [ ];
         hashedPassword = "$6$0IsZlju8jFukLlAw$VKm0FUXbS.mVmPm3rcJeizTNU4IM5Nmmy21BvzFL.cQwvlGwFI1YWRQm6gsbd4nbg47mPDvYkr/ar0SlgF6GO1";
         openssh.authorizedKeys.keys = [
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHA65zvvG50iuFEMf+guRwZB65jlGXfGLF4HO+THFaed csiringo@bsc.es"
