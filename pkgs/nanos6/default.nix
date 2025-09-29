@@ -16,6 +16,7 @@
 , jemallocNanos6 ? null
 , cachelineBytes ? 64
 , enableGlibcxxDebug ? false
+, enablePapi ? stdenv.hostPlatform == stdenv.buildPlatform # Disabled when cross-compiling
 , useGit ? false
 , gitUrl ? "ssh://git@bscpm04.bsc.es/nanos6/nanos6"
 , gitBranch ? "master"
@@ -97,16 +98,14 @@ in
       # TODO: papi_version is needed for configure:
       # ./configure: line 27378: papi_version: command not found
       # This probably breaks cross-compilation
-      papi
-    ];
+    ] ++ lib.optionals enablePapi [ papi ];
 
     buildInputs = [
       boost
       numactl
       hwloc
-      papi
       ovni
-    ];
+    ] ++ lib.optionals enablePapi [ papi ];
 
     # Create a script that sets NANOS6_HOME
     postInstall = ''

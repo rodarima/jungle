@@ -20,6 +20,7 @@
 #, python3Packages
 , installShellFiles
 , symlinkJoin
+, enablePapi ? stdenv.hostPlatform == stdenv.buildPlatform # Disabled when cross-compiling
 }:
 
 let
@@ -87,7 +88,7 @@ stdenv.mkDerivation rec {
       --enable-sampling
       --with-unwind=${libunwind.dev}
       --with-xml-prefix=${libxml2.dev}
-      --with-papi=${papi}
+      ${lib.optionalString enablePapi "--with-papi=${papi}"}
       ${if (mpi != null) then ''--with-mpi=${mpi}''
         else ''--without-mpi''}
       --without-dyninst)

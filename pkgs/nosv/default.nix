@@ -7,7 +7,7 @@
 , numactl
 , hwloc
 , papi
-, enablePapi ? true
+, enablePapi ? stdenv.hostPlatform == stdenv.buildPlatform # Disabled when cross-compiling
 , cacheline ? 64 # bits
 , ovni ? null
 , useGit ? false
