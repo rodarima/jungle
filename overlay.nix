@@ -129,6 +129,13 @@ let
         (builtins.attrValues crossSet.riscv64));
 
 in bscPkgs // {
+
+  lib = prev.lib // {
+    maintainers = prev.lib.maintainers // {
+      bsc = import ./pkgs/maintainers.nix;
+    };
+  };
+
   # Prevent accidental usage of bsc-ci attribute
   bsc-ci = throw "the bsc-ci attribute is deprecated, use bsc.ci";
 

@@ -45,6 +45,10 @@ in
     hydraJobs = self.legacyPackages.${system}.bsc.hydraJobs;
 
     # propagate nixpkgs lib, so we can do bscpkgs.lib
-    inherit (nixpkgs) lib;
+    lib = nixpkgs.lib // {
+      maintainers = nixpkgs.lib.maintainers // {
+        bsc = import ./pkgs/maintainers.nix;
+      };
+    };
   };
 }
