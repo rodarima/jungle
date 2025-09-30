@@ -1,4 +1,4 @@
-{ jemalloc }:
+{ jemalloc, lib }:
 
 jemalloc.overrideAttrs (old: {
   configureFlags = old.configureFlags ++ [
@@ -8,5 +8,6 @@ jemalloc.overrideAttrs (old: {
   hardeningDisable = [ "all" ];
   meta = old.meta // {
     description = old.meta.description + " (for Nanos6)";
+    maintainers = (old.meta.maintainers or []) ++ (with lib.maintainers.bsc; [ rarias ]);
   };
 })

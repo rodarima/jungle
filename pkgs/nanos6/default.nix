@@ -119,11 +119,12 @@ in
       echo "export NANOS6_HOME=$out" >> $out/nix-support/setup-hook
     '';
 
-    meta = with lib; {
+    meta = {
       homepage = "https://github.com/bsc-pm/nanos6";
       description = "Nanos6 runtime for OmpSs-2" +
         optionalString (enableDebug) " (with debug symbols)";
-      platforms = platforms.linux;
-      license = licenses.gpl3;
+      maintainers = with lib.maintainers.bsc; [ rarias ];
+      platforms = lib.platforms.linux;
+      license = lib.licenses.gpl3Plus;
     };
   })

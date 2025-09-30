@@ -33,4 +33,8 @@ in mpich.overrideAttrs (old: {
     "FCFLAGS=-fallow-argument-mismatch"
   ];
   hardeningDisable = [ "all" ];
+
+  meta = old.meta // {
+    maintainers = old.meta.maintainers ++ (with lib.maintainers.bsc; [ rarias ]);
+  };
 })

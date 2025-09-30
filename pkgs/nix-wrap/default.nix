@@ -1,5 +1,6 @@
 {
   stdenv
+, lib
 , bashInteractive
 , busybox
 , nix
@@ -86,5 +87,14 @@ stdenv.mkDerivation rec {
     mkdir -p $out/share
     cp ${nix_conf} $out/share/nix.conf
   '';
+
+  meta = {
+    homepage = null;
+    description = "nix bubblewrap wrapper";
+    maintainers = [ ];
+    broken = true;
+    platforms = lib.platforms.linux;
+    license = lib.licenses.mit;
+  };
 }
 

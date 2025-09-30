@@ -1,5 +1,6 @@
 {
   stdenv
+, lib
 , fetchFromGitHub
 , autoreconfHook
 , boost
@@ -57,4 +58,13 @@ stdenv.mkDerivation rec {
     xml2
     zlib
   ];
+
+  meta = {
+    homepage = "https://tools.bsc.es/paraver";
+    downloadPage = "https://github.com/bsc-performance-tools/paraver-kernel";
+    description = "Kernel library used by wxparaver";
+    maintainers = with lib.maintainers.bsc; [ rarias ];
+    platforms = lib.platforms.linux;
+    license = lib.licenses.lgpl21Plus;
+  };
 }

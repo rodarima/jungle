@@ -1,5 +1,6 @@
 {
   stdenv
+, lib
 , glibc
 }:
 
@@ -15,4 +16,11 @@ stdenv.mkDerivation rec {
   makeFlags = [ "DESTDIR=$(out)" ];
   preBuild = "env";
   dontPatchShebangs = true;
+
+  meta = {
+    homepage = "https://gitlab.pm.bsc.es/rarias/nixtools";
+    description = "nix bubblewrap wrapper";
+    maintainers = with lib.maintainers.bsc; [ rarias ];
+    platforms = lib.platforms.linux;
+  };
 }

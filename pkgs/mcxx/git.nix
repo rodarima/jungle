@@ -1,5 +1,6 @@
 {
   stdenv
+, lib
 , fetchFromGitHub
 , autoreconfHook
 , nanos6
@@ -57,4 +58,12 @@ stdenv.mkDerivation rec {
 # Fails with "memory exhausted" with bison 3.7.1
 #    "--enable-bison-regeneration"
   ];
+
+  meta = {
+    homepage = "https://github.com/bsc-pm/mcxx";
+    description = "C/C++/Fortran source-to-source compilation infrastructure aimed at fast prototyping";
+    maintainers = with lib.maintainers.bsc; [ rpenacob ];
+    platforms = lib.platforms.linux;
+    license = lib.licenses.gpl3Plus;
+  };
 }

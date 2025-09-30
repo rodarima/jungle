@@ -59,4 +59,12 @@ in
       hwloc
       ovni
     ] ++ lib.optionals enablePapi [ papi ];
+
+    meta = {
+      homepage = "https://gitlab.bsc.es/nos-v/nos-v";
+      description = "Tasking library enables the co-execution of multiple applications with system-wide scheduling and a centralized management of resources";
+      maintainers = with lib.maintainers.bsc; [ abonerib rarias ];
+      platforms = lib.platforms.linux;
+      license = lib.licenses.gpl3Plus;
+    };
   }

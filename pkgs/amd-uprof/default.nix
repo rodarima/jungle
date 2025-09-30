@@ -86,4 +86,13 @@ in
       patchelf --add-needed libnuma.so $out/bin/AMDuProfPcm
       set +x
     '';
+
+    meta = {
+      description = "Performance analysis tool-suite for x86 based applications";
+      homepage = "https://www.amd.com/es/developer/uprof.html";
+      platforms = lib.platforms.linux;
+      license = lib.licenses.unfree;
+      maintainers = with lib.maintainers.bsc; [ rarias varcila ];
+    };
+
   }

@@ -42,8 +42,9 @@ stdenv.mkDerivation rec {
 
   meta = {
     description = "lmbench";
-    homepage = "http://www.bitmover.com/lmbench/";
-    maintainers = [ ];
+    homepage = "https://github.com/intel/lmbench";
+    maintainers = with lib.maintainers.bsc; [ rarias ];
     platforms = lib.platforms.all;
+    license = lib.licenses.gpl2Plus;
   };
 }

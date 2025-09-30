@@ -111,4 +111,13 @@ stdenv.mkDerivation rec {
 #    then [ "--enable-openmp" ]
 #    else []
 #  );
+
+  meta = {
+    homepage = "https://github.com/bsc-performance-tools/extrae";
+    description = "Instrumentation framework to generate execution traces of the most used parallel runtimes";
+    maintainers = [ ];
+    broken = true;
+    platforms = lib.platforms.linux;
+    license = lib.licenses.lgpl21Plus;
+  };
 }

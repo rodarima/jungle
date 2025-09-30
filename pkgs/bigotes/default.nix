@@ -1,5 +1,6 @@
 {
   stdenv
+, lib
 , fetchFromGitHub
 , cmake
 }:
@@ -14,4 +15,12 @@ stdenv.mkDerivation {
     sha256 = "sha256-ktxM3pXiL8YXSK+/IKWYadijhYXqGoLY6adLk36iigE=";
   };
   nativeBuildInputs = [ cmake ];
+
+  meta = {
+    homepage = "https://github.com/rodarima/bigotes";
+    description = "Versatile benchmark tool";
+    maintainers = with lib.maintainers.bsc; [ rarias ];
+    platforms = lib.platforms.linux;
+    license = lib.licenses.gpl3Plus;
+  };
 }

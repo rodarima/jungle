@@ -1,5 +1,6 @@
 {
   stdenv
+, lib
 , bigotes
 , cmake
 , clangOmpss2
@@ -58,4 +59,12 @@ stdenv.mkDerivation rec {
   ];
   hardeningDisable = [ "all" ];
   dontStrip = true;
+
+  meta = {
+    homepage = "https://gitlab.pm.bsc.es/rarias/bench6";
+    description = "Set of micro-benchmarks for OmpSs-2 and several mini-apps";
+    maintainers = with lib.maintainers.bsc; [ rarias ];
+    platforms = lib.platforms.linux;
+    license = lib.licenses.gpl3Plus;
+  };
 }

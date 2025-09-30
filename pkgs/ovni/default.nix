@@ -55,7 +55,13 @@ in
     doCheck = true;
     checkTarget = "test";
     hardeningDisable = [ "all" ];
+
     meta = {
+      homepage = "https://ovni.readthedocs.io";
+      description = "Obtuse but Versatile Nanoscale Instrumentation";
+      maintainers = with lib.maintainers.bsc; [ rarias ];
+      platforms = lib.platforms.linux;
+      license = lib.licenses.gpl3Plus;
       cross = true;
     };
   }

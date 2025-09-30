@@ -1,4 +1,5 @@
 { stdenv
+, lib
 , fetchurl
 , rpmextract
 , autoPatchelfHook
@@ -59,4 +60,12 @@ stdenv.mkDerivation rec {
       rm $out/lib/*.dbg
     popd
   '';
+
+  meta = {
+    homepage = "https://www.intel.com/content/www/us/en/developer/tools/overview.html";
+    description = "Intel compiler";
+    maintainers = with lib.maintainers.bsc; [ rarias ];
+    platforms = lib.platforms.linux;
+    license = lib.licenses.unfree;
+  };
 }

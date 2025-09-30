@@ -81,4 +81,12 @@ in
     passthru = {
       inherit nosv;
     };
+
+    meta = {
+      homepage = "https://gitlab.bsc.es/nos-v/nodes";
+      description = "Runtime library designed to work on top of the nOS-V runtime";
+      maintainers = with lib.maintainers.bsc; [ abonerib rarias ];
+      platforms = lib.platforms.linux;
+      license = lib.licenses.gpl3Plus;
+    };
   }

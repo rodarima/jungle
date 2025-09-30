@@ -126,4 +126,12 @@ in stdenv.mkDerivation {
 # nanos6 installation, but this is would require a recompilation of clang each
 # time nanos6 is changed. Better to use the environment variable NANOS6_HOME,
 # and specify nanos6 at run time.
+
+  meta = {
+    homepage = "https://gitlab.pm.bsc.es/llvm-ompss/llvm-mono";
+    description = "C language family frontend for LLVM (for OmpSs-2)";
+    maintainers = with lib.maintainers.bsc; [ rpenacob ];
+    platforms = lib.platforms.linux;
+    license = [ lib.licenses.asl20 lib.licenses.llvm-exception ];
+  };
 }

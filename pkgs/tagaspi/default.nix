@@ -1,5 +1,6 @@
 {
   stdenv
+, lib
 , fetchFromGitHub
 , automake
 , autoconf
@@ -55,4 +56,12 @@ stdenv.mkDerivation rec {
   ];
 
   hardeningDisable = [ "all" ];
+
+  meta = {
+    homepage = "https://github.com/bsc-pm/tagaspi";
+    description = "Task-Aware GASPI";
+    maintainers = with lib.maintainers.bsc; [ rarias ];
+    platforms = lib.platforms.linux;
+    license = lib.licenses.gpl3Plus;
+  };
 }

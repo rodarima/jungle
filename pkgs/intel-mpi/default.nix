@@ -1,4 +1,5 @@
 { stdenv
+, lib
 , rpmextract
 , gcc
 , zlib
@@ -101,4 +102,12 @@ stdenv.mkDerivation rec {
     patchelf --set-rpath "$out/lib:${rdma-core}/lib:${libpsm2}/lib" $out/lib/libfabric.so
     echo "Patched RPATH in libfabric.so to: $(patchelf --print-rpath $out/lib/libfabric.so)"
   '';
+
+  meta = {
+    homepage = "https://www.intel.com/content/www/us/en/developer/tools/overview.html";
+    description = "Intel MPI";
+    maintainers = with lib.maintainers.bsc; [ rarias ];
+    platforms = lib.platforms.linux;
+    license = lib.licenses.unfree;
+  };
 }

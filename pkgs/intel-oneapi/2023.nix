@@ -26,6 +26,13 @@
 
 let
 
+  meta = {
+    description = "Intel oneapi hpckit package component";
+    homepage = "https://www.intel.com/content/www/us/en/developer/tools/oneapi/hpc-toolkit-download.html";
+    license = lib.licenses.unfree;
+    maintainers = with lib.maintainers.bsc; [ abonerib ];
+  };
+
   gcc = gcc13;
 
   v = {
@@ -87,6 +94,8 @@ let
         dpkg -x $src $out
       done
     '';
+
+    inherit meta;
   };
 
   joinDebs = name: names:
@@ -145,6 +154,8 @@ let
         sed -i "s:I_MPI_SUBSTITUTE_INSTALLDIR:$out:g" "$i"
       done
     '';
+
+    inherit meta;
   };
 
   intel-tbb = stdenv.mkDerivation rec {
@@ -183,6 +194,8 @@ let
         rsync -a lib/intel64/gcc4.8/ $out/lib/
       popd
     '';
+
+    inherit meta;
   };
 
   intel-compiler-shared = stdenv.mkDerivation rec {
@@ -240,6 +253,8 @@ let
         popd
       popd
     '';
+
+    inherit meta;
   };
 
 
@@ -305,6 +320,8 @@ let
         ln -s $out/lib $out/lib_lin
       popd
     '';
+
+    inherit meta;
   };
 
   intel-compiler = stdenv.mkDerivation rec {
@@ -392,6 +409,8 @@ let
         rsync -a documentation/en/man/common/ $out/share/man/
       popd
     '';
+
+    inherit meta;
   };
 
   wrapIntel = { cc, mygcc, extraBuild ? "", extraInstall ? "" }:

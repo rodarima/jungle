@@ -1,5 +1,6 @@
 {
   stdenv
+, lib
 , fetchurl
 , symlinkJoin
 , slurm
@@ -52,4 +53,12 @@ stdenv.mkDerivation rec {
   buildInputs = [ slurm mpiAll rdma-core-all autoconf automake libtool rsync gfortran ];
 
   hardeningDisable = [ "all" ];
+
+  meta = {
+    homepage = "https://pm.bsc.es/gitlab/interoperability/extern/GPI-2";
+    description = "GPI-2 extended for supporting Task-Aware GASPI (TAGASPI) library";
+    maintainers = with lib.maintainers.bsc; [ rarias ];
+    platforms = lib.platforms.linux;
+    license = lib.licenses.gpl3Plus;
+  };
 }

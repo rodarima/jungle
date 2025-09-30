@@ -61,4 +61,12 @@ in stdenv.mkDerivation {
   configureFlags = optional (enableOvni) "--with-ovni=${ovni}";
   dontDisableStatic = true;
   hardeningDisable = [ "all" ];
+
+  meta = {
+    homepage = "https://github.com/bsc-pm/tampi";
+    description = "Task-Aware MPI";
+    maintainers = with lib.maintainers.bsc; [ rarias ];
+    platforms = lib.platforms.linux;
+    license = lib.licenses.gpl3Plus;
+  };
 }

@@ -29,5 +29,7 @@ in stdenv.mkDerivation {
     description = "AMD Power Profiler Driver";
     homepage = "https://www.amd.com/es/developer/uprof.html";
     platforms = lib.platforms.linux;
+    license = lib.licenses.unfree;
+    maintainers = with lib.maintainers.bsc; [ rarias varcila ];
   };
 }

@@ -74,5 +74,13 @@ stdenv.mkDerivation rec {
   passthru = {
     inherit nosv;
   };
+
+  meta = {
+    homepage = "https://gitlab.pm.bsc.es/llvm-ompss/llvm-mono";
+    description = "Support for the OpenMP language (with nOS-V)";
+    maintainers = with lib.maintainers.bsc; [ rpenacob ];
+    platforms = lib.platforms.linux;
+    license = [ lib.licenses.asl20 lib.licenses.llvm-exception ];
+  };
 }
 

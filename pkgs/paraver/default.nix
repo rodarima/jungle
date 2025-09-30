@@ -1,5 +1,6 @@
 {
   stdenv
+, lib
 , fetchFromGitHub
 , autoreconfHook
 , boost
@@ -88,4 +89,18 @@ stdenv.mkDerivation rec {
     mkdir -p $out/share/man
     mv $out/share/doc/wxparaver_help_contents/man $out/share/man/man1
   '';
+
+  meta = {
+    homepage = "https://tools.bsc.es/paraver";
+    downloadPage = "https://github.com/bsc-performance-tools/wxparaver";
+    description = "Performance analyzer based on event traces";
+    longDescription = ''
+      Trace-based visualization and analysis tool designed to study quantitative
+      detailed metrics and obtain qualitative knowledge of the performance of
+      applications, libraries, processors and whole architectures
+    '';
+    maintainers = with lib.maintainers.bsc; [ rarias ];
+    platforms = lib.platforms.linux;
+    license = lib.licenses.lgpl21Plus;
+  };
 }

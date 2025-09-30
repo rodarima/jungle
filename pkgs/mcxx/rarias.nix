@@ -1,4 +1,5 @@
 { stdenv
+, lib
 , fetchgit
 , autoreconfHook
 , nanos6
@@ -56,4 +57,12 @@ stdenv.mkDerivation rec {
   #preBuild = ''
   #  make generate_builtins_ia32 GXX_X86_BUILTINS=${gcc}/bin/g++
   #'';
+  #
+  meta = {
+    homepage = "https://github.com/bsc-pm/mcxx";
+    description = "C/C++/Fortran source-to-source compilation infrastructure aimed at fast prototyping";
+    maintainers = with lib.maintainers.bsc; [ rarias ];
+    platforms = lib.platforms.linux;
+    license = lib.licenses.gpl3Plus;
+  };
 }

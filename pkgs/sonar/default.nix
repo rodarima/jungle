@@ -1,5 +1,6 @@
 {
   stdenv
+, lib
 , autoreconfHook
 , fetchFromGitHub
 , ovni
@@ -27,4 +28,12 @@ stdenv.mkDerivation rec {
     ovni
     mpi
   ];
+
+  meta = {
+    homepage = "https://github.com/bsc-pm/sonar";
+    description = "Set of runtime libraries which instrument parallel programming models through the ovni instrumentation library";
+    maintainers = with lib.maintainers.bsc; [ rarias ];
+    platforms = lib.platforms.linux;
+    license = lib.licenses.mit;
+  };
 }
