@@ -156,7 +156,6 @@
       };
 
       csiringo = {
-        # Arbitrary UID but large so it doesn't collide with other users on ssfhead.
         uid = 9653;
         isNormalUser = true;
         home = "/home/Computational/csiringo";
@@ -166,6 +165,19 @@
         hashedPassword = "$6$0IsZlju8jFukLlAw$VKm0FUXbS.mVmPm3rcJeizTNU4IM5Nmmy21BvzFL.cQwvlGwFI1YWRQm6gsbd4nbg47mPDvYkr/ar0SlgF6GO1";
         openssh.authorizedKeys.keys = [
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHA65zvvG50iuFEMf+guRwZB65jlGXfGLF4HO+THFaed csiringo@bsc.es"
+        ];
+      };
+
+      acinca = {
+        uid = 9654;
+        isNormalUser = true;
+        home = "/home/Computational/acinca";
+        description = "Arnau Cinca";
+        group = "Computational";
+        hosts = [ "apex" "hut" "fox" "owl1" "owl2" ];
+        hashedPassword = "$6$S6PUeRpdzYlidxzI$szyvWejQ4hEN76yBYhp1diVO5ew1FFg.cz4lKiXt2Idy4XdpifwrFTCIzLTs5dvYlR62m7ekA5MrhcVxR5F/q/";
+        openssh.authorizedKeys.keys = [
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFmMqKqPg4uocNOr3O41kLbZMOMJn3m2ZdN1JvTR96z3 bsccns@arnau-bsc"
         ];
       };
     };
