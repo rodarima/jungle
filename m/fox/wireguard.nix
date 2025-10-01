@@ -23,11 +23,11 @@
 
       peers = [
         # List of allowed peers.
-        { 
+        {
           name = "apex";
           publicKey = "VwhcN8vSOzdJEotQTpmPHBC52x3Hbv1lkFIyKubrnUA=";
           # List of IPs assigned to this peer within the tunnel subnet. Used to configure routing.
-          allowedIPs = [ "10.106.0.30/32" ];
+          allowedIPs = [ "10.106.0.30/32" "10.0.40.7/32" ];
         }
         {
           name = "raccoon";
@@ -40,6 +40,7 @@
 
   networking.hosts = {
     "10.106.0.30" = [ "apex" ];
+    "10.0.40.7" = [ "hut" ];
     "10.106.0.236" = [ "raccoon" ];
     "10.0.44.4" = [ "tent" ];
   };
