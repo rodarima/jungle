@@ -46,7 +46,7 @@ let
     wxparaver = callPackage ./pkgs/paraver/default.nix { };
   };
 
-  test = rec {
+  tests = rec {
     #hwloc = callPackage ./test/bugs/hwloc.nix { }; # Broken, no /sys
     #sigsegv = callPackage ./test/reproducers/sigsegv.nix { };
     hello-c = callPackage ./test/compilers/hello-c.nix { };
@@ -101,9 +101,9 @@ let
   crossList = builtins.mapAttrs (t: v: buildList t (builtins.attrValues v)) cross;
 
   pkgsList = buildList "ci-pkgs" (builtins.attrValues pkgs);
-  tests = buildList "ci-tests" (collect isDerivation test);
+  testList = buildList "ci-tests" (collect isDerivation tests);
 
-  all = buildList' "ci-all" [ pkgsList tests ];
+  all = buildList' "ci-all" [ pkgsList testList ];
 
 in bscPkgs // {
   # Prevent accidental usage of bsc attribute
@@ -112,7 +112,7 @@ in bscPkgs // {
   # Internal for our CI tests
   bsc-ci = {
     inherit pkgs pkgsList;
-    inherit test tests;
+    inherit tests testList;
     inherit cross crossList;
     inherit all;
   };
