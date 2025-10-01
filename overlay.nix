@@ -6,9 +6,6 @@ with final.lib;
 let
   callPackage = final.callPackage;
 
-  mkDeps = name: pkgs: final.runCommand name { }
-    "printf '%s\n' ${toString (collect (x: x ? outPath) pkgs)} > $out";
-
   bscPkgs = {
     bench6 = callPackage ./pkgs/bench6/default.nix { };
     bigotes = callPackage ./pkgs/bigotes/default.nix { };
@@ -49,6 +46,32 @@ let
     wxparaver = callPackage ./pkgs/paraver/default.nix { };
   };
 
+  pkgs = filterAttrs (_: isDerivation) bscPkgs;
+
+  crossTargets = [ "riscv64" ];
+  cross = prev.lib.genAttrs crossTargets (target:
+    final.pkgsCross.${target}.bsc-ci.pkgs
+  );
+
+  buildList = name: paths:
+    final.runCommandLocal name { } ''
+      printf '%s\n' ${toString paths} | tee $out
+    '';
+
+  buildList' = name: paths:
+    final.runCommandLocal name { } ''
+      deps="${toString paths}"
+      cat $deps
+      printf '%s\n' $deps >$out
+    '';
+
+  crossList = builtins.mapAttrs (t: v: buildList t (builtins.attrValues v)) cross;
+
+  pkgsList = buildList "ci-pkgs" (builtins.attrValues pkgs);
+  tests = buildList "ci-tests" (collect isDerivation final.bsc-ci.test);
+
+  all = buildList' "ci-all" [ pkgsList tests ];
+
 in bscPkgs // {
   # Prevent accidental usage of bsc attribute
   bsc = throw "the bsc attribute is deprecated, packages are now in the root";
@@ -88,23 +111,9 @@ in bscPkgs // {
       };
     };
 
-    pkgs = filterAttrs (_: isDerivation) bscPkgs;
-
-    pkgsList = final.runCommand "ci-pkgs" { }
-      "printf '%s\n' ${toString (collect isDerivation bscPkgs)} > $out";
-
-    tests = final.runCommand "ci-tests" { }
-      "printf '%s\n' ${toString (collect isDerivation final.bsc-ci.test)} > $out";
-
-    cross = prev.lib.genAttrs [ "riscv64" ] (target:
-      final.pkgsCross.${target}.bsc-ci.pkgs
-    );
-
-    all = final.runCommand "ci-all" { }
-    ''
-      deps="${toString [ final.bsc-ci.pkgsList final.bsc-ci.tests ]}"
-      cat $deps
-      printf '%s\n' $deps > $out
-    '';
+    inherit tests;
+    inherit pkgs pkgsList;
+    inherit cross crossList;
+    inherit all;
   };
 }
