@@ -46,6 +46,39 @@ let
     wxparaver = callPackage ./pkgs/paraver/default.nix { };
   };
 
+  test = rec {
+    #hwloc = callPackage ./test/bugs/hwloc.nix { }; # Broken, no /sys
+    #sigsegv = callPackage ./test/reproducers/sigsegv.nix { };
+    hello-c = callPackage ./test/compilers/hello-c.nix { };
+    hello-cpp = callPackage ./test/compilers/hello-cpp.nix { };
+    lto = callPackage ./test/compilers/lto.nix { };
+    asan = callPackage ./test/compilers/asan.nix { };
+    intel2023-icx-c   = hello-c.override   { stdenv = final.intelPackages_2023.stdenv; };
+    intel2023-icc-c   = hello-c.override   { stdenv = final.intelPackages_2023.stdenv-icc; };
+    intel2023-icx-cpp = hello-cpp.override { stdenv = final.intelPackages_2023.stdenv; };
+    intel2023-icc-cpp = hello-cpp.override { stdenv = final.intelPackages_2023.stdenv-icc; };
+    intel2023-ifort   = callPackage ./test/compilers/hello-f.nix {
+      stdenv = final.intelPackages_2023.stdenv-ifort;
+    };
+    clangOmpss2-lto   = lto.override       { stdenv = final.stdenvClangOmpss2Nanos6; };
+    clangOmpss2-asan  = asan.override      { stdenv = final.stdenvClangOmpss2Nanos6; };
+    clangOmpss2-task  = callPackage ./test/compilers/ompss2.nix {
+      stdenv = final.stdenvClangOmpss2Nanos6;
+    };
+    clangNodes-task = callPackage ./test/compilers/ompss2.nix {
+      stdenv = final.stdenvClangOmpss2Nodes;
+    };
+    clangNosvOpenmp-task = callPackage ./test/compilers/clang-openmp.nix {
+      stdenv = final.stdenvClangOmpss2Nodes;
+    };
+    clangNosvOmpv-nosv = callPackage ./test/compilers/clang-openmp-nosv.nix {
+      stdenv = final.stdenvClangOmpss2NodesOmpv;
+    };
+    clangNosvOmpv-ld = callPackage ./test/compilers/clang-openmp-ld.nix {
+      stdenv = final.stdenvClangOmpss2NodesOmpv;
+    };
+  };
+
   pkgs = filterAttrs (_: isDerivation) bscPkgs;
 
   crossTargets = [ "riscv64" ];
@@ -68,7 +101,7 @@ let
   crossList = builtins.mapAttrs (t: v: buildList t (builtins.attrValues v)) cross;
 
   pkgsList = buildList "ci-pkgs" (builtins.attrValues pkgs);
-  tests = buildList "ci-tests" (collect isDerivation final.bsc-ci.test);
+  tests = buildList "ci-tests" (collect isDerivation test);
 
   all = buildList' "ci-all" [ pkgsList tests ];
 
@@ -78,41 +111,8 @@ in bscPkgs // {
 
   # Internal for our CI tests
   bsc-ci = {
-    test = rec {
-      #hwloc = callPackage ./test/bugs/hwloc.nix { }; # Broken, no /sys
-      #sigsegv = callPackage ./test/reproducers/sigsegv.nix { };
-      hello-c = callPackage ./test/compilers/hello-c.nix { };
-      hello-cpp = callPackage ./test/compilers/hello-cpp.nix { };
-      lto = callPackage ./test/compilers/lto.nix { };
-      asan = callPackage ./test/compilers/asan.nix { };
-      intel2023-icx-c   = hello-c.override   { stdenv = final.intelPackages_2023.stdenv; };
-      intel2023-icc-c   = hello-c.override   { stdenv = final.intelPackages_2023.stdenv-icc; };
-      intel2023-icx-cpp = hello-cpp.override { stdenv = final.intelPackages_2023.stdenv; };
-      intel2023-icc-cpp = hello-cpp.override { stdenv = final.intelPackages_2023.stdenv-icc; };
-      intel2023-ifort   = callPackage ./test/compilers/hello-f.nix {
-        stdenv = final.intelPackages_2023.stdenv-ifort;
-      };
-      clangOmpss2-lto   = lto.override       { stdenv = final.stdenvClangOmpss2Nanos6; };
-      clangOmpss2-asan  = asan.override      { stdenv = final.stdenvClangOmpss2Nanos6; };
-      clangOmpss2-task  = callPackage ./test/compilers/ompss2.nix {
-        stdenv = final.stdenvClangOmpss2Nanos6;
-      };
-      clangNodes-task = callPackage ./test/compilers/ompss2.nix {
-        stdenv = final.stdenvClangOmpss2Nodes;
-      };
-      clangNosvOpenmp-task = callPackage ./test/compilers/clang-openmp.nix {
-        stdenv = final.stdenvClangOmpss2Nodes;
-      };
-      clangNosvOmpv-nosv = callPackage ./test/compilers/clang-openmp-nosv.nix {
-        stdenv = final.stdenvClangOmpss2NodesOmpv;
-      };
-      clangNosvOmpv-ld = callPackage ./test/compilers/clang-openmp-ld.nix {
-        stdenv = final.stdenvClangOmpss2NodesOmpv;
-      };
-    };
-
-    inherit tests;
     inherit pkgs pkgsList;
+    inherit test tests;
     inherit cross crossList;
     inherit all;
   };
