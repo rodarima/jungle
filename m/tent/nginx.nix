@@ -2,10 +2,13 @@
 let
   website = pkgs.stdenv.mkDerivation {
     name = "jungle-web";
-    src = theFlake;
+    src = pkgs.fetchgit {
+      url = "https://jungle.bsc.es/git/rarias/jungle-website.git";
+      rev = "739bf0175a7f05380fe7ad7023ff1d60db1710e1";
+      hash = "sha256-ea5DzhYTzZ9TmqD+x95rdNdLbxPnBluqlYH2NmBYmc4=";
+    };
     buildInputs = [ pkgs.hugo ];
     buildPhase = ''
-      cd web
       rm -rf public/
       hugo
     '';
