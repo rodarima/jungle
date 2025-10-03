@@ -20,6 +20,8 @@ let
     jemallocNanos6 = callPackage ./pkgs/nanos6/jemalloc.nix { };
     lmbench = callPackage ./pkgs/lmbench/default.nix { };
     mcxx = callPackage ./pkgs/mcxx/default.nix { };
+    mpi = final.mpich; # Set MPICH as default
+    mpich = callPackage ./pkgs/mpich/default.nix { mpich = prev.mpich; };
     nanos6 = callPackage ./pkgs/nanos6/default.nix { };
     nanos6Debug = final.nanos6.override { enableDebug = true; };
     nixtools = callPackage ./pkgs/nixtools/default.nix { };
