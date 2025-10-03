@@ -1,0 +1,6 @@
+build:bsc-ci.all:
+  stage: build
+  tags:
+    - nix
+  script:
+    - nix build -L "jungle#bsc-ci.all" --override-input bscpkgs . -v --show-trace

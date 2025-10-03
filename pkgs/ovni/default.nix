@@ -1,0 +1,58 @@
+{
+  stdenv
+, lib
+, cmake
+, mpi
+, fetchFromGitHub
+, useGit ? false
+, gitBranch ? "master"
+, gitUrl ? "ssh://git@bscpm04.bsc.es/rarias/ovni.git"
+, gitCommit ? "e4f62382076f0cf0b1d08175cf57cc0bc51abc61"
+, enableDebug ? false
+# Only enable MPI if the build is native (fails on cross-compilation)
+, useMpi ? (stdenv.buildPlatform.canExecute stdenv.hostPlatform)
+}:
+
+let
+  release = rec {
+    version = "1.12.0";
+    src = fetchFromGitHub {
+      owner = "bsc-pm";
+      repo = "ovni";
+      rev = "${version}";
+      hash = "sha256-H04JvsVKrdqr3ON7JhU0g17jjlg/jzQ7eTfx9vUNd3E=";
+    } // { shortRev = "a73afcf"; };
+  };
+
+  git = rec {
+    version = src.shortRev;
+    src = builtins.fetchGit {
+      url = gitUrl;
+      ref = gitBranch;
+      rev = gitCommit;
+    };
+  };
+
+  source = if (useGit) then git else release;
+in
+  stdenv.mkDerivation rec {
+    pname = "ovni";
+    inherit (source) src version;
+    dontStrip = true;
+    separateDebugInfo = true;
+    postPatch = ''
+      patchShebangs --build test/
+    '';
+    nativeBuildInputs = [ cmake ] ++ lib.optionals (useMpi) [ mpi ];
+    buildInputs = lib.optionals (useMpi) [ mpi ];
+    cmakeBuildType = if (enableDebug) then "Debug" else "Release";
+    cmakeFlags = [
+      "-DOVNI_GIT_COMMIT=${src.shortRev}"
+    ] ++ lib.optionals (!useMpi) [ "-DUSE_MPI=OFF" ];
+    preCheck = ''
+      export CTEST_OUTPUT_ON_FAILURE=1
+    '';
+    doCheck = true;
+    checkTarget = "test";
+    hardeningDisable = [ "all" ];
+  }
