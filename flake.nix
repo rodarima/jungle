@@ -3,15 +3,13 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
-    bscpkgs.url = "git+https://git.sr.ht/~rodarima/bscpkgs";
-    bscpkgs.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, agenix, bscpkgs, ... }:
+  outputs = { self, nixpkgs, agenix, ... }:
 let
   mkConf = name: nixpkgs.lib.nixosSystem {
     system = "x86_64-linux";
-    specialArgs = { inherit nixpkgs bscpkgs agenix; theFlake = self; };
+    specialArgs = { inherit nixpkgs agenix; theFlake = self; };
     modules = [ "${self.outPath}/m/${name}/configuration.nix" ];
   };
   # For now we only support x86
@@ -37,11 +35,6 @@ in
       apex    = mkConf "apex";
       weasel  = mkConf "weasel";
     };
-
-    #packages.x86_64-linux = self.nixosConfigurations.hut.pkgs // {
-    #  bscpkgs = bscpkgs.packages.x86_64-linux;
-    #  nixpkgs = nixpkgs.legacyPackages.x86_64-linux;
-    #};
 
     bscOverlay = import ./overlay.nix;
     overlays.default = self.bscOverlay;

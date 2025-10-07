@@ -1,9 +1,8 @@
-{ pkgs, nixpkgs, bscpkgs, theFlake,  ... }:
+{ pkgs, nixpkgs, theFlake,  ... }:
 
 {
   nixpkgs.overlays = [
-    bscpkgs.bscOverlay
-    (import ../../../pkgs/overlay.nix)
+    (import ../../../overlay.nix)
   ];
 
   nixpkgs.config.allowUnfree = true;
