@@ -7,6 +7,7 @@ let
   callPackage = final.callPackage;
 
   bscPkgs = {
+    amd-uprof = prev.callPackage ./pkgs/amd-uprof/default.nix { };
     bench6 = callPackage ./pkgs/bench6/default.nix { };
     bigotes = callPackage ./pkgs/bigotes/default.nix { };
     clangOmpss2 = callPackage ./pkgs/llvm-ompss2/default.nix { };
@@ -14,12 +15,22 @@ let
     clangOmpss2Nodes = callPackage ./pkgs/llvm-ompss2/default.nix { ompss2rt = final.nodes; openmp = final.openmp; };
     clangOmpss2NodesOmpv = callPackage ./pkgs/llvm-ompss2/default.nix { ompss2rt = final.nodes; openmp = final.openmpv; };
     clangOmpss2Unwrapped = callPackage ./pkgs/llvm-ompss2/clang.nix { };
+    cudainfo = prev.callPackage ./pkgs/cudainfo/default.nix { };
     #extrae = callPackage ./pkgs/extrae/default.nix { }; # Broken and outdated
     gpi-2 = callPackage ./pkgs/gpi-2/default.nix { };
     intelPackages_2023 = callPackage ./pkgs/intel-oneapi/2023.nix { };
     jemallocNanos6 = callPackage ./pkgs/nanos6/jemalloc.nix { };
+    # FIXME: Extend this to all linuxPackages variants. Open problem, see:
+    # https://discourse.nixos.org/t/whats-the-right-way-to-make-a-custom-kernel-module-available/4636
+    linuxPackages = prev.linuxPackages.extend (_final: _prev: {
+      amd-uprof-driver = _prev.callPackage ./pkgs/amd-uprof/driver.nix { };
+    });
+    linuxPackages_latest = prev.linuxPackages_latest.extend(_final: _prev: {
+      amd-uprof-driver = _prev.callPackage ./pkgs/amd-uprof/driver.nix { };
+    });
     lmbench = callPackage ./pkgs/lmbench/default.nix { };
     mcxx = callPackage ./pkgs/mcxx/default.nix { };
+    meteocat-exporter = prev.callPackage ./pkgs/meteocat-exporter/default.nix { };
     mpi = final.mpich; # Set MPICH as default
     mpich = callPackage ./pkgs/mpich/default.nix { mpich = prev.mpich; };
     nanos6 = callPackage ./pkgs/nanos6/default.nix { };
@@ -36,6 +47,7 @@ let
     ovni = callPackage ./pkgs/ovni/default.nix { };
     ovniGit = final.ovni.override { useGit = true; };
     paraverKernel = callPackage ./pkgs/paraver/kernel.nix { };
+    prometheus-slurm-exporter = prev.callPackage ./pkgs/slurm-exporter/default.nix { };
     #pscom = callPackage ./pkgs/parastation/pscom.nix { }; # Unmaintaned
     #psmpi = callPackage ./pkgs/parastation/psmpi.nix { }; # Unmaintaned
     sonar = callPackage ./pkgs/sonar/default.nix { };
@@ -45,6 +57,7 @@ let
     stdenvClangOmpss2NodesOmpv = final.stdenv.override { cc = final.clangOmpss2NodesOmpv; allowedRequisites = null; };
     tagaspi = callPackage ./pkgs/tagaspi/default.nix { };
     tampi = callPackage ./pkgs/tampi/default.nix { };
+    upc-qaire-exporter = prev.callPackage ./pkgs/upc-qaire-exporter/default.nix { };
     wxparaver = callPackage ./pkgs/paraver/default.nix { };
   };
 
