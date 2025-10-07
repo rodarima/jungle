@@ -14,6 +14,12 @@ let
     specialArgs = { inherit nixpkgs bscpkgs agenix; theFlake = self; };
     modules = [ "${self.outPath}/m/${name}/configuration.nix" ];
   };
+  # For now we only support x86
+  system = "x86_64-linux";
+  pkgs = import nixpkgs {
+    inherit system;
+    overlays = [ self.overlays.default ];
+  };
 in
   {
     nixosConfigurations = {
@@ -31,36 +37,22 @@ in
       weasel  = mkConf "weasel";
     };
 
-    packages.x86_64-linux = self.nixosConfigurations.hut.pkgs // {
-      bscpkgs = bscpkgs.packages.x86_64-linux;
-      nixpkgs = nixpkgs.legacyPackages.x86_64-linux;
-    };
-  };
+    #packages.x86_64-linux = self.nixosConfigurations.hut.pkgs // {
+    #  bscpkgs = bscpkgs.packages.x86_64-linux;
+    #  nixpkgs = nixpkgs.legacyPackages.x86_64-linux;
+    #};
 
-# TODO: Merge from bscpkgs:
-#
-#  inputs.nixpkgs.url = "nixpkgs";
-#
-#  outputs = { self, nixpkgs, ...}:
-#    let
-#      # For now we only support x86
-#      system = "x86_64-linux";
-#      pkgs = import nixpkgs {
-#        inherit system;
-#        overlays = [ self.overlays.default ];
-#      };
-#    in
-#    {
-#      bscOverlay = import ./overlay.nix;
-#      overlays.default = self.bscOverlay;
-#      # full nixpkgs with our overlay applied
-#      legacyPackages.${system} = pkgs;
-#
-#      hydraJobs = {
-#        inherit (self.legacyPackages.${system}.bsc-ci) tests pkgs cross;
-#      };
-#
-#      # propagate nixpkgs lib, so we can do bscpkgs.lib
-#      inherit (nixpkgs) lib;
-#    };
+    bscOverlay = import ./overlay.nix;
+    overlays.default = self.bscOverlay;
+
+    # full nixpkgs with our overlay applied
+    legacyPackages.${system} = pkgs;
+
+    hydraJobs = {
+      inherit (self.legacyPackages.${system}.bsc-ci) tests pkgs cross;
+    };
+
+    # propagate nixpkgs lib, so we can do bscpkgs.lib
+    inherit (nixpkgs) lib;
+  };
 }
