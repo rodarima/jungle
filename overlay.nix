@@ -62,7 +62,7 @@ let
   };
 
   tests = rec {
-    #hwloc = callPackage ./test/bugs/hwloc.nix { }; # Broken, no /sys
+    hwloc = callPackage ./test/bugs/hwloc.nix { };
     #sigsegv = callPackage ./test/reproducers/sigsegv.nix { };
     hello-c = callPackage ./test/compilers/hello-c.nix { };
     hello-cpp = callPackage ./test/compilers/hello-cpp.nix { };

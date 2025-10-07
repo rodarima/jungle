@@ -6,6 +6,7 @@
 
 stdenv.mkDerivation {
   name = "hwloc-test";
+  requiredSystemFeatures = [ "sys-devices" ];
 
   src = ./.;
 
@@ -14,7 +15,7 @@ stdenv.mkDerivation {
   buildPhase = ''
     ls -l /sys
     gcc -lhwloc hwloc.c -o hwloc
-    strace ./hwloc
+    strace ./hwloc > $out
   '';
 
 }
