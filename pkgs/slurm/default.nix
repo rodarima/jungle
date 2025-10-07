@@ -1,80 +1,22 @@
-{ stdenv, lib, fetchFromGitHub, pkg-config, libtool, curl
-, python, munge, perl, pam, openssl
-, ncurses, libmysqlclient, gtk2, lua, hwloc, numactl
-, readline, freeipmi, libssh2, xorg
-, pmix
-# enable internal X11 support via libssh2
-, enableX11 ? true
-}:
+{ slurm }:
 
-stdenv.mkDerivation rec {
-  name = "slurm-${version}";
-  version = "17.11.9-2";
-
-  # N.B. We use github release tags instead of https://www.schedmd.com/downloads.php
-  # because the latter does not keep older releases.
-  src = fetchFromGitHub {
-    owner = "SchedMD";
-    repo = "slurm";
-    # The release tags use - instead of .
-    rev = "${builtins.replaceStrings ["."] ["-"] name}";
-    sha256 = "1lq4ac6yjai6wh979dciw8v3d99zbd3w36rfh0vpncqm672fg1qy";
-  };
-
-  outputs = [ "out" "dev" ];
-
-  prePatch = lib.optional enableX11 ''
-    substituteInPlace src/common/x11_util.c \
-        --replace '"/usr/bin/xauth"' '"${xorg.xauth}/bin/xauth"'
+slurm.overrideAttrs (old: {
+  patches = (old.patches or []) ++ [
+    # See https://bugs.schedmd.com/show_bug.cgi?id=19324
+    # Still unmerged as of 2025-10-03, another corpo-cancer.
+    ./slurm-rank-expansion.patch
+  ];
+  # Install also the pam_slurm_adopt library to restrict users from accessing
+  # nodes with no job allocated.
+  # TODO: Review pam_slurm_adopt, I don't trust their code much.
+  postBuild = (old.postBuild or "") + ''
+    pushd contribs/pam_slurm_adopt
+      make "PAM_DIR=$out/lib/security"
+    popd
   '';
-
-  # nixos test fails to start slurmd with 'undefined symbol: slurm_job_preempt_mode'
-  # https://groups.google.com/forum/#!topic/slurm-devel/QHOajQ84_Es
-  # this doesn't fix tests completely at least makes slurmd to launch
-  hardeningDisable = [ "bindnow" ];
-
-  nativeBuildInputs = [ pkg-config libtool ];
-  buildInputs = [
-    curl python munge perl pam openssl
-      libmysqlclient ncurses gtk2
-      lua hwloc numactl readline freeipmi
-      pmix
-  ] ++ lib.optionals enableX11 [ libssh2 xorg.xauth ];
-
-  configureFlags = with lib;
-    [ "--with-munge=${munge}"
-      "--with-ssl=${openssl.dev}"
-      "--with-hwloc=${hwloc.dev}"
-      "--with-freeipmi=${freeipmi}"
-      "--sysconfdir=/etc/slurm"
-      "--with-pmix=${pmix}"
-    ] ++ (optional (gtk2 == null)  "--disable-gtktest")
-      ++ (optional enableX11 "--with-libssh2=${libssh2.dev}");
-
-
-  preConfigure = ''
-    patchShebangs ./doc/html/shtml2html.py
-    patchShebangs ./doc/man/man2html.py
-    patchShebangs ./configure
+  postInstall = (old.postInstall or "") + ''
+    pushd contribs/pam_slurm_adopt
+      make "PAM_DIR=$out/lib/security" install
+    popd
   '';
-
-#  postBuild = ''
-#    pushd contrib/pmi2
-#      make -j install
-#    popd
-#  '';
-
-  postInstall = ''
-    rm -f $out/lib/*.la $out/lib/slurm/*.la
-  '';
-
-  enableParallelBuilding = true;
-
-  meta = with lib; {
-    homepage = http://www.schedmd.com/;
-    description = "Simple Linux Utility for Resource Management";
-    platforms = platforms.linux;
-    license = licenses.gpl2;
-    maintainers = with maintainers; [ jagajaga markuskowa ];
-  };
-}
+})
