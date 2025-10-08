@@ -36,9 +36,8 @@ in stdenv.mkDerivation {
   dontUnpack = true;
   dontConfigure = true;
 
-  # nOS-V requires access to /sys/devices to request NUMA information. It will
-  # fail to run otherwise, so we disable the sandbox for this test.
-  __noChroot = true;
+  # nOS-V requires access to /sys/devices to request NUMA information
+  requiredSystemFeatures = [ "sys-devices" ];
 
   buildInputs = [ nosv ];
 
