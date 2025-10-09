@@ -55,4 +55,7 @@ in
     doCheck = true;
     checkTarget = "test";
     hardeningDisable = [ "all" ];
+    meta = {
+      cross = true;
+    };
   }
