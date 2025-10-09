@@ -94,12 +94,18 @@ let
     };
   };
 
-  pkgs = filterAttrs (_: isDerivation) bscPkgs;
+  # For now, only build toplevel packages in CI/Hydra
+  pkgsTopLevel = filterAttrs (_: isDerivation) bscPkgs;
 
-  crossTargets = [ "riscv64" ];
-  cross = prev.lib.genAttrs crossTargets (target:
-    final.pkgsCross.${target}.bsc-ci.pkgs
-  );
+  # Native build in that platform doesn't imply cross build works
+  canCrossCompile = platform: pkg:
+    (isDerivation pkg) &&
+    # Must be defined explicitly
+    (pkg.meta.cross or false) &&
+    (meta.availableOn platform pkg);
+
+  # For now only RISC-V
+  crossSet = { riscv64 = final.pkgsCross.riscv64.bsc.pkgsTopLevel; };
 
   buildList = name: paths:
     final.runCommandLocal name { } ''
@@ -113,22 +119,31 @@ let
       printf '%s\n' $deps >$out
     '';
 
-  crossList = builtins.mapAttrs (t: v: buildList t (builtins.attrValues v)) cross;
-
-  pkgsList = buildList "ci-pkgs" (builtins.attrValues pkgs);
-  testList = buildList "ci-tests" (collect isDerivation tests);
-
-  all = buildList' "ci-all" [ pkgsList testList ];
+  pkgsList = buildList "ci-pkgs" (builtins.attrValues pkgsTopLevel);
+  testsList = buildList "ci-tests" (collect isDerivation tests);
+  allList = buildList' "ci-all" [ pkgsList testsList ];
+  # For now only RISC-V
+  crossList = buildList "ci-cross"
+    (filter
+      (canCrossCompile final.pkgsCross.riscv64.stdenv.hostPlatform)
+        (builtins.attrValues crossSet.riscv64));
 
 in bscPkgs // {
-  # Prevent accidental usage of bsc attribute
-  bsc = throw "the bsc attribute is deprecated, packages are now in the root";
+  # Prevent accidental usage of bsc-ci attribute
+  bsc-ci = throw "the bsc-ci attribute is deprecated, use bsc.ci";
 
   # Internal for our CI tests
-  bsc-ci = {
-    inherit pkgs pkgsList;
-    inherit tests testList;
-    inherit cross crossList;
-    inherit all;
+  bsc = {
+    # CI targets for nix build
+    ci = { pkgs = pkgsList; tests = testsList; all = allList; cross = crossList; };
+
+    # Direct access to package sets
+    tests = tests;
+    pkgs = bscPkgs;
+    pkgsTopLevel = pkgsTopLevel;
+    cross = crossSet;
+
+    # Hydra uses attribute sets of pkgs
+    hydraJobs = { tests = tests; pkgs = pkgsTopLevel; cross = crossSet; };
   };
 }

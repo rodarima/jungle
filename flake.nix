@@ -42,9 +42,7 @@ in
     # full nixpkgs with our overlay applied
     legacyPackages.${system} = pkgs;
 
-    hydraJobs = {
-      inherit (self.legacyPackages.${system}.bsc-ci) tests pkgs cross;
-    };
+    hydraJobs = self.legacyPackages.${system}.bsc.hydraJobs;
 
     # propagate nixpkgs lib, so we can do bscpkgs.lib
     inherit (nixpkgs) lib;

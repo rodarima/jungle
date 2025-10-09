@@ -12,4 +12,9 @@ jobs:
     runs-on: native
     steps:
       - uses: https://gitea.com/ScMi1/checkout@v1.4
-      - run: nix build -L --no-link --print-out-paths .#bsc-ci.all
+      - run: nix build -L --no-link --print-out-paths .#bsc.ci.all
+  build:cross:
+    runs-on: native
+    steps:
+      - uses: https://gitea.com/ScMi1/checkout@v1.4
+      - run: nix build -L --no-link --print-out-paths .#bsc.ci.cross
